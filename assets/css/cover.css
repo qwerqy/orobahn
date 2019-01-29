@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+.bg-image {
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  position: relative;
+  background-image: url("/static/temporary-cover.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.hero-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-text {
+  font-family: "Raleway", "Roboto", sans-serif;
+  font-size: 3rem;
+  font-weight: 300;
+  margin: 0;
+}
