@@ -33,6 +33,10 @@ const Head = props => (
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+      <link
+        rel="stylesheet"
+        href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"
+      />
     </NextHead>
     <style jsx global>
       {`

@@ -1,91 +1,37 @@
 import React from 'react'
-import Link from 'next/link'
+import { Header, List, Icon } from 'semantic-ui-react'
 import Head from '../components/head'
-// import Nav from '../components/nav'
 import Cover from '../components/cover'
+import HeroBox from '../components/herobox'
+import HeroPage from '../components/heropage'
+import Footer from '../components/footer'
+import Projects from '../components/projects'
+
+const links = [
+  {icon:"facebook", link:"https://www.facebook.com/amnrsln" },
+  {icon:"instagram", link:"https://www.instagram.com/taikomin/"},
+  {icon:"twitter", link:"https://twitter.com/qwerqy_dev"},
+  {icon:"linkedin", link:"https://www.linkedin.com/in/aminroslan/"},
+  {icon:"github", link:"https://www.github.com/qwerqy"}
+]
 
 const Home = () => (
   <div>
     <Head title="Home" />
     <Cover />
-
-    <div className="hero">
-      <h1 className="title">Welcome to Next!</h1>
-      <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
-      </p>
-
-      <div className="row">
-        <Link href="https://github.com/zeit/next.js#getting-started">
-          <a className="card">
-            <h3>Getting Started &rarr;</h3>
-            <p>Learn more about Next on Github and in their examples</p>
-          </a>
-        </Link>
-        <Link href="https://open.segment.com/create-next-app">
-          <a className="card">
-            <h3>Examples &rarr;</h3>
-            <p>
-              Find other example boilerplates on the{' '}
-              <code>create-next-app</code> site
-            </p>
-          </a>
-        </Link>
-        <Link href="https://github.com/segmentio/create-next-app">
-          <a className="card">
-            <h3>Create Next App &rarr;</h3>
-            <p>Was this tool helpful? Let us know how we can improve it</p>
-          </a>
-        </Link>
-      </div>
-    </div>
-
-    <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
-    `}</style>
+    <HeroBox title='work' dark slant='right'>
+      I am a Full-Stack Software Engineer. I am currently with Vase Technologies as their Full-Stack Software Engineer. 
+      I am responsible in developing & maintaining their in-house products both for our business clients & consumer clients.
+      All of their products are mostly in Javascript.
+    </HeroBox>
+    <HeroBox title='game' titleAlign='right'>
+      I used to stream on Twitch going under the name 'GreenCheese'. I am currently putting streaming on hold in the hopes of getting better gears for it.
+      I like to play strategy, role-playing, heavy-story based games.
+    </HeroBox>
+    <HeroPage title='personal projects'>
+      <Projects />
+    </HeroPage>
+    <Footer />
   </div>
 )
 

@@ -1,22 +1,33 @@
 import { Component} from 'react'
+import { Container, Header } from 'semantic-ui-react'
 
 import Nav from './nav'
 import "../assets/css/cover.css"
+
+const HeroText = () => {
+  const style = {
+    fontSize: "5rem",
+    fontWeight: 300,
+    margin: 0,
+    letterSpacing: '8px'
+  }
+
+  return (
+    <div className="hero-container">
+      <Container text> 
+        <Header style={style}>AMIN ROSLAN</Header>
+        <span style={{fontSize: "2rem"}}>Software Engineer at Vase Technologies. Huge gaming nerd.</span>
+      </Container>
+    </div>
+  )
+}
 
 class Cover extends Component {
   render() {
     return (
       <div className='bg-image'>
         <Nav />
-        <div className="hero-container">
-          <h1 className='hero-text'>Amin Roslan</h1>
-          <span>Software Engineer at Vase Technologies. Huge gaming nerd.</span>
-        </div>
-        <style jsx>
-        {`
-          
-        `}
-        </style>
+        <HeroText />
       </div>
     )
   }
