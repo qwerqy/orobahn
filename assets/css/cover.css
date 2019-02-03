@@ -5,9 +5,10 @@
   width: 100vw;
   top: 0;
   position: relative;
-  background-image: url("/static/temporary-cover.jpg");
-  background-position: center;
-  background-size: cover;
+  /* background-image: url("/static/temporary-cover.jpg"); */
+  background-color: #1b1c1d;
+  /* background-position: center;
+  background-size: cover; */
 }
 .hero-container {
   position: absolute;
