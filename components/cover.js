@@ -26,7 +26,7 @@ class Cover extends Component {
   render() {
     return (
       <div className='bg-image'>
-        <Nav />
+        <Nav show />
         <HeroText />
       </div>
     )
