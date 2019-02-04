@@ -17,11 +17,11 @@ class HeroPage extends Component {
   }
 
   capitalizeTitle = title => {
-    return title.toUpperCase()
+    return title ? title.toUpperCase() : null
   }
 
   render() {
-    const { slant, title } = this.props
+    const { slant, title, dark } = this.props
     const styles = {
       segment: {
         borderRadius: 0,
@@ -42,9 +42,9 @@ class HeroPage extends Component {
     }
 
     return (
-      <Segment style={styles.segment} inverted>
+      <Segment style={styles.segment} inverted={dark}>
         <Container>
-          <Header style={styles.header} inverted>{this.capitalizeTitle(title)}</Header>
+          <Header style={styles.header} inverted={dark}>{this.capitalizeTitle(title)}</Header>
           {this.props.children}
         </Container>
       </Segment>

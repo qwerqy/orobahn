@@ -25,7 +25,7 @@ class Software extends Component {
   render() {
     return (
       <div>
-        <Head title="Home" />
+        <Head title="Software Portfolio" />
         <Responsive getWidth={this.getWidth}>
           <Visibility once={false} onBottomPassed={() => this.setState({ showNav: true})} onBottomPassedReverse={() => this.setState({ showNav: false})}>
             <Cover />

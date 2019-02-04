@@ -2,10 +2,9 @@ import { Component, Fragment } from 'react';
 import Link from 'next/link' 
 import { Menu, Segment, Transition, Responsive, Container } from 'semantic-ui-react';
 
-import "../assets/css/nav.css"
-
 const links = [
-  { label: 'software', href: '/software', position: 'right' },
+  { label: 'blog', href: '/blog', position: 'right' },
+  { label: 'software portfolio', href: '/software'},
   { label: 'gaming', href: '/gaming' }
 ]
 
@@ -44,7 +43,9 @@ class ResponsiveNav extends Component {
             <Segment inverted textAlign='center' style={styles.segment}>
               <Container text>
                 <Menu inverted={dark} pointing secondary style={{ borderBottom: 0 }}>
-                  <Menu.Item className="nav-header" style={{letterSpacing: '3px'}} header>AMIN ROSLAN</Menu.Item>
+                  <Link href='/'>
+                    <Menu.Item className="nav-header" style={{letterSpacing: '3px'}} header>AMIN ROSLAN</Menu.Item>
+                  </Link>
                   {
                     Object.keys(links).map( i => {
                       return (
@@ -58,6 +59,35 @@ class ResponsiveNav extends Component {
               </Container>
             </Segment>
           </Transition>
+          <style jsx>
+            {`
+              .nav-item {
+                margin: 0 !important;
+              }
+              
+              @media (min-width: 1024px) {
+                .navbar-container {
+                  padding: 1em 15em !important;
+                }
+              }
+              
+              @media (min-width: 768px) {
+                .navbar-container {
+                  padding: 1em 6em !important;
+                }
+              }
+              
+              @media (max-width: 423px) {
+                .nav-header {
+                  font-size: 0.8rem !important;
+                }
+              
+                .nav-item {
+                  font-size: 0.8rem !important;
+                }
+              }
+            `}
+          </style>
       </Fragment>
     )
   }

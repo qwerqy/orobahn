@@ -26,7 +26,6 @@ class Home extends Component {
     return (
       <div>
         <Head title="Home" />
-        <Responsive getWidth={this.getWidth}>
           <Visibility once={false} onBottomPassed={() => this.setState({ showNav: true})} onBottomPassedReverse={() => this.setState({ showNav: false})}>
             <Cover />
           </Visibility>
@@ -40,11 +39,9 @@ class Home extends Component {
             I used to stream on Twitch going under the name 'GreenCheese'. I am currently putting streaming on hold in the hopes of getting better gears for it.
             I like to play strategy, role-playing, heavy-story based games.
           </HeroBox>
-          <HeroPage title='personal projects'>
-            <Projects />
+          <HeroPage dark title='latest blog post'>
           </HeroPage>
           <Footer />
-        </Responsive>
       </div>
     )
   }
