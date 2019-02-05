@@ -95,6 +95,11 @@ class MobileWrapper extends Component{
         margin: 0,
         width: '100%',
         top: 0
+      },
+      sidebarItem: {
+        padding: '20px 10px',
+        letterSpacing: '3px',
+        lineHeight: 1.5
       }
     };
 
@@ -102,6 +107,7 @@ class MobileWrapper extends Component{
       <Sidebar.Pushable className='mobile-wrapper'>
         <Sidebar
           as={Menu}
+          style={{padding:'0px 5px'}}
           animation='overlay'
           icon='labeled'
           inverted
@@ -111,11 +117,12 @@ class MobileWrapper extends Component{
           visible={visible}
           width='thin'
         >
+          <Menu.Item style={styles.sidebarItem} inverted header>MENU</Menu.Item>
           {
             Object.keys(links).map( i => {
               return (
                 <Link href={links[i].href}>
-                  <Menu.Item className='nav-item' key={i} name={links[i].label} active={activeItem === links[i].label} onClick={this.handleClick} position={links[i].position} />
+                  <Menu.Item style={styles.sidebarItem} key={i} name={links[i].label} active={activeItem === links[i].label} onClick={this.handleClick} position={links[i].position} />
                 </Link>
               );
             })
