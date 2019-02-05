@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+.bg-image {
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  position: relative;
+  background-color: #1b1c1d;
+}
+
+.hero-header {
+  font-family: "Raleway", "Roboto", sans-serif !important;
+  font-size: 4rem !important;
+  font-weight: 300 !important;
+  margin: 0 !important;
+  letter-spacing: 8px !important;
+  z-index: 100 !important;
+}
+
+.hero-caption {
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #fff;
+}
+
+@media (max-width: 424px) {
+  .hero-header {
+    font-size: 2.5rem !important;
+  }
+  .hero-caption {
+    font-size: 1.2rem !important;
+  }
+}
