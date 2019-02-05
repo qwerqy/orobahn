@@ -1,21 +1,23 @@
 import { Component } from 'react'
+import Moment from 'react-moment'
 import getConfig from 'next/config'
-import { Grid, Container, Header, Sidebar, Menu } from 'semantic-ui-react'
+import { Grid, Segment, Header, List, Divider } from 'semantic-ui-react'
 import Head from '../components/head'
 import HeroPage from '../components/heropage'
 import Footer from '../components/footer'
-import ResponsiveNav from '../components/nav'
 import HeroHeader from '../components/heroheader';
 import Wrapper from '../components/wrapper'
+import "../assets/blog.css"
 import Butter from 'buttercms';
 const {publicRuntimeConfig} = getConfig()
 const butter = Butter(publicRuntimeConfig.BUTTERCMS_API)
 
-butter.post.list({page: 1, page_size: 10}).then(function(response) {
-  console.log(response)
-})
-
 class Blog extends Component {
+  static async getInitialProps() {
+    const res = await butter.post.list({page: 1, page_size: 10, })    
+    return res.data;
+  }
+
   state = {
     showNav: false,
     width: 0
@@ -26,12 +28,7 @@ class Blog extends Component {
   }
 
   render() {
-    const styles = {
-      header: {
-        letterSpacing: '5px',
-        fontSize: '1.5em'
-      }
-    }
+    const posts = this.props.data;
 
     return (
       <div>
@@ -42,14 +39,42 @@ class Blog extends Component {
             That can be any projects, achievements, self-improvement tips, etc.
           </HeroHeader>
           <HeroPage>
-            <Grid>
+            <Grid container stackable>
               <Grid.Row>
                 <Grid.Column width={4}>
-                  <Container>
-                    <Header style={styles.header}>Latest Posts</Header>
-                  </Container>
+                  <Segment>
+                    <Header className='recent-posts'>Recent Posts</Header>
+                    <List>
+                      {
+                        posts.map(post => {
+                          return (
+                            <List.Item key={post.created}>{post.title}</List.Item>
+                          )
+                        })
+                      }
+                    </List>
+                  </Segment>
                 </Grid.Column>
                 <Grid.Column width={12}>
+                  {
+                    posts.map(post => {
+                      return (
+                        <Segment key={post.created} vertical >
+                          <Header className='post-header'>
+                            {post.seo_title}
+                            <Header.Subheader>{post.meta_description}</Header.Subheader>
+                          </Header>
+                          <Header sub>
+                            <Moment format="D MMM YYYY" withTitle>
+                                {post.published}
+                            </Moment>
+                          </Header>
+                          <br />
+                          <div dangerouslySetInnerHTML={{__html: post.body}} />
+                        </Segment>
+                      )
+                    })
+                  }
                 </Grid.Column>
               </Grid.Row>
             </Grid>

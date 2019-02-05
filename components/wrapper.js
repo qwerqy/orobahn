@@ -117,7 +117,7 @@ class MobileWrapper extends Component{
           visible={visible}
           width='thin'
         >
-          <Menu.Item style={styles.sidebarItem} inverted header>MENU</Menu.Item>
+          <Menu.Item style={styles.sidebarItem} onClick={ () => this.setState({ visible: false })} inverted header><Icon name='angle right'/></Menu.Item>
           {
             Object.keys(links).map( i => {
               return (
@@ -127,8 +127,8 @@ class MobileWrapper extends Component{
               );
             })
           }
-        </Sidebar> 
-        <Sidebar.Pusher>
+        </Sidebar>
+        <Sidebar.Pusher dimmed={visible}>
             <Segment inverted vertical textAlign='center' style={styles.segment}>
               <Container text>
                 <Menu inverted pointing secondary style={{ borderBottom: 0 }}>

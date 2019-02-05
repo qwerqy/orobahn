@@ -23,11 +23,20 @@
   color: #fff;
 }
 
-@media (max-width: 424px) {
+.hero-para {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #fff;
+}
+
+@media (max-width: 430px) {
   .hero-header {
     font-size: 2.5rem !important;
   }
   .hero-caption {
     font-size: 1.2rem !important;
+  }
+  .hero-para {
+    display: none !important;
   }
 }

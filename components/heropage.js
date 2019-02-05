@@ -26,9 +26,9 @@ class HeroPage extends Component {
       segment: {
         borderRadius: 0,
         margin: 0,
-        height: '100vh',
+        minHeight: '100vh',
         width: '100vw',
-        padding: '5em 0em',
+        padding: '2em 0em',
         clipPath: this.slantDirection(slant),
         border: 0
       },
