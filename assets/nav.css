@@ -1,0 +1,38 @@
+.nav-item {
+  margin: 0 !important;
+}
+
+.dropper-right {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .navbar-container {
+    padding: 1em 15em !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-container {
+    padding: 1em 6em !important;
+  }
+}
+
+@media (max-width: 550px) {
+  .right-menu {
+    display: none !important;
+  }
+  .dropper-right {
+    display: block !important;
+  }
+}
+
+@media (max-width: 423px) {
+  .nav-header {
+    font-size: 0.8rem !important;
+  }
+
+  .nav-item {
+    font-size: 0.8rem !important;
+  }
+}

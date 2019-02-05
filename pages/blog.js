@@ -1,11 +1,12 @@
 import { Component } from 'react'
 import getConfig from 'next/config'
-import { Grid, Container, Header } from 'semantic-ui-react'
+import { Grid, Container, Header, Sidebar, Menu } from 'semantic-ui-react'
 import Head from '../components/head'
 import HeroPage from '../components/heropage'
 import Footer from '../components/footer'
 import ResponsiveNav from '../components/nav'
 import HeroHeader from '../components/heroheader';
+import Wrapper from '../components/wrapper'
 import Butter from 'buttercms';
 const {publicRuntimeConfig} = getConfig()
 const butter = Butter(publicRuntimeConfig.BUTTERCMS_API)
@@ -35,7 +36,7 @@ class Blog extends Component {
     return (
       <div>
         <Head title="Blog" />
-          <ResponsiveNav dark />
+        <Wrapper dark>
           <HeroHeader title="the blog.">
             Short disclaimer, I rarely write in my blog, but I'll try writing more often. Whatever life events that has happened in my life will go to this blog.
             That can be any projects, achievements, self-improvement tips, etc.
@@ -54,6 +55,7 @@ class Blog extends Component {
             </Grid>
           </HeroPage>
           <Footer />
+        </Wrapper>
       </div>
     )
   }

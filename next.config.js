@@ -1,6 +1,7 @@
+const withCSS = require('@zeit/next-css')
 require('dotenv').config()
 
-module.exports = {
+module.exports = withCSS({
   webpack: config => {
     // Fixes npm packages that depend on `fs` module
     config.node = {
@@ -8,11 +9,8 @@ module.exports = {
     }
 
     return config
-  }
-}
-
-module.exports = {
+  },
   publicRuntimeConfig: {
     BUTTERCMS_API: process.env.BUTTERCMS_API
   }
-}
+})
