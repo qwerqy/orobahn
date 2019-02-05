@@ -6,6 +6,10 @@
   display: none !important;
 }
 
+.mobile-wrapper {
+  display: none !important;
+}
+
 @media (min-width: 1024px) {
   .navbar-container {
     padding: 1em 15em !important;
@@ -24,6 +28,14 @@
   }
   .dropper-right {
     display: block !important;
+  }
+
+  .mobile-wrapper {
+    display: block !important;
+  }
+
+  .desktop-wrapper {
+    display: none !important;
   }
 }
 

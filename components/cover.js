@@ -1,31 +1,30 @@
-import { Component, Fragment } from 'react'
-import { Container, Header, Responsive } from 'semantic-ui-react'
-import Particles from 'react-particles-js';
+import { Component, Fragment } from "react";
+import { Container, Header, Responsive } from "semantic-ui-react";
+import Particles from "react-particles-js";
 
-import ResponsiveNav from './nav'
-import { getWidth } from './helpers'
+import { getWidth } from "./helpers";
 // import "../assets/css/cover.css"
 
 
 class DesktopHeroText extends Component {
   render() {
-    const { dark } = this.props
+    const { dark } = this.props;
     const styles = {
       header: {
-        fontFamily: '"Raleway", "Roboto", sans-serif',
+        fontFamily: "\"Raleway\", \"Roboto\", sans-serif",
         fontSize: "4rem",
         fontWeight: 300,
         margin: 0,
-        letterSpacing: '8px',
+        letterSpacing: "8px",
         zIndex: 100
       },
       container: {
-        position: 'absolute',
+        position: "absolute",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)"
       }
-    }
+    };
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyComputer.minWidth}>
         <div className="hero-container">
@@ -35,29 +34,29 @@ class DesktopHeroText extends Component {
           </Container>
         </div>
       </Responsive>
-    )
+    );
   }
 }
 
 class TabletHeroText extends Component {
   render() {
-    const { dark } = this.props
+    const { dark } = this.props;
     const styles = {
       header: {
-        fontFamily: '"Raleway", "Roboto", sans-serif',
-      fontSize: "4rem",
-      fontWeight: 300,
-      margin: 0,
-      letterSpacing: '8px',
-      zIndex: 100
+        fontFamily: "\"Raleway\", \"Roboto\", sans-serif",
+        fontSize: "4rem",
+        fontWeight: 300,
+        margin: 0,
+        letterSpacing: "8px",
+        zIndex: 100
       },
       container: {
-        position: 'absolute',
+        position: "absolute",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)"
       }
-    }
+    };
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth} maxWidth={Responsive.onlyTablet.maxWidth}>
         <div className="hero-container">
@@ -67,29 +66,29 @@ class TabletHeroText extends Component {
           </Container>
         </div>
       </Responsive>
-    )
+    );
   }
 }
 
 class MobileHeroText extends Component {
   render() {
-    const { dark } = this.props
+    const { dark } = this.props;
     const styles = {
       header: {
-        fontFamily: '"Raleway", "Roboto", sans-serif',
+        fontFamily: "\"Raleway\", \"Roboto\", sans-serif",
         fontSize: "4rem",
         fontWeight: 300,
         margin: 0,
-        letterSpacing: '8px',
+        letterSpacing: "8px",
         zIndex: 100
       },
       container: {
-        position: 'absolute',
+        position: "absolute",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)"
       }
-    }
+    };
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyMobile.minWidth} maxWidth={Responsive.onlyMobile.maxWidth}>
         <div className="hero-container" style={{}}>
@@ -99,7 +98,7 @@ class MobileHeroText extends Component {
           </Container>
         </div>
       </Responsive>
-    )
+    );
   }
 }
 
@@ -111,7 +110,7 @@ class HeroText extends Component {
         <TabletHeroText {...this.props} />
         <MobileHeroText {...this.props} />
       </Fragment>
-    )
+    );
   }
 }
 
@@ -120,36 +119,35 @@ class Cover extends Component {
     return (
       <Fragment>
         <div className='bg-image'>
-          <ResponsiveNav dark show />
           {
-            typeof window !== 'undefined'
-            ? <Particles
+            typeof window !== "undefined"
+              ? <Particles
                 width="100vw"
                 height="100vh"
-                style={{position: 'absolute'}}
+                style={{position: "absolute"}}
                 params={{"particles": {
-                    "number": {
-                        "value": 100
-                    },
-                    "size": {
-                        "value": 2
-                    }
+                  "number": {
+                    "value": 100
+                  },
+                  "size": {
+                    "value": 2
+                  }
                 },
                 "interactivity": {
-                    "events": {
-                        "onhover": {
-                            "enable": true,
-                            "mode": "repulse"
-                        }
+                  "events": {
+                    "onhover": {
+                      "enable": true,
+                      "mode": "repulse"
                     }
+                  }
                 }}}/>
-            : <canvas/>
+              : <canvas/>
           }
           
           <HeroText dark />
         </div>
         <style jsx>
-        {`
+          {`
           @import url("https://fonts.googleapis.com/css?family=Raleway");
 
           .bg-image {
@@ -162,7 +160,7 @@ class Cover extends Component {
         `}
         </style>
       </Fragment>
-    )
+    );
   }
 }
 
