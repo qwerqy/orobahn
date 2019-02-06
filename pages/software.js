@@ -69,7 +69,7 @@ class Software extends Component {
         <Wrapper dark>
           <HeroHeader title="software portfolio." />
           <HeroBox title='skillset'>
-            <Grid stackable columns={skillset.length}>
+            <Grid stackable doubling columns={skillset.length}>
               <Grid.Row>
                 {
                   skillset.map((list, index) => {

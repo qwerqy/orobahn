@@ -1,66 +1,6 @@
 import { Component, Fragment } from 'react'
 import { Container, Header, Segment, List, Grid } from 'semantic-ui-react'
 
-class ListBox extends Component {
-  // Any lists will be filled under this.state.contents. 
-  state = {
-    contents: [
-      {
-        category:'work',
-        lists: [
-          {
-            header: 'Front End',
-            items: ['React', 'React Native', 'Vue', 'MobX', 'Next.js', 'Nuxt.js']
-          },
-          {
-            header: 'Back End',
-            items: ['Express', 'Koa', 'Ruby On Rails']
-          },
-          {
-            header: 'Database',
-            items: ['MongoDB', 'Postgresql']
-          }
-        ]
-      }
-    ]
-  } 
-  render() {
-    const { category } = this.props
-    const { contents } = this.state
-
-    // for loop to detect category of listbox
-    for (let i in contents) {
-      let content = contents[i]
-      if (content.category === category) {
-        return (
-          <Grid centered columns={content.lists.length}>
-            <Grid.Row>
-              {
-                content.lists.map((list, index) => {
-                  return (
-                    <Grid.Column key={index}>
-                      <Header inverted style={{ letterSpacing: '2px' }}>{list.header}</Header>
-                      <List bulleted>
-                        {
-                          list.items.map( (item, index) => <List.Item key={index}>{item}</List.Item>)
-                        }
-                      </List>
-                    </Grid.Column>
-                  )
-                })
-              }
-            </Grid.Row>
-          </Grid>
-        )    
-      } else {
-        return null
-      }
-    }
-  }
-  
-  
-}
-
 class HeroBox extends Component {
   capitalizeTitle = title => {
     return title ? title.toUpperCase() : null
@@ -105,8 +45,6 @@ class HeroBox extends Component {
         <Container textAlign={titleAlign}>
           <Header style={styles.header} textAlign={titleAlign} inverted={dark}>{this.capitalizeTitle(title)}</Header>
           <p style={styles.paragraph}>{this.props.children}</p>
-          <br/>
-          <ListBox category={title}/>
         </Container>
       </Segment>
     )
