@@ -36,6 +36,9 @@ class HeroPage extends Component {
         letterSpacing: '5px',
         fontSize: '1.5em'
       },
+      subheader: {
+        letterSpacing: 0
+      },
       paragraph: {
         fontSize: '1.3em'
       }
@@ -44,7 +47,10 @@ class HeroPage extends Component {
     return (
       <Segment style={styles.segment} inverted={dark}>
         <Container>
-          <Header style={styles.header} inverted={dark}>{this.capitalizeTitle(title)}</Header>
+          <Header style={styles.header} inverted={dark}>
+          {this.capitalizeTitle(title)}
+          <Header.Subheader style={styles.subheader}>{this.props.sub}</Header.Subheader>
+          </Header>
           {this.props.children}
         </Container>
       </Segment>

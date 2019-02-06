@@ -13,9 +13,9 @@ class HeroHeader extends Component {
       segment: {
         borderRadius: 0,
         margin: 0,
-        height: '50vh',
+        height: '40vh',
         width: '100vw',
-        padding: '5em 0em',
+        padding: '8em 0em',
         border: 0
       },
       container: {
@@ -30,14 +30,14 @@ class HeroHeader extends Component {
 
     return (
       <Segment style={styles.segment} inverted>
-        <div style={styles.container}>
+        <Container textAlign='center'>
           <Header className='hero-header' style={styles.header} inverted>
             {this.capitalizeTitle(title)}
           </Header>
             <span className='hero-para' style={styles.paragraph}>
               {this.props.children}
             </span>
-        </div>
+        </Container>
       </Segment>
     )
   }

@@ -63,7 +63,7 @@ class ListBox extends Component {
 
 class HeroBox extends Component {
   capitalizeTitle = title => {
-    return title.toUpperCase()
+    return title ? title.toUpperCase() : null
   }
 
   slantDirection = direction => {

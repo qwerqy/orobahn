@@ -7,6 +7,7 @@ import HeroPage from '../components/heropage'
 import Footer from '../components/footer'
 import HeroHeader from '../components/heroheader';
 import Wrapper from '../components/wrapper'
+import HeroBox from '../components/herobox'
 import "../assets/blog.css"
 import Butter from 'buttercms';
 const {publicRuntimeConfig} = getConfig()
@@ -34,10 +35,7 @@ class Blog extends Component {
       <div>
         <Head title="Blog" />
         <Wrapper dark>
-          <HeroHeader title="the blog.">
-            Short disclaimer, I rarely write in my blog, but I'll try writing more often. Whatever life events that has happened in my life will go to this blog.
-            That can be any projects, achievements, self-improvement tips, etc.
-          </HeroHeader>
+          <HeroHeader title="the blog."/>
           <HeroPage>
             <Grid container stackable>
               <Grid.Row>

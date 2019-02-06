@@ -43,13 +43,13 @@ class ResponsiveNav extends Component {
             <Segment inverted textAlign='center' style={styles.segment}>
               <Container text>
                 <Menu inverted={dark} pointing secondary style={{ borderBottom: 0 }}>
-                  <Link href='/'>
+                  <Link prefetch href='/'>
                     <Menu.Item className="nav-header" style={{letterSpacing: '3px'}} header>AMIN ROSLAN</Menu.Item>
                   </Link>
                   {
                     Object.keys(links).map( i => {
                       return (
-                        <Link href={links[i].href}>
+                        <Link prefetch href={links[i].href}>
                           <Menu.Item className='nav-item' key={i} name={links[i].label} active={activeItem === links[i].label} onClick={this.handleClick} position={links[i].position} />
                         </Link>
                         )
