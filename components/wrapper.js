@@ -7,7 +7,7 @@ import "../assets/nav.css";
 const links = [
   { label: "blog", href: "/blog" },
   { label: "software portfolio", href: "/software"},
-  { label: "gaming", href: "/gaming" }
+  // { label: "gaming", href: "/gaming" }
 ];
 
 class DesktopWrapper extends Component {
@@ -20,15 +20,40 @@ class DesktopWrapper extends Component {
     this.setState({ activeItem: name });
   }
 
+  getPosition = () => {
+    const { fixedNav } = this.state
+    const { solid } = this.props
+    if (solid) {
+      return 'relative'
+    } else if (fixedNav) {
+      return 'fixed'
+    } else {
+      return 'absolute'
+    }
+  }
+
+  getBackgroundColor = () => {
+    const { fixedNav } = this.state
+    const { solid } = this.props
+
+    if (fixedNav) {
+      return 'white'
+    } else if (solid) {
+      return '#1b1c1d'
+    } else {
+      return 'transparent'
+    }
+  }
+
   render() {
     const { dark } = this.props;
     const { activeItem, fixedNav } = this.state;
     
     const styles = {
       segment: {
-        backgroundColor: fixedNav ? 'white' : 'transparent', 
+        backgroundColor: this.getBackgroundColor(),
         border: 0, 
-        position: fixedNav ? 'fixed' : 'absolute',
+        position: this.getPosition(),
         zIndex: "100",
         margin: 0,
         width: '100%',
@@ -44,14 +69,14 @@ class DesktopWrapper extends Component {
               <Container text>
                 <Menu inverted={dark && !fixedNav} pointing secondary style={{ borderBottom: 0 }}>
                   <Link href='/'>
-                    <Menu.Item className="nav-header" style={{letterSpacing: "3px"}} header>AMIN ROSLAN</Menu.Item>
+                    <Menu.Item as='a' className="nav-header" style={{letterSpacing: "3px"}} header>AMIN ROSLAN</Menu.Item>
                   </Link>
                   <Menu.Menu className='right-menu' position='right'>
                     {
                       Object.keys(links).map( i => {
                         return (
-                          <Link href={links[i].href}>
-                            <Menu.Item className='nav-item' key={i} name={links[i].label} active={activeItem === links[i].label} onClick={this.handleClick} position={links[i].position} />
+                          <Link key={i} href={links[i].href}>
+                            <Menu.Item as='a' className='nav-item' key={i} name={links[i].label} active={activeItem === links[i].label} onClick={this.handleClick} position={links[i].position} />
                           </Link>
                         );
                       })
@@ -79,6 +104,25 @@ class MobileWrapper extends Component{
     this.setState({ activeItem: name });
   }
 
+  getPosition = () => {
+    const { solid } = this.props
+    if (solid) {
+      return 'relative'
+    } else {
+      return 'absolute'
+    }
+  }
+
+  getBackgroundColor = () => {
+    const { solid } = this.props
+
+    if (solid) {
+      return '#1b1c1d'
+    } else {
+      return 'transparent'
+    }
+  }
+
   handleClickToToggle = () => this.setState({ visible: true })
 
   handleSidebarHide = () => this.setState({ visible: false })
@@ -88,9 +132,9 @@ class MobileWrapper extends Component{
 
     const styles = {
       segment: {
-        backgroundColor: 'transparent', 
+        backgroundColor: this.getBackgroundColor(),
         border: 0, 
-        position: 'absolute',
+        position: this.getPosition(),
         zIndex: "100",
         margin: 0,
         width: '100%',
@@ -117,12 +161,12 @@ class MobileWrapper extends Component{
           visible={visible}
           width='thin'
         >
-          <Menu.Item style={styles.sidebarItem} onClick={ () => this.setState({ visible: false })} inverted header><Icon name='angle right'/></Menu.Item>
+          <Menu.Item style={styles.sidebarItem} onClick={ () => this.setState({ visible: false })} header><Icon name='angle right'/></Menu.Item>
           {
             Object.keys(links).map( i => {
               return (
-                <Link href={links[i].href}>
-                  <Menu.Item style={styles.sidebarItem} key={i} name={links[i].label} active={activeItem === links[i].label} onClick={this.handleClick} position={links[i].position} />
+                <Link key={i} href={links[i].href}>
+                  <Menu.Item as='a' style={styles.sidebarItem} key={i} name={links[i].label} active={activeItem === links[i].label} onClick={this.handleClick} position={links[i].position} />
                 </Link>
               );
             })
@@ -133,7 +177,7 @@ class MobileWrapper extends Component{
               <Container text>
                 <Menu inverted pointing secondary style={{ borderBottom: 0 }}>
                   <Link href='/'>
-                    <Menu.Item className="nav-header" style={{letterSpacing: "3px"}} header>AMIN ROSLAN</Menu.Item>
+                    <Menu.Item as='a' className="nav-header" style={{letterSpacing: "3px"}} header>AMIN ROSLAN</Menu.Item>
                   </Link>
                   <Menu.Item className="dropper-right" position='right' onClick={this.handleClickToToggle}><Icon name="sidebar"/></Menu.Item>
                 </Menu>
@@ -150,8 +194,8 @@ class Wrapper extends Component {
   render() {
     return (
       <Fragment>
-        <DesktopWrapper dark={this.props.dark}>{this.props.children}</DesktopWrapper>
-        <MobileWrapper dark={this.props.dark}>{this.props.children}</MobileWrapper>
+        <DesktopWrapper {...this.props}>{this.props.children}</DesktopWrapper>
+        <MobileWrapper {...this.props}>{this.props.children}</MobileWrapper>
       </Fragment>
     );
   }
