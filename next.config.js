@@ -1,5 +1,5 @@
+const Butter = require('buttercms');
 const withCSS = require('@zeit/next-css')
-const client = require('./client')
 
 require('dotenv').config()
 
@@ -15,25 +15,27 @@ module.exports = withCSS({
   publicRuntimeConfig: {
     BUTTERCMS_API: process.env.BUTTERCMS_API
   },
-  exportPathMap: async function (defaultPathMap) {
-  
-    const path = await client
-      // get all the posts and return those with slugs
-      .fetch('*[_type == "post"].slug.current')
-      .then(data =>
-        // use reduce to build an object with routes
-        // and select the blog.js file, and send in the
-        // correct query paramater.
-        data.reduce(
-          (acc, slug) => ({
-            '/': { page: '/' },
-            ...acc,
-            [`/posts/${slug}`]: { page: '/post', query: { slug } }
-          }),
-          {}
-        )
-      )
-      .catch(console.error)
-    return path
+  async exportPathMap () {
+    const butter = Butter(process.env.BUTTERCMS_API)
+    // we fetch our list of posts, this allow us to dynamically generate the exported pages
+    const response = await butter.post.list({page: 1, page_size: 10})
+    const posts = response.data
+
+    // tranform the list of posts into a map of pages with the pathname `/post/:id`
+    const pages = posts.data.reduce(
+      (pages, post) =>
+        Object.assign({}, pages, {
+          [`/posts/${post.slug}`]: {
+            page: '/post',
+            query: { slug: post.slug }
+          }
+        }),
+      {}
+    )
+    return pages
+    // // combine the map of post pages with the home
+    // return Object.assign({}, pages, {
+    //   '/posts/:slug': { page: '/post' }
+    // })
   }
 })
