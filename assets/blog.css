@@ -3,6 +3,10 @@
   font-size: 2.5rem !important;
 }
 
+.post-header > a {
+  color: #1b1c1d;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -11,6 +15,15 @@ img {
 .recent-posts {
   letter-spacing: 3px !important;
   font-size: 1.5em !important;
+}
+
+.link > a {
+  color: #1b1c1d;
+}
+
+.link > a:hover {
+  color: grey;
+  text-decoration-line: underline;
 }
 
 @media (max-width: 425px) {
