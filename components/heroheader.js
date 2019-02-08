@@ -13,7 +13,7 @@ class HeroHeader extends Component {
       segment: {
         borderRadius: 0,
         margin: 0,
-        height: '40vh',
+        height: '25vh',
         width: '100vw',
         padding: '8em 0em',
         border: 0
