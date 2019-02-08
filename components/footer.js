@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Segment, Container, Grid, Header, List, Icon } from 'semantic-ui-react'
+import { Segment, Container, Grid, Header, List, Icon, Image } from 'semantic-ui-react'
 
 const links = [
   {icon:"facebook", link:"https://www.facebook.com/amnrsln" },
@@ -47,6 +47,8 @@ class Footer extends Component {
                   })
                 }
               </List>
+              <Header as='h4' inverted>Blog Engine by</Header>
+              <Image size='small' src='/static/butter-w.png'/>
               </Grid.Column>
             </Grid.Row>
           </Grid>
