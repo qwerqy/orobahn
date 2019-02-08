@@ -21,12 +21,12 @@ class HeroPage extends Component {
   }
 
   render() {
-    const { slant, title, dark } = this.props
+    const { slant, title, dark, size } = this.props
     const styles = {
       segment: {
         borderRadius: 0,
         margin: 0,
-        minHeight: '100vh',
+        minHeight: size === 'half' ? '50vh' : '100vh',
         width: '100vw',
         padding: '2em 0em',
         clipPath: this.slantDirection(slant),

@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Link from 'next/link'
 import { Segment, Container, Grid, Header, List, Icon, Image } from 'semantic-ui-react'
 
 const links = [
@@ -19,7 +20,9 @@ class Footer extends Component {
               <Grid.Column width={3}>
                 <Header inverted as='h4' content='About' />
                 <List link inverted>
-                  <List.Item as='a'>Projects</List.Item>
+                  <Link href='/software'>
+                    <List.Item as='a'>Projects</List.Item>
+                  </Link>
                   <List.Item as='a'>Contact Me</List.Item>
                 </List>
               </Grid.Column>
