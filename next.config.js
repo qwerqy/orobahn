@@ -18,6 +18,7 @@ module.exports = withCSS({
   async exportPathMap () {
     const butter = Butter(process.env.BUTTERCMS_API)
     // we fetch our list of posts, this allow us to dynamically generate the exported pages
+    // will need to modify this if page gets more posts
     const response = await butter.post.list({page: 1, page_size: 10})
     const posts = response.data
 
@@ -32,10 +33,11 @@ module.exports = withCSS({
         }),
       {}
     )
-    return pages
-    // // combine the map of post pages with the home
-    // return Object.assign({}, pages, {
-    //   '/posts/:slug': { page: '/post' }
-    // })
+    // Combine pages with other pages in project.
+    return Object.assign({}, pages, {
+      '/': { page: '/' },
+      '/blog': { page: '/blog' },
+      '/software': { page: '/software'}
+    })
   }
 })
