@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { Card, Header, Grid, List, Segment } from 'semantic-ui-react'
+import Link from 'next/link'
 import Head from '../components/head'
 import HeroPage from '../components/heropage'
 import Footer from '../components/footer'
@@ -88,7 +89,9 @@ class Software extends Component {
                 return (
                   <Card fluid key={i}>
                     <Card.Content>
-                      <Card.Header>{project.title}</Card.Header>
+                      <Card.Header>
+                        <Link href={`/posts/${project.slug}`}><a>{project.title}</a></Link>
+                      </Card.Header>
                       <Card.Meta>{project.meta_description}</Card.Meta>
                       <Card.Description>
                         {project.description}

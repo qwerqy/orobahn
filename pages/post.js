@@ -17,7 +17,7 @@ const butter = Butter(publicRuntimeConfig.BUTTERCMS_API)
 const BlogBreadcrumb = (props) => {
   return (
     <Breadcrumb>
-      <Breadcrumb.Section><Link href='/blog'><a>Blog</a></Link></Breadcrumb.Section>
+      <Breadcrumb.Section><Link href='/blog'><a style={{ color: 'grey' }}>Blog</a></Link></Breadcrumb.Section>
       <Breadcrumb.Divider>/</Breadcrumb.Divider>
       <Breadcrumb.Section active>{props.title}</Breadcrumb.Section>
     </Breadcrumb>
