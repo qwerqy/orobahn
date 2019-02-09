@@ -53,7 +53,7 @@ class Footer extends Component {
                 }
               </List>
               <Header as='h4' inverted>Blog Engine by</Header>
-              <Image size='small' src='/static/butter-w.png'/>
+              <a href="https://buttercms.com" target='_blank'><Image size='small' src='/static/butter-w.png'/></a>
               </Grid.Column>
             </Grid.Row>
           </Grid>

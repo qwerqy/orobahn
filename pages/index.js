@@ -43,7 +43,7 @@ class Home extends Component {
           <Wrapper dark>
             <Cover />
             <HeroBox title='work' dark slant='right'>
-              I am a Full-Stack Software Engineer. I am currently with Vase Technologies as their Full-Stack Software Engineer. 
+              I am a Full-Stack Software Engineer. I am currently with <a href="https://vase.ai" target="_blank" style={{color: 'lightgrey'}}>Vase.ai</a> as their Full-Stack Software Engineer. 
               I am responsible in developing & maintaining their in-house products both for our business clients & consumer clients.
               All of their products are mostly in Javascript.
             </HeroBox>

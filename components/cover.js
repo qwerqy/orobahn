@@ -21,7 +21,7 @@ const HeroText = ({ dark }) => {
     <div className="hero-container">
       <Container text style={styles.container}> 
         <Header inverted={dark} className='hero-header'>AMIN ROSLAN</Header>
-        <span className="hero-caption">Software Engineer at Vase Technologies. Huge gaming nerd.</span>
+        <span className="hero-caption">Software Engineer at <a style={{color:'lightgrey'}} href='https://vase.ai' target='_blank'>Vase.ai</a> . Huge gaming nerd.</span>
       </Container>
     </div>
   );
