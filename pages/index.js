@@ -39,7 +39,7 @@ class Home extends Component {
     console.log(posts)
     return (
       <div>
-        <Head title="Home" />
+        <Head title="Amin Roslan Online Portfolio" />
           <Wrapper dark>
             <Cover />
             <HeroBox title='work' dark slant='right'>
