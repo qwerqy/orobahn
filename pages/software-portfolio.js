@@ -58,7 +58,7 @@ class Software extends Component {
     return (
       <div>
         <Head title="Software Portfolio" />
-        <Wrapper dark>
+        <Wrapper dark {...this.props}>
           <HeroHeader title="software portfolio." />
           <HeroPage title='skillset' size='half' sub="The skills I've acquired throughout my career in tech.">
           <Segment>

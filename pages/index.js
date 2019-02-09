@@ -39,8 +39,8 @@ class Home extends Component {
     console.log(posts)
     return (
       <div>
-        <Head title="Home" />
-          <Wrapper dark>
+        <Head title="Amin Roslan Online Portfolio" />
+          <Wrapper dark {...this.props}>
             <Cover />
             <HeroBox title='work' dark slant='right'>
               I am a Full-Stack Software Engineer. I am currently with <a href="https://vase.ai" target="_blank" style={{color: 'lightgrey'}}>Vase.ai</a> as their Full-Stack Software Engineer. 
@@ -59,7 +59,7 @@ class Home extends Component {
                     <Card fluid style={{ backgroundImage: `url(${post.featured_image})`, backgroundPosition: 'center', backgroundSize: 'cover'}} key={post.created} >
                       <Card.Content style={{ backgroundColor: 'rgba(255,255,255,0.7)'}}>
                           <Link href={`/posts/${post.slug}`}><a>
-                        <Card.Header>
+                        <Card.Header as='h3'>
                           {post.seo_title}
                         </Card.Header>
                         <Card.Meta>

@@ -88,7 +88,7 @@ class Blog extends Component {
     return (
       <div>
         <Head title="Blog" />
-        <Wrapper dark>
+        <Wrapper dark {...this.props}>
           <HeroHeader title="the blog."/>
           <HeroPage>
             <Grid container stackable>
