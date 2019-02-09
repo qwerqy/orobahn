@@ -36,7 +36,6 @@ class Home extends Component {
 
   render() {
     const posts = this.props.data
-    console.log(posts)
     return (
       <div>
         <Head title="Amin Roslan Online Portfolio" />
