@@ -37,7 +37,7 @@ module.exports = withCSS({
     return Object.assign({}, pages, {
       '/': { page: '/' },
       '/blog': { page: '/blog' },
-      '/software': { page: '/software'}
+      '/software-portfolio': { page: '/software-portfolio'}
     })
   }
 })
