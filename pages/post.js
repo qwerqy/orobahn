@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Container, Breadcrumb, Segment, Header, Divider, Label } from 'semantic-ui-react'
+import { Container, Breadcrumb, Segment, Header, Divider, Label, Image } from 'semantic-ui-react'
 import Butter from 'buttercms'
 import Link from 'next/link'
 import Head from '../components/head'
@@ -40,6 +40,7 @@ class Post extends Component {
             <Segment style={{marginTop: '1rem', paddingLeft: 0}} basic>
               <BlogBreadcrumb title={post.seo_title} />
             </Segment>
+            <Image src={post.featured_image} />
             <Header className='post-header'>
               {post.title}
               <Header.Subheader>{post.meta_description}</Header.Subheader>
