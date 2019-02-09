@@ -7,9 +7,10 @@
 /coverage
 
 # production
+/out
 /build
-/dist
 /.next
+/.next-export
 
 # misc
 .DS_Store
