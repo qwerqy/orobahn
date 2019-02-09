@@ -59,7 +59,7 @@ class Home extends Component {
                     <Card fluid style={{ backgroundImage: `url(${post.featured_image})`, backgroundPosition: 'center', backgroundSize: 'cover'}} key={post.created} >
                       <Card.Content style={{ backgroundColor: 'rgba(255,255,255,0.7)'}}>
                           <Link href={`/posts/${post.slug}`}><a>
-                        <Card.Header>
+                        <Card.Header as='h3'>
                           {post.seo_title}
                         </Card.Header>
                         <Card.Meta>
