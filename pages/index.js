@@ -40,7 +40,7 @@ class Home extends Component {
     return (
       <div>
         <Head title="Amin Roslan Online Portfolio" />
-          <Wrapper dark>
+          <Wrapper dark {...this.props}>
             <Cover />
             <HeroBox title='work' dark slant='right'>
               I am a Full-Stack Software Engineer. I am currently with <a href="https://vase.ai" target="_blank" style={{color: 'lightgrey'}}>Vase.ai</a> as their Full-Stack Software Engineer. 

@@ -35,7 +35,7 @@ class Post extends Component {
     return (
       <div>
         <Head title={post.seo_title} ogImage={post.featured_image} description={post.meta_description}/>
-        <Wrapper dark solid>
+        <Wrapper dark solid {...this.props}>
           <Container style={{marginBottom: '3rem'}} text>
             <Segment style={{marginTop: '1rem', paddingLeft: 0}} basic>
               <BlogBreadcrumb title={post.seo_title} />

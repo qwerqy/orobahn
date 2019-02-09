@@ -6,18 +6,13 @@ import "../assets/nav.css";
 
 const links = [
   { label: "blog", href: "/blog" },
-  { label: "software portfolio", href: "/software"},
+  { label: "software portfolio", href: "/software-portfolio"},
   // { label: "gaming", href: "/gaming" }
 ];
 
 class DesktopWrapper extends Component {
   state = {
-    activeItem: "",
     fixedNav: false
-  }
-
-  handleClick = (name) => {
-    this.setState({ activeItem: name });
   }
 
   getPosition = () => {
@@ -45,10 +40,20 @@ class DesktopWrapper extends Component {
     }
   }
 
+  pathnameCleaner =() => {
+    let result = this.props.url.pathname
+    if (this.props.url.pathname.includes('-')) {
+      result = result.replace('-', ' ')
+    }
+    result = result.replace('/','')
+    
+    return result 
+  }
+
   render() {
     const { dark } = this.props;
-    const { activeItem, fixedNav } = this.state;
-    
+    const { fixedNav } = this.state;
+    const pathname = this.pathnameCleaner()
     const styles = {
       segment: {
         backgroundColor: this.getBackgroundColor(),
@@ -57,7 +62,7 @@ class DesktopWrapper extends Component {
         zIndex: "100",
         margin: 0,
         boxShadow: fixedNav ? '0 4px 8px 0 rgba(0, 0, 0, 0.2)' : '',
-        width: '100%',
+        width: '100vw',
         top: 0
       }
     };
@@ -77,7 +82,7 @@ class DesktopWrapper extends Component {
                       Object.keys(links).map( i => {
                         return (
                           <Link key={i} href={links[i].href}>
-                            <Menu.Item as='a' className='nav-item' key={i} name={links[i].label} active={activeItem === links[i].label} onClick={this.handleClick} position={links[i].position} />
+                            <Menu.Item as='a' className='nav-item' key={i} name={links[i].label} active={links[i].label === pathname} onClick={this.handleClick} position={links[i].position} />
                           </Link>
                         );
                       })
@@ -97,12 +102,7 @@ class DesktopWrapper extends Component {
 
 class MobileWrapper extends Component{
   state = {
-    activeItem: "",
     visible: false
-  }
-
-  handleClick = (name) => {
-    this.setState({ activeItem: name });
   }
 
   getPosition = () => {
@@ -128,8 +128,19 @@ class MobileWrapper extends Component{
 
   handleSidebarHide = () => this.setState({ visible: false })
 
+  pathnameCleaner =() => {
+    let result = this.props.url.pathname
+    if (this.props.url.pathname.includes('-')) {
+      result = result.replace('-', ' ')
+    }
+
+    result.replace('/','')
+    
+    return result 
+  }
   render() {
     const { activeItem, visible } = this.state;
+    const pathname = this.pathnameCleaner()
 
     const styles = {
       segment: {
@@ -167,7 +178,7 @@ class MobileWrapper extends Component{
             Object.keys(links).map( i => {
               return (
                 <Link key={i} href={links[i].href}>
-                  <Menu.Item as='a' style={styles.sidebarItem} key={i} name={links[i].label} active={activeItem === links[i].label} onClick={this.handleClick} position={links[i].position} />
+                  <Menu.Item as='a' style={styles.sidebarItem} key={i} name={links[i].label} active={links[i].label === pathname || links[i].label.includes(pathname)} onClick={this.handleClick} position={links[i].position} />
                 </Link>
               );
             })
