@@ -11,8 +11,17 @@ app.prepare()
 .then(() => {
   const server = express()
 
-  server.get('/blog', (req, res) => {
-    return app.render(req, res, '/blog', { slug: req.params.slug })
+  server.post('/webhook-receiver', (req, res) => {
+    console.log('a post has been modified')
+    app
+      .prepare()
+      .then(() => {
+        console.log('app refreshed')
+        res.end()
+      })
+      .catch((e) => {
+        res.status(500).end()
+      })
   })
 
   server.get('/posts/:slug', (req, res) => {

@@ -31,6 +31,7 @@ class HeroPage extends Component {
         width: '100vw',
         padding: '2em 0em',
         clipPath: this.slantDirection(slant),
+        webkitClipPath: this.slantDirection(slant),
         border: 0
       },
       header: {

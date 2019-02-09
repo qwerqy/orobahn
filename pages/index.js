@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Card, Responsive } from 'semantic-ui-react'
+import { Card, Responsive, Image } from 'semantic-ui-react'
 import Moment from 'react-moment'
 import Link from 'next/link'
 import getConfig from 'next/config'
@@ -36,6 +36,7 @@ class Home extends Component {
 
   render() {
     const posts = this.props.data
+    console.log(posts)
     return (
       <div>
         <Head title="Home" />
@@ -55,10 +56,11 @@ class Home extends Component {
               {
                 posts.map(post => {
                   return (
-                    <Card key={post.created} >
-                      <Card.Content>
+                    <Card fluid style={{ backgroundImage: `url(${post.featured_image})`, backgroundPosition: 'center', backgroundSize: 'cover'}} key={post.created} >
+                      <Card.Content style={{ backgroundColor: 'rgba(255,255,255,0.7)'}}>
+                          <Link href={`/posts/${post.slug}`}><a>
                         <Card.Header>
-                          <Link href={`/posts/${post.slug}`}><a>{post.seo_title}</a></Link>
+                          {post.seo_title}
                         </Card.Header>
                         <Card.Meta>
                           <Moment format="D MMM YYYY" withTitle>
@@ -67,6 +69,7 @@ class Home extends Component {
                         </Card.Meta>
                         <br />
                         <Card.Description>{post.summary}</Card.Description>
+                          </a></Link>
                       </Card.Content>
                     </Card>
                   )
