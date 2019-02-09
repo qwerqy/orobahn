@@ -1,5 +1,6 @@
-import { Component, Fragment } from 'react'
-import { Container, Header, Segment, List, Grid } from 'semantic-ui-react'
+import { Component } from 'react'
+import { Container, Header, Segment } from 'semantic-ui-react'
+import { string, bool } from 'prop-types'
 
 class HeroBox extends Component {
   capitalizeTitle = title => {
@@ -49,6 +50,13 @@ class HeroBox extends Component {
       </Segment>
     )
   }
+}
+
+HeroBox.propTypes = {
+  title: string,
+  dark: bool,
+  slant: string,
+  titleAlign: string
 }
 
 export default HeroBox;

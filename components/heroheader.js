@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Segment, Container, Header } from 'semantic-ui-react'
+import { string } from 'prop-types'
 
 import '../assets/cover.css'
 class HeroHeader extends Component {
@@ -41,6 +42,10 @@ class HeroHeader extends Component {
       </Segment>
     )
   }
+}
+
+HeroHeader.propTypes = { 
+  title: string
 }
 
 export default HeroHeader;

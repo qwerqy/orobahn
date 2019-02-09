@@ -1,30 +1,34 @@
 import { Component, Fragment } from "react";
 import { Container, Header } from "semantic-ui-react";
 import Particles from "react-particles-js";
+import { bool } from 'prop-types'
 
 import "../assets/cover.css"
 
+// HeroText
+// props:
+// dark - set header text to be white if true
+const HeroText = ({ dark }) => {
+  const styles = {
+    container: {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)"
+    }
+  };
+  return (
+    <div className="hero-container">
+      <Container text style={styles.container}> 
+        <Header inverted={dark} className='hero-header'>AMIN ROSLAN</Header>
+        <span className="hero-caption">Software Engineer at Vase Technologies. Huge gaming nerd.</span>
+      </Container>
+    </div>
+  );
+}
 
-class HeroText extends Component {
-  render() {
-    const { dark } = this.props;
-    const styles = {
-      container: {
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)"
-      }
-    };
-    return (
-      <div className="hero-container">
-        <Container text style={styles.container}> 
-          <Header inverted={dark} className='hero-header'>AMIN ROSLAN</Header>
-          <span className="hero-caption">Software Engineer at Vase Technologies. Huge gaming nerd.</span>
-        </Container>
-      </div>
-    );
-  }
+HeroText.propTypes = {
+  dark: bool
 }
 
 class Cover extends Component {

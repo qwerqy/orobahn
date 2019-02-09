@@ -1,5 +1,6 @@
-import { Component, Fragment } from "react";
+import { Component } from "react";
 import { Segment, Header, Container } from 'semantic-ui-react'
+import { string, bool } from 'prop-types'
 
 class HeroPage extends Component {
   slantDirection = direction => {
@@ -56,6 +57,13 @@ class HeroPage extends Component {
       </Segment>
     )
   }
+}
+
+HeroPage.propTypes = {
+  slant: string,
+  title: string,
+  dark: bool,
+  size: string
 }
 
 export default HeroPage

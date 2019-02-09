@@ -1,8 +1,8 @@
-import { Component } from 'react'
+import { Component, Fragment } from 'react'
 import Link from 'next/link'
 import Moment from 'react-moment'
 import getConfig from 'next/config'
-import { Grid, Segment, Header, List, Label } from 'semantic-ui-react'
+import { Grid, Segment, Header, List, Label, Button } from 'semantic-ui-react'
 import Head from '../components/head'
 import HeroPage from '../components/heropage'
 import Footer from '../components/footer'
@@ -12,6 +12,57 @@ import "../assets/blog.css"
 import Butter from 'buttercms';
 const {publicRuntimeConfig} = getConfig()
 const butter = Butter(publicRuntimeConfig.BUTTERCMS_API)
+
+const ListOfRecentPosts = ({ posts }) => {
+  return (
+    <List>
+      {
+        posts.slice(0, 5).map(post => {
+          return (
+            <List.Item className='link' key={post.created}><Link href={`/posts/${post.slug}`}><a>{post.seo_title}</a></Link></List.Item>
+          )
+        })
+      }
+    </List>
+  )
+}
+
+const BlogPosts = ({ posts }) => {
+  return (
+    <Fragment>
+      {
+        posts.map(post => {
+          return (
+            <Segment key={post.created} vertical >
+              <Header className='post-header'>
+                <Link href={`/posts/${post.slug}`}><a>{post.seo_title}</a></Link>
+                <Header.Subheader>{post.meta_description}</Header.Subheader>
+              </Header>
+              {
+                post.categories.map((cat, i) => {
+                  return <Label key={i} color='black' as='a'>{cat.name}</Label>
+                })
+              }
+              <Header sub>
+                <Moment format="D MMM YYYY" withTitle>
+                    {post.published}
+                </Moment>
+              </Header>
+              <br />
+              <div dangerouslySetInnerHTML={{__html: post.body}} />
+              <Header sub>Tags:</Header>
+              {
+                post.tags.map((tag, i) => {
+                  return <Label key={i} as='a'>{tag.name}</Label>
+                })
+              }
+            </Segment>
+          )
+        })
+      }
+    </Fragment>
+  )
+}
 
 class Blog extends Component {
   static async getInitialProps({ query }) {
@@ -45,56 +96,30 @@ class Blog extends Component {
                 <Grid.Column width={4}>
                   <Segment>
                     <Header className='recent-posts'>Recent Posts</Header>
-                    <List>
-                      {
-                        posts.slice(0, 5).map(post => {
-                          return (
-                            <List.Item className='link' key={post.created}><Link href={`/posts/${post.slug}`}><a>{post.seo_title}</a></Link></List.Item>
-                          )
-                        })
-                      }
-                    </List>
+                    <ListOfRecentPosts posts={posts} />
                   </Segment>
                 </Grid.Column>
                 <Grid.Column width={12}>
-                  {
-                    posts.map(post => {
-                      return (
-                        <Segment key={post.created} vertical >
-                          <Header className='post-header'>
-                            <Link href={`/posts/${post.slug}`}><a>{post.seo_title}</a></Link>
-                            <Header.Subheader>{post.meta_description}</Header.Subheader>
-                          </Header>
-                          {
-                            post.categories.map((cat, i) => {
-                              return <Label key={i} color='black' as='a'>{cat.name}</Label>
-                            })
-                          }
-                          <Header sub>
-                            <Moment format="D MMM YYYY" withTitle>
-                                {post.published}
-                            </Moment>
-                          </Header>
-                          <br />
-                          <div dangerouslySetInnerHTML={{__html: post.body}} />
-                          <Header sub>Tags:</Header>
-                          {
-                            post.tags.map((tag, i) => {
-                              return <Label key={i} as='a'>{tag.name}</Label>
-                            })
-                          }
-                        </Segment>
-                      )
-                    })
-                  }
+                  <BlogPosts posts={posts}/>
+                  <br/>
+                  <div>
+                    { 
+                      previous_page &&
+                      <Button inverted floated='left'>
+                        <Link href={`/?page=${previous_page}`}><a>Prev Page</a></Link>
+                      </Button>
+                    }
+                  
+                    { 
+                      next_page && 
+                      <Button inverted floated='right'>
+                        <Link href={`/?page=${next_page}`}><a>Next Page</a></Link>
+                      </Button>
+                    }
+                  </div>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <div>
-              {previous_page && <Link href={`/?page=${previous_page}`}><a>Prev</a></Link>}
-            
-              {next_page && <Link href={`/?page=${next_page}`}><a>Next</a></Link>}
-            </div>
           </HeroPage>
           <Footer />
         </Wrapper>

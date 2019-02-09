@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Link from 'next/link'
 import { Segment, Container, Grid, Header, List, Icon, Image } from 'semantic-ui-react'
 
+// to add/remove links, use this array.
 const links = [
   {icon:"facebook", link:"https://www.facebook.com/amnrsln" },
   {icon:"instagram", link:"https://www.instagram.com/taikomin/"},
@@ -10,6 +11,7 @@ const links = [
   {icon:"github", link:"https://www.github.com/qwerqy"}
 ]
 
+// TODO: anchor all links here.
 class Footer extends Component {
   render() {
     return (

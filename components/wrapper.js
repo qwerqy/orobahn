@@ -64,7 +64,7 @@ class DesktopWrapper extends Component {
     return (
       <div className='desktop-wrapper'>
         <Visibility once={false} onBottomPassed={() => this.setState({ fixedNav: true })} onBottomPassedReverse={() => this.setState({ fixedNav: false })}>
-          {/* <Transition visible={show} animation="fade down" duration={500}> */}
+          {/* <Transition visible={} animation="fade down" duration={500}> */}
             <Segment inverted vertical textAlign='center' style={styles.segment}>
               <Container text>
                 <Menu inverted={dark && !fixedNav} pointing secondary style={{ borderBottom: 0 }}>
