@@ -40,6 +40,8 @@ const Head = props => (
     </NextHead>
     <style jsx global>
       {`
+        @import url("https://fonts.googleapis.com/css?family=Raleway");
+        
         body {
           font-family: 'Roboto', sans-serif;
           margin: 0;
