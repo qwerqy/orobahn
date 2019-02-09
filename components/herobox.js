@@ -30,6 +30,7 @@ class HeroBox extends Component {
         margin: 0,
         padding: '5em 0em',
         clipPath: this.slantDirection(slant),
+        webkitClipPath: this.slantDirection(slant),
         border: 0
       },
       header: {
