@@ -8,7 +8,7 @@ RUN adduser -h $HOME -D -s /bin/false app
 RUN mkdir -p $HOME
 COPY package*.json ./
 
-RUN npm install && npm build
+RUN npm install && npm run build
 
 RUN chown app:app $HOME
 COPY --chown=app:app . $HOME
