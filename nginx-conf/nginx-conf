@@ -8,7 +8,7 @@ server {
   server_name aminroslan.com www.aminroslan.com;
 
   location / {
-          proxy_pass http://nodejs:8080;
+          proxy_pass http://nodejs:3000;
   }
 
   location ~ /.well-known/acme-challenge {

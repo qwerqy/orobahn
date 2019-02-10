@@ -1,27 +1,28 @@
 FROM node:10-alpine
 
-ENV HOME=/home/app
+ENV HOME=/home/node/app
 ENV BUTTERCMS_API=fd1efe394a6740dbfe76ff507508849f406c2aca
 ARG PORT=3000
 
 RUN printenv
 RUN adduser -h $HOME -D -s /bin/false app
-RUN mkdir -p $HOME
-RUN chown app:app $HOME
-COPY --chown=app:app . $HOME
+RUN mkdir -p $HOME/node_modules && chown -R node:node $HOME
 WORKDIR $HOME
-COPY package.json $HOME
+COPY . .
 
 RUN npm install
 
-COPY . $HOME
+RUN npm run build
 
-RUN npm run build && npm run export
+COPY --chown=node:node . .
 
-USER app
+USER node
+
+RUN ls -la $HOME
+RUN ls -la
 
 EXPOSE 3000
-CMD ["npm", "run", "server"]
+CMD ["npm", "start"]
 
 # Builds app for production and export static files.
 # FROM node:10-alpine as build
