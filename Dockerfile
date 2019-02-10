@@ -1,5 +1,6 @@
 FROM node:10-alpine
 
+ENV BUTTERCMS_API=fd1efe394a6740dbfe76ff507508849f406c2aca
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
 WORKDIR /home/node/app
