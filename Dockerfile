@@ -6,6 +6,7 @@ ARG PORT=3000
 RUN printenv
 RUN adduser -h $HOME -D -s /bin/false app
 RUN mkdir -p $HOME
+COPY package*.json ./
 
 RUN npm install && npm build
 
