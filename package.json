@@ -3,7 +3,7 @@
   "author": "qwerqy",
   "scripts": {
     "dev": "next",
-    "server": "node server.js",
+    "server": "node app.js",
     "build": "next build",
     "start": "next start",
     "export": "next export",
