@@ -12,16 +12,13 @@ import {
 import Butter from "buttercms";
 import Link from "next/link";
 import Head from "../components/head";
-import getConfig from "next/config";
 import Moment from "react-moment";
 
 import Wrapper from "../components/wrapper";
 import Footer from "../components/footer";
 import "../assets/blog.css";
 
-const { publicRuntimeConfig } = getConfig();
-
-const butter = Butter(publicRuntimeConfig.BUTTERCMS_API);
+const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 
 const BlogBreadcrumb = props => {
   return (

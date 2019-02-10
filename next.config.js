@@ -12,11 +12,8 @@ module.exports = withCSS({
 
     return config;
   },
-  publicRuntimeConfig: {
-    BUTTERCMS_API: process.env.BUTTERCMS_API
-  },
   async exportPathMap() {
-    const butter = Butter(process.env.BUTTERCMS_API);
+    const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
     // we fetch our list of posts, this allow us to dynamically generate the exported pages
     // will need to modify this if page gets more posts
     const response = await butter.post.list({ page: 1, page_size: 10 });

@@ -2,7 +2,6 @@ import { Component } from "react";
 import { Card, Responsive, Image } from "semantic-ui-react";
 import Moment from "react-moment";
 import Link from "next/link";
-import getConfig from "next/config";
 
 import Head from "../components/head";
 import Cover from "../components/cover";
@@ -13,8 +12,7 @@ import Wrapper from "../components/wrapper";
 import "../assets/index.css";
 
 import Butter from "buttercms";
-const { publicRuntimeConfig } = getConfig();
-const butter = Butter(publicRuntimeConfig.BUTTERCMS_API);
+const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 
 class Home extends Component {
   static async getInitialProps() {

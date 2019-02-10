@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import Link from "next/link";
 import Moment from "react-moment";
-import getConfig from "next/config";
 import { Grid, Segment, Header, List, Label, Button } from "semantic-ui-react";
 import Head from "../components/head";
 import HeroPage from "../components/heropage";
@@ -10,8 +9,7 @@ import HeroHeader from "../components/heroheader";
 import Wrapper from "../components/wrapper";
 import "../assets/blog.css";
 import Butter from "buttercms";
-const { publicRuntimeConfig } = getConfig();
-const butter = Butter(publicRuntimeConfig.BUTTERCMS_API);
+const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 
 const ListOfRecentPosts = ({ posts }) => {
   return (
