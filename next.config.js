@@ -23,9 +23,9 @@ module.exports = withCSS({
     const pages = posts.data.reduce(
       (pages, post) =>
         Object.assign({}, pages, {
-          [`/posts/${post.slug}`]: {
+          [`/post/${post.slug}`]: {
             page: "/post",
-            query: { slug: post.slug }
+            query: { title: post.slug }
           }
         }),
       {}
