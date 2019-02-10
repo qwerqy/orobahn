@@ -6,18 +6,21 @@ ARG PORT=3000
 RUN printenv
 RUN adduser -h $HOME -D -s /bin/false app
 RUN mkdir -p $HOME
-COPY package*.json ./
-RUN npm install
-
 RUN chown app:app $HOME
 COPY --chown=app:app . $HOME
 WORKDIR $HOME
+COPY package.json $HOME
+
+RUN npm install
+
+COPY . $HOME
+
 RUN npm run build
 
 USER app
 
 EXPOSE 3000
-CMD ["npm", "run", "server"]
+CMD ["npm", "start"]
 
 # Builds app for production and export static files.
 # FROM node:10-alpine as build
