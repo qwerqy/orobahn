@@ -8,13 +8,15 @@ RUN adduser -h $HOME -D -s /bin/false app
 RUN mkdir -p $HOME
 COPY package*.json ./
 
-RUN npm install && npm run build
+RUN npm install
 
 RUN chown app:app $HOME
 COPY --chown=app:app . $HOME
 WORKDIR $HOME
 
 USER app
+
+RUN npm run build
 
 EXPOSE 3000
 CMD ["npm", "run", "server"]
