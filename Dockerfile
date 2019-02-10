@@ -15,12 +15,12 @@ RUN npm install
 
 COPY . $HOME
 
-RUN npm run build
+RUN npm run build && npm run export
 
 USER app
 
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm", "run", "server"]
 
 # Builds app for production and export static files.
 # FROM node:10-alpine as build
