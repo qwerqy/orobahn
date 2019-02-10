@@ -1,21 +1,21 @@
 FROM node:10-alpine
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+ENV HOME=/home/app
+ARG PORT=3000
 
-WORKDIR /home/node/app
+RUN printenv
+RUN adduser -h $HOME -D -s /bin/false app
+RUN mkdir -p $HOME
 
-COPY package*.json ./
+RUN npm install && npm build
 
-COPY . .
+RUN chown app:app $HOME
+COPY --chown=app:app . $HOME
+WORKDIR $HOME
 
-COPY --chown=node:node . .
+USER app
 
-RUN npm install && npm run build
-
-USER node
-
-EXPOSE 8080
-
+EXPOSE 3000
 CMD ["npm", "run", "server"]
 
 # Builds app for production and export static files.
