@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: orobahn
-    container_name: orobahn
+    image: nodejs
+    container_name: nodejs
     restart: unless-stopped
 
     networks:

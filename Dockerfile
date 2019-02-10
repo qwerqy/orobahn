@@ -1,7 +1,6 @@
 FROM node:10-alpine
 
 ENV HOME=/home/node/app
-ARG PORT=3000
 
 RUN printenv
 RUN adduser -h $HOME -D -s /bin/false app
@@ -20,7 +19,7 @@ USER node
 RUN ls -la $HOME
 RUN ls -la
 
-EXPOSE 3000
+EXPOSE 8080
 CMD ["node", "app.js"]
 
 # Builds app for production and export static files.
