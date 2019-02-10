@@ -5,8 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      environment:
-        - BUTTERCMS_API=fd1efe394a6740dbfe76ff507508849f406c2aca
     image: orobahn
     container_name: orobahn
     restart: unless-stopped

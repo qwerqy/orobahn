@@ -1,6 +1,7 @@
 FROM node:10-alpine
 
 ENV HOME=/home/app
+ENV BUTTERCMS_API=fd1efe394a6740dbfe76ff507508849f406c2aca
 ARG PORT=3000
 
 RUN printenv
