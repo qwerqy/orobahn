@@ -15,6 +15,7 @@ COPY --chown=node:node . .
 USER node
 
 RUN npm run build
+RUN npm run export
 
 EXPOSE 8080
 

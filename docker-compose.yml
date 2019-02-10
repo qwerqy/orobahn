@@ -46,7 +46,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/node/node_project/views/
+      device: /home/qwerqy/orobahn/out/
       o: bind
 
 networks:
