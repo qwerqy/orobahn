@@ -8,7 +8,6 @@ services:
     image: nodejs
     container_name: nodejs
     restart: unless-stopped
-
     networks:
       - app-network
 
@@ -46,7 +45,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/qwerqy/orobahn/out/
+      device: /home/qwerqy/orobahn/views/
       o: bind
 
 networks:
