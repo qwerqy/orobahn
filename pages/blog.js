@@ -19,7 +19,7 @@ const ListOfRecentPosts = ({ posts }) => {
       {posts.slice(0, 5).map(post => {
         return (
           <List.Item className="link" key={post.created}>
-            <Link href={`/post?title=${post.slug}`}>
+            <Link href={`/post/${post.slug}`}>
               <a>{post.seo_title}</a>
             </Link>
           </List.Item>
@@ -36,7 +36,7 @@ const BlogPosts = ({ posts }) => {
         return (
           <Segment key={post.created} vertical>
             <Header className="post-header">
-              <Link href={`/post?title=${post.slug}`}>
+              <Link href={`/post/${post.slug}`}>
                 <a>{post.seo_title}</a>
               </Link>
               <Header.Subheader>{post.meta_description}</Header.Subheader>
