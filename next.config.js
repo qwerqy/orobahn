@@ -1,40 +1,25 @@
-const Butter = require("buttercms");
-const withCSS = require("@zeit/next-css");
+const { PHASE_PRODUCTION_SERVER } =
+  process.env.NODE_ENV === "development"
+    ? {} // We're never in "production server" phase when in development mode
+    : !process.env.NOW_REGION
+    ? require("next/constants") // Get values from `next` package when building locally
+    : require("next-server/constants"); // Get values from `next-server` package when building on now v2
 
-require("dotenv").config();
-
-module.exports = withCSS({
-  webpack: config => {
-    // Fixes npm packages that depend on `fs` module
-    config.node = {
-      fs: "empty"
-    };
-
-    return config;
+module.exports = (phase, { defaultConfig }) => {
+  if (phase === PHASE_PRODUCTION_SERVER) {
+    // Config used to run in production.
+    return {};
   }
-  // async exportPathMap() {
-  //   const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
-  //   // we fetch our list of posts, this allow us to dynamically generate the exported pages
-  //   // will need to modify this if page gets more posts
-  //   const response = await butter.post.list({ page: 1, page_size: 10 });
-  //   const posts = response.data;
 
-  //   // tranform the list of posts into a map of pages with the pathname `/post/:id`
-  //   const pages = posts.data.reduce(
-  //     (pages, post) =>
-  //       Object.assign({}, pages, {
-  //         [`/post/${post.slug}`]: {
-  //           page: "/post",
-  //           query: { title: post.slug }
-  //         }
-  //       }),
-  //     {}
-  //   );
-  //   // Combine pages with other pages in project.
-  //   return Object.assign({}, pages, {
-  //     "/": { page: "/" },
-  //     "/blog": { page: "/blog" },
-  //     "/software-portfolio": { page: "/software-portfolio" }
-  //   });
-  // }
-});
+  const withCSS = require("@zeit/next-css");
+
+  return withCSS({
+    webpack: config => {
+      // Fixes npm packages that depend on `fs` module
+      config.node = {
+        fs: "empty"
+      };
+      return config;
+    }
+  });
+};
