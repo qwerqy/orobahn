@@ -109,7 +109,7 @@ class Software extends Component {
                   <Card fluid key={i}>
                     <Card.Content>
                       <Card.Header>
-                        <Link href={`/posts/${project.slug}`}>
+                        <Link href={`/post/${project.slug}`}>
                           <a>{project.title}</a>
                         </Link>
                       </Card.Header>
