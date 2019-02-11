@@ -1,65 +1,83 @@
-import { Component } from 'react';
-import Link from 'next/link'
-import { Segment, Container, Grid, Header, List, Icon, Image } from 'semantic-ui-react'
+import { Component } from "react";
+import Link from "next/link";
+import {
+  Segment,
+  Container,
+  Grid,
+  Header,
+  List,
+  Icon,
+  Image
+} from "semantic-ui-react";
 
-// to add/remove links, use this array.
-const links = [
-  {icon:"facebook", link:"https://www.facebook.com/amnrsln" },
-  {icon:"instagram", link:"https://www.instagram.com/taikomin/"},
-  {icon:"twitter", link:"https://twitter.com/qwerqy_dev"},
-  {icon:"linkedin", link:"https://www.linkedin.com/in/aminroslan/"},
-  {icon:"github", link:"https://www.github.com/qwerqy"}
-]
+import { links } from "./helpers/index";
 
 // TODO: anchor all links here.
 class Footer extends Component {
   render() {
     return (
-      <Segment inverted vertical style={{ backgroundColor: 'black', padding: '5em 0em' }}>
+      <Segment
+        inverted
+        vertical
+        style={{ backgroundColor: "black", padding: "5em 0em" }}
+      >
         <Container>
           <Grid divided inverted stackable>
             <Grid.Row>
               <Grid.Column width={3}>
-                <Header inverted as='h4' content='About' />
+                <Header inverted as="h4" content="About" />
                 <List link inverted>
-                  <Link href='/software'>
-                    <List.Item as='a'>Projects</List.Item>
+                  <Link href="/software">
+                    <List.Item as="a">Projects</List.Item>
                   </Link>
-                  <List.Item as='a'>Contact Me</List.Item>
+                  <Link href="/contact">
+                    <List.Item as="a">Contact Me</List.Item>
+                  </Link>
                 </List>
               </Grid.Column>
               <Grid.Column width={3}>
-                <Header inverted as='h4' content='Services' />
+                <Header inverted as="h4" content="Services" />
                 <List link inverted>
-                  <List.Item as='a'>Freelance Work</List.Item>
-                  <List.Item as='a'>Resume</List.Item>
+                  <List.Item as="a">Freelance Work</List.Item>
+                  <List.Item
+                    as="a"
+                    href="https://docs.google.com/document/d/1YGuT2nN_RMYockL5b0A6rK02uw2ZsoiQF8iCWHoQMuE/edit?usp=sharing"
+                    target="_blank"
+                  >
+                    Resume
+                  </List.Item>
                 </List>
               </Grid.Column>
               <Grid.Column width={7}>
-              <Header as='h4' inverted>
-                Social Media
-              </Header>
-              <List horizontal>
-                {
-                  links.map(link => {
+                <Header as="h4" inverted>
+                  Social Media
+                </Header>
+                <List horizontal>
+                  {links.map(link => {
                     return (
                       <List.Item key={link.icon}>
-                        <a style={{textDecoration: 'none', color: 'white'}} href={link.link}>
-                        <Icon size='large' name={link.icon} />
+                        <a
+                          style={{ textDecoration: "none", color: "white" }}
+                          href={link.link}
+                        >
+                          <Icon size="large" name={link.icon} />
                         </a>
                       </List.Item>
-                    )
-                  })
-                }
-              </List>
-              <Header as='h4' inverted>Blog Engine by</Header>
-              <a href="https://buttercms.com" target='_blank'><Image size='small' src='/static/butter-w.png'/></a>
+                    );
+                  })}
+                </List>
+                <Header as="h4" inverted>
+                  Blog Engine by
+                </Header>
+                <a href="https://buttercms.com" target="_blank">
+                  <Image size="small" src="/static/butter-w.png" />
+                </a>
               </Grid.Column>
             </Grid.Row>
           </Grid>
         </Container>
       </Segment>
-    )
+    );
   }
 }
 

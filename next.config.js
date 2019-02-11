@@ -14,6 +14,9 @@ module.exports = (phase, { defaultConfig }) => {
   const withCSS = require("@zeit/next-css");
 
   return withCSS({
+    publicRuntimeConfig: {
+      NODE_ENV: process.env.NODE_ENV
+    },
     webpack: config => {
       // Fixes npm packages that depend on `fs` module
       config.node = {
