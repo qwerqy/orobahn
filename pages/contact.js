@@ -42,7 +42,7 @@ class Contact extends Component {
         }
       );
 
-      if (response.target.status === 200) {
+      if (response.status === 200) {
         this.setState({ formStatus: "success" });
         this.resetForm();
       } else {
@@ -75,7 +75,7 @@ class Contact extends Component {
               <Segment as={Container} text>
                 <Form
                   error={this.state.formStatus === "error" ? true : false}
-                  success={this.state.formComplete === "success" ? true : false}
+                  success={this.state.formStatus === "success" ? true : false}
                   id="contact-form"
                   onSubmit={this.handleSubmit}
                 >
