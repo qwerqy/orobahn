@@ -19,4 +19,7 @@ Any questions feel free to tweet/dm me in Twitter at [@qwerqy_dev](https://twitt
 
 ### TODO
 
-[ ] Create Dockerfile to dockerize app.
+[ ] Create Unit Testing with Cypress.
+[ ] Add Gaming Profile.
+[ ] Add Freelance Work page.
+[ ] Add Contact Me page.
