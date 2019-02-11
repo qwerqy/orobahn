@@ -30,7 +30,9 @@ class Footer extends Component {
                   <Link href="/software">
                     <List.Item as="a">Projects</List.Item>
                   </Link>
-                  <List.Item as="a">Contact Me</List.Item>
+                  <Link href="/contact">
+                    <List.Item as="a">Contact Me</List.Item>
+                  </Link>
                 </List>
               </Grid.Column>
               <Grid.Column width={3}>
