@@ -6,6 +6,7 @@ import {
   Container,
   Header,
   List,
+  Message,
   Icon
 } from "semantic-ui-react";
 import Head from "../components/head";
@@ -14,6 +15,9 @@ import HeroPage from "../components/heropage";
 import { links } from "../components/helpers/index";
 
 class Contact extends Component {
+  state = {
+    formStatus: ""
+  };
   static async getInitialProps() {
     const node_env = process.env.NODE_ENV;
     return { node_env };
@@ -30,21 +34,23 @@ class Contact extends Component {
     };
 
     try {
-      const domain =
-        this.props.node_env === "production"
-          ? "https://aminroslan.com"
-          : "http://localhost:3000";
+      const response = await fetch(
+        `https://7fev0fyod7.execute-api.us-east-1.amazonaws.com/dev/orobahn-mailer`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json; charset=utf-8",
+            "Content-Type": "application/json; charset=UTF-8"
+          },
+          body: JSON.stringify(data)
+        }
+      );
 
-      const response = await fetch(`${domain}/sendemail`, {
-        method: "POST",
-        body: data
-      });
-
-      if (response.data.msg === "success") {
-        alert("Message sent");
+      if (response.target.status === 200) {
+        this.setState({ formStatus: "success" });
         this.resetForm();
       } else {
-        console.log("Message not sent, something went wrong!");
+        this.setState({ formStatus: "error" });
       }
     } catch (err) {
       console.error(err);
@@ -71,20 +77,45 @@ class Contact extends Component {
                 Let's talk! Send me an email.
               </Header>
               <Segment as={Container} text>
-                <Form id="contact-form" onSubmit={this.handleSubmit}>
-                  <Form.Field>
-                    <label>Name</label>
-                    <input type="text" id="contact-name" />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>Email</label>
-                    <input type="email" id="contact-email" />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>Subject</label>
-                    <input type="text" id="contact-subject" />
-                  </Form.Field>
-                  <Form.TextArea label="Message" id="contact-message" />
+                <Form
+                  error={this.state.formStatus === "error" ? true : false}
+                  success={this.state.formComplete === "success" ? true : false}
+                  id="contact-form"
+                  onSubmit={this.handleSubmit}
+                >
+                  <Form.Input
+                    label="Name"
+                    type="text"
+                    id="contact-name"
+                    required
+                  />
+                  <Form.Input
+                    label="Email"
+                    type="email"
+                    id="contact-email"
+                    required
+                  />
+                  <Form.Input
+                    label="Subject"
+                    type="text"
+                    id="contact-subject"
+                    required
+                  />
+                  <Form.TextArea
+                    label="Message"
+                    id="contact-message"
+                    required
+                  />
+                  <Message
+                    success
+                    header="Message sent!"
+                    content="You will hear from me soon."
+                  />
+                  <Message
+                    error
+                    header="Something went wrong!"
+                    content="Don't worry! You can still reach me at amnrsln@gmail.com! Can't wait to hear from you soon!"
+                  />
                   <Button type="submit">Submit</Button>
                 </Form>
               </Segment>
