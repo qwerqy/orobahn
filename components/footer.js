@@ -10,14 +10,7 @@ import {
   Image
 } from "semantic-ui-react";
 
-// to add/remove links, use this array.
-const links = [
-  { icon: "facebook", link: "https://www.facebook.com/amnrsln" },
-  { icon: "instagram", link: "https://www.instagram.com/taikomin/" },
-  { icon: "twitter", link: "https://twitter.com/qwerqy_dev" },
-  { icon: "linkedin", link: "https://www.linkedin.com/in/aminroslan/" },
-  { icon: "github", link: "https://www.github.com/qwerqy" }
-];
+import { links } from "./helpers/index";
 
 // TODO: anchor all links here.
 class Footer extends Component {
