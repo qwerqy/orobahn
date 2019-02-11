@@ -22,9 +22,10 @@ const skillset = [
       "React.js",
       "React Native",
       "Vue.js",
-      "ES6+",
-      "Javascript",
-      "jQuery"
+      "Javascript (Common & ES6+)",
+      "jQuery",
+      "HTML",
+      "CSS"
     ]
   },
   {
@@ -40,8 +41,26 @@ const skillset = [
     items: ["Bootstrap", "Semantic UI", "Element UI", "Carbon UI"]
   },
   {
-    header: "CD & CI",
-    items: ["Docker", "Heroku", "Drone"]
+    header: "Deployment & Integration",
+    items: [
+      "Docker",
+      "Docker Compose",
+      "Traefik",
+      "Drone",
+      "Cypress",
+      "Capybara",
+      "CircleCI"
+    ]
+  },
+  {
+    header: "Cloud Platform",
+    items: [
+      "DigitalOcean Droplet",
+      "Heroku",
+      "Now.sh",
+      "Netlify",
+      "AWS ECS/EC2"
+    ]
   }
 ];
 class Software extends Component {
@@ -83,7 +102,7 @@ class Software extends Component {
                         style={{ paddingBottom: "1rem" }}
                         key={index}
                       >
-                        <Header as="h3" style={{ letterSpacing: "2px" }}>
+                        <Header as="h4" style={{ letterSpacing: "2px" }}>
                           {list.header}
                         </Header>
                         <List bulleted>
