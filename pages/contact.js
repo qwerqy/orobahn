@@ -18,10 +18,6 @@ class Contact extends Component {
   state = {
     formStatus: ""
   };
-  static async getInitialProps() {
-    const node_env = process.env.NODE_ENV;
-    return { node_env };
-  }
 
   handleSubmit = async e => {
     e.preventDefault();
