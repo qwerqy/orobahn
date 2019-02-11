@@ -1,5 +1,8 @@
 {
   "version": 2,
   "alias": ["aminroslan.com", "www.aminroslan.com"],
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" },
+    { "src": "server.js", "use": "@now/node" }
+  ]
 }
