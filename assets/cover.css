@@ -6,6 +6,13 @@
   background-color: #1b1c1d;
 }
 
+.hero-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .hero-header {
   font-family: "Raleway", "Roboto", sans-serif !important;
   font-size: 4rem !important;
@@ -16,8 +23,10 @@
 }
 
 .hero-caption {
-  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 2rem;
   font-weight: 300;
+  letter-spacing: 4px !important;
   color: #fff;
   text-align: center;
 }

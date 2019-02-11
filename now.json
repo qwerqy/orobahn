@@ -1,5 +1,6 @@
 {
   "version": 2,
   "alias": ["aminroslan.com", "www.aminroslan.com"],
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+  "routes": [{ "src": "/posts/(?<title>[^/]+)$", "dest": "/post?title=$title" }]
 }

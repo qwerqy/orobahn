@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Card, Responsive, Image } from "semantic-ui-react";
+import { Card, Responsive } from "semantic-ui-react";
 import Moment from "react-moment";
 import Link from "next/link";
 
@@ -14,6 +14,22 @@ import "../assets/index.css";
 import Butter from "buttercms";
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 
+const PostCardContent = ({ post }) => {
+  return (
+    <Link href={`/post?title=${post.slug}`} as={`/posts/${post.slug}`}>
+      <a>
+        <Card.Header as="h3">{post.seo_title}</Card.Header>
+        <Card.Meta>
+          <Moment format="D MMM YYYY" withTitle>
+            {post.published}
+          </Moment>
+        </Card.Meta>
+        <br />
+        <Card.Description>{post.summary}</Card.Description>
+      </a>
+    </Link>
+  );
+};
 class Home extends Component {
   static async getInitialProps() {
     const resp = await butter.post.list({
@@ -79,18 +95,7 @@ class Home extends Component {
                     <Card.Content
                       style={{ backgroundColor: "rgba(255,255,255,0.7)" }}
                     >
-                      <Link href={`/post?title=${post.slug}`}>
-                        <a>
-                          <Card.Header as="h3">{post.seo_title}</Card.Header>
-                          <Card.Meta>
-                            <Moment format="D MMM YYYY" withTitle>
-                              {post.published}
-                            </Moment>
-                          </Card.Meta>
-                          <br />
-                          <Card.Description>{post.summary}</Card.Description>
-                        </a>
-                      </Link>
+                      <PostCardContent post={post} />
                     </Card.Content>
                   </Card>
                 );
