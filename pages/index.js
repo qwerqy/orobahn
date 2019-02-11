@@ -79,7 +79,10 @@ class Home extends Component {
                     <Card.Content
                       style={{ backgroundColor: "rgba(255,255,255,0.7)" }}
                     >
-                      <Link href={`/posts/${post.slug}`}>
+                      <Link
+                        href={`/post?title=${post.slug}`}
+                        as={`/posts/${post.slug}`}
+                      >
                         <a>
                           <Card.Header as="h3">{post.seo_title}</Card.Header>
                           <Card.Meta>
