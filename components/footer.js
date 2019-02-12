@@ -11,6 +11,7 @@ import {
 } from "semantic-ui-react";
 
 import { links } from "./helpers/index";
+import { gaUserTracking } from "../analytics";
 
 // TODO: anchor all links here.
 class Footer extends Component {
@@ -28,21 +29,43 @@ class Footer extends Component {
                 <Header inverted as="h4" content="About" />
                 <List link inverted>
                   <Link prefetch href="/software">
-                    <List.Item as="a">Projects</List.Item>
+                    <List.Item
+                      as="a"
+                      onClick={() =>
+                        gaUserTracking("Footer", `Clicked Projects`)
+                      }
+                    >
+                      Projects
+                    </List.Item>
                   </Link>
                   <Link prefetch href="/contact">
-                    <List.Item as="a">Contact Me</List.Item>
+                    <List.Item
+                      as="a"
+                      onClick={() =>
+                        gaUserTracking("Footer", `Clicked Contact Me`)
+                      }
+                    >
+                      Contact Me
+                    </List.Item>
                   </Link>
                 </List>
               </Grid.Column>
               <Grid.Column width={3}>
                 <Header inverted as="h4" content="Services" />
                 <List link inverted>
-                  <List.Item as="a">Freelance Work</List.Item>
+                  <List.Item
+                    as="a"
+                    onClick={() =>
+                      gaUserTracking("Footer", `Clicked Freelance Work`)
+                    }
+                  >
+                    Freelance Work
+                  </List.Item>
                   <List.Item
                     as="a"
                     href="https://docs.google.com/document/d/1YGuT2nN_RMYockL5b0A6rK02uw2ZsoiQF8iCWHoQMuE/edit?usp=sharing"
                     target="_blank"
+                    onClick={() => gaUserTracking("Footer", `Clicked Resume`)}
                   >
                     Resume
                   </List.Item>
@@ -59,6 +82,12 @@ class Footer extends Component {
                         <a
                           style={{ textDecoration: "none", color: "white" }}
                           href={link.link}
+                          onClick={() =>
+                            gaUserTracking(
+                              "Footer",
+                              `Clicked Social Media button: ${link.icon}`
+                            )
+                          }
                         >
                           <Icon size="large" name={link.icon} />
                         </a>
@@ -69,7 +98,11 @@ class Footer extends Component {
                 <Header as="h4" inverted>
                   Blog Engine by
                 </Header>
-                <a href="https://buttercms.com" target="_blank">
+                <a
+                  href="https://buttercms.com"
+                  target="_blank"
+                  onClick={() => gaUserTracking("Footer", `Clicked ButterCMS`)}
+                >
                   <Image size="small" src="/static/butter-w.png" />
                 </a>
               </Grid.Column>

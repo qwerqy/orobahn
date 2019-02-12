@@ -13,6 +13,7 @@ import Head from "../components/head";
 import Wrapper from "../components/wrapper";
 import HeroPage from "../components/heropage";
 import { links } from "../components/helpers/index";
+import { gaPageTracking, gaUserTracking } from "../analytics";
 
 class Contact extends Component {
   state = {
@@ -55,6 +56,10 @@ class Contact extends Component {
 
   resetForm = () => document.querySelector("#contact-form").reset();
 
+  componentDidMount() {
+    gaPageTracking("/contact");
+  }
+
   render() {
     const styles = {
       segment: {
@@ -65,7 +70,11 @@ class Contact extends Component {
     };
     return (
       <div>
-        <Head title="Contact" description="If you want to get in touch, send a message!" url="https://aminroslan.com/contact" />
+        <Head
+          title="Contact"
+          description="If you want to get in touch, send a message!"
+          url="https://aminroslan.com/contact"
+        />
         <Wrapper dark {...this.props}>
           <HeroPage dark>
             <Container style={styles.segment}>
@@ -112,7 +121,14 @@ class Contact extends Component {
                     header="Something went wrong!"
                     content="Don't worry! You can still reach me at amnrsln@gmail.com! Can't wait to hear from you soon!"
                   />
-                  <Button type="submit">Submit</Button>
+                  <Button
+                    onClick={() =>
+                      gaUserTracking("Contact", `User sent a Message.`)
+                    }
+                    type="submit"
+                  >
+                    Submit
+                  </Button>
                 </Form>
               </Segment>
               <br />
@@ -124,6 +140,12 @@ class Contact extends Component {
                   return (
                     <List.Item key={link.icon}>
                       <a
+                        onClick={() =>
+                          gaUserTracking(
+                            "Contact",
+                            `Clicked Social Media button: ${link.icon}`
+                          )
+                        }
                         style={{ textDecoration: "none", color: "white" }}
                         href={link.link}
                       >

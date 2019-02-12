@@ -17,6 +17,7 @@ import Moment from "react-moment";
 import Wrapper from "../components/wrapper";
 import Footer from "../components/footer";
 import ShareLinks from "../components/sharelinks";
+import { gaPageTracking, gaUserTracking } from "../analytics";
 import "../assets/blog.css";
 
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
@@ -26,7 +27,12 @@ const BlogBreadcrumb = props => {
     <Breadcrumb>
       <Breadcrumb.Section>
         <Link prefetch href="/blog">
-          <a style={{ color: "grey" }}>Blog</a>
+          <a
+            onClick={() => gaUserTracking("Post", `Clicked Blog breadcrumb`)}
+            style={{ color: "grey" }}
+          >
+            Blog
+          </a>
         </Link>
       </Breadcrumb.Section>
       <Breadcrumb.Divider>/</Breadcrumb.Divider>
@@ -40,6 +46,11 @@ class Post extends Component {
     const resp = await butter.post.retrieve(query.title);
     return resp.data;
   }
+
+  componentDidMount() {
+    gaPageTracking(`/posts/${this.props.data.slug}`);
+  }
+
   render() {
     const post = this.props.data;
 

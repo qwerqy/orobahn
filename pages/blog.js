@@ -7,6 +7,8 @@ import HeroPage from "../components/heropage";
 import Footer from "../components/footer";
 import HeroHeader from "../components/heroheader";
 import Wrapper from "../components/wrapper";
+import { gaPageTracking, gaUserTracking } from "../analytics";
+
 import "../assets/blog.css";
 import Butter from "buttercms";
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
@@ -22,7 +24,13 @@ const ListOfRecentPosts = ({ posts }) => {
               href={`/post?title=${post.slug}`}
               as={`/posts/${post.slug}`}
             >
-              <a>{post.seo_title}</a>
+              <a
+                onClick={() =>
+                  gaUserTracking("Blog", `Clicked ${post.slug} on Recent Posts`)
+                }
+              >
+                {post.seo_title}
+              </a>
             </Link>
           </List.Item>
         );
@@ -43,7 +51,16 @@ const BlogPosts = ({ posts }) => {
                 href={`/post?title=${post.slug}`}
                 as={`/posts/${post.slug}`}
               >
-                <a>{post.seo_title}</a>
+                <a
+                  onClick={() =>
+                    gaUserTracking(
+                      "Blog",
+                      `Opened ${post.seo_title} through Blog timeline`
+                    )
+                  }
+                >
+                  {post.seo_title}
+                </a>
               </Link>
               <Header.Subheader>{post.meta_description}</Header.Subheader>
             </Header>
@@ -92,6 +109,10 @@ class Blog extends Component {
   showFixedMenu = () => {
     this.setState({ showNav: true });
   };
+
+  componentDidMount() {
+    gaPageTracking("/blog");
+  }
 
   render() {
     const { next_page, previous_page } = this.props.meta;

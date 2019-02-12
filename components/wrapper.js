@@ -9,6 +9,7 @@ import {
   Sidebar,
   Visibility
 } from "semantic-ui-react";
+import { gaUserTracking } from "../analytics";
 
 import "../assets/nav.css";
 
@@ -96,6 +97,9 @@ class DesktopWrapper extends Component {
                     as="a"
                     className="nav-header"
                     style={{ letterSpacing: "3px" }}
+                    onClick={() =>
+                      gaUserTracking("Nav", "Clicked Nav Header AMINROSLAN")
+                    }
                     header
                   >
                     AMIN ROSLAN
@@ -111,7 +115,9 @@ class DesktopWrapper extends Component {
                           key={i}
                           name={links[i].label}
                           active={links[i].label === pathname}
-                          onClick={this.handleClick}
+                          onClick={() =>
+                            gaUserTracking("Nav", `Clicked ${links[i].label}`)
+                          }
                           position={links[i].position}
                         />
                       </Link>
@@ -160,7 +166,10 @@ class MobileWrapper extends Component {
     }
   };
 
-  handleClickToToggle = () => this.setState({ visible: true });
+  handleClickToToggle = () => {
+    gaUserTracking("Nav", "Open Sidebar");
+    this.setState({ visible: true });
+  };
 
   handleSidebarHide = () => this.setState({ visible: false });
 
@@ -228,7 +237,9 @@ class MobileWrapper extends Component {
                     links[i].label === pathname ||
                     links[i].label.includes(pathname)
                   }
-                  onClick={this.handleClick}
+                  onClick={() =>
+                    gaUserTracking("Nav", `Clicked ${links[i].label}`)
+                  }
                   position={links[i].position}
                 />
               </Link>
@@ -242,6 +253,9 @@ class MobileWrapper extends Component {
                 <Link prefetch href="/">
                   <Menu.Item
                     as="a"
+                    onClick={() =>
+                      gaUserTracking("Nav", `Clicked Nav header AMINROSLAN`)
+                    }
                     className="nav-header"
                     style={{ letterSpacing: "3px" }}
                     header

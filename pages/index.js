@@ -9,6 +9,8 @@ import HeroBox from "../components/herobox";
 import HeroPage from "../components/heropage";
 import Footer from "../components/footer";
 import Wrapper from "../components/wrapper";
+import { gaPageTracking, gaUserTracking } from "../analytics";
+
 import "../assets/index.css";
 
 import Butter from "buttercms";
@@ -17,7 +19,11 @@ const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 const PostCardContent = ({ post }) => {
   return (
     <Link prefetch href={`/post?title=${post.slug}`} as={`/posts/${post.slug}`}>
-      <a>
+      <a
+        onClick={() =>
+          gaUserTracking("Home", `Clicked ${post.slug} on Homepage.`)
+        }
+      >
         <Card.Header as="h3">{post.seo_title}</Card.Header>
         {post.categories.map((cat, i) => {
           return (
@@ -53,6 +59,10 @@ class Home extends Component {
   showFixedMenu = () => {
     this.setState({ showNav: true });
   };
+
+  componentDidMount() {
+    gaPageTracking("/");
+  }
 
   render() {
     const posts = this.props.data;
