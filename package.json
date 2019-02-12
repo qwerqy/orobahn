@@ -17,8 +17,10 @@
     "next": "^7.0.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-ga": "^2.5.7",
     "react-moment": "^0.8.4",
     "react-particles-js": "^2.4.2",
+    "react-share": "^2.4.0",
     "semantic-ui-react": "^0.84.0"
   },
   "devDependencies": {

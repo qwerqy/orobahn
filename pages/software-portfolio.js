@@ -7,6 +7,7 @@ import Footer from "../components/footer";
 import Wrapper from "../components/wrapper";
 import Projects from "../components/projects";
 import HeroHeader from "../components/heroheader";
+import { gaPageTracking, gaUserTracking } from "../analytics";
 import Butter from "buttercms";
 
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
@@ -81,11 +82,19 @@ class Software extends Component {
     this.setState({ showNav: true });
   };
 
+  componentDidMount() {
+    gaPageTracking("/software-portfolio");
+  }
+
   render() {
     const projects = this.props.data;
     return (
       <div>
-        <Head title="Software Portfolio" />
+        <Head
+          title="Software Portfolio"
+          description="Amin Roslan's Software Portfolio"
+          url="https://aminroslan.com/software-portfolio"
+        />
         <Wrapper dark {...this.props}>
           <HeroHeader title="software portfolio." />
           <HeroPage
@@ -129,10 +138,20 @@ class Software extends Component {
                     <Card.Content>
                       <Card.Header>
                         <Link
+                          prefetch
                           href={`/post?title=${project.slug}`}
                           as={`/posts/${project.slug}`}
                         >
-                          <a>{project.title}</a>
+                          <a
+                            onClick={() =>
+                              gaUserTracking(
+                                "Software Portfolio",
+                                `Clicked ${project.slug} on Projects Showcase`
+                              )
+                            }
+                          >
+                            {project.title}
+                          </a>
                         </Link>
                       </Card.Header>
                       <Card.Meta>{project.meta_description}</Card.Meta>

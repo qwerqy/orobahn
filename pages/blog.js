@@ -7,6 +7,8 @@ import HeroPage from "../components/heropage";
 import Footer from "../components/footer";
 import HeroHeader from "../components/heroheader";
 import Wrapper from "../components/wrapper";
+import { gaPageTracking, gaUserTracking } from "../analytics";
+
 import "../assets/blog.css";
 import Butter from "buttercms";
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
@@ -17,8 +19,18 @@ const ListOfRecentPosts = ({ posts }) => {
       {posts.slice(0, 5).map(post => {
         return (
           <List.Item className="link" key={post.created}>
-            <Link href={`/post?title=${post.slug}`} as={`/posts/${post.slug}`}>
-              <a>{post.seo_title}</a>
+            <Link
+              prefetch
+              href={`/post?title=${post.slug}`}
+              as={`/posts/${post.slug}`}
+            >
+              <a
+                onClick={() =>
+                  gaUserTracking("Blog", `Clicked ${post.slug} on Recent Posts`)
+                }
+              >
+                {post.seo_title}
+              </a>
             </Link>
           </List.Item>
         );
@@ -35,10 +47,20 @@ const BlogPosts = ({ posts }) => {
           <Segment key={post.created} vertical>
             <Header className="post-header">
               <Link
+                prefetch
                 href={`/post?title=${post.slug}`}
                 as={`/posts/${post.slug}`}
               >
-                <a>{post.seo_title}</a>
+                <a
+                  onClick={() =>
+                    gaUserTracking(
+                      "Blog",
+                      `Opened ${post.seo_title} through Blog timeline`
+                    )
+                  }
+                >
+                  {post.seo_title}
+                </a>
               </Link>
               <Header.Subheader>{post.meta_description}</Header.Subheader>
             </Header>
@@ -88,13 +110,21 @@ class Blog extends Component {
     this.setState({ showNav: true });
   };
 
+  componentDidMount() {
+    gaPageTracking("/blog");
+  }
+
   render() {
     const { next_page, previous_page } = this.props.meta;
     const posts = this.props.data;
 
     return (
       <div>
-        <Head title="Blog" />
+        <Head
+          title="Blog"
+          url="https://aminroslan.com/blog"
+          description="Amin Roslan's Blog"
+        />
         <Wrapper dark {...this.props}>
           <HeroHeader title="the blog." />
           <HeroPage>
@@ -112,7 +142,7 @@ class Blog extends Component {
                   <div>
                     {previous_page && (
                       <Button inverted floated="left">
-                        <Link href={`/?page=${previous_page}`}>
+                        <Link prefetch href={`/?page=${previous_page}`}>
                           <a>Prev Page</a>
                         </Link>
                       </Button>
@@ -120,7 +150,7 @@ class Blog extends Component {
 
                     {next_page && (
                       <Button inverted floated="right">
-                        <Link href={`/?page=${next_page}`}>
+                        <Link prefetch href={`/?page=${next_page}`}>
                           <a>Next Page</a>
                         </Link>
                       </Button>

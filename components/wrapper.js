@@ -1,7 +1,7 @@
 import { Component, Fragment } from "react";
 import Link from "next/link";
+import { withRouter } from "next/router";
 import {
-  Transition,
   Segment,
   Container,
   Menu,
@@ -9,6 +9,7 @@ import {
   Sidebar,
   Visibility
 } from "semantic-ui-react";
+import { gaUserTracking } from "../analytics";
 
 import "../assets/nav.css";
 
@@ -49,8 +50,8 @@ class DesktopWrapper extends Component {
   };
 
   pathnameCleaner = () => {
-    let result = this.props.url.pathname;
-    if (this.props.url.pathname.includes("-")) {
+    let result = this.props.router.pathname;
+    if (this.props.router.pathname.includes("-")) {
       result = result.replace("-", " ");
     }
     result = result.replace("/", "");
@@ -59,9 +60,9 @@ class DesktopWrapper extends Component {
   };
 
   render() {
-    const { dark } = this.props;
+    const { dark, router } = this.props;
     const { fixedNav } = this.state;
-    const pathname = this.props.url.pathname ? this.pathnameCleaner() : "";
+    const pathname = router.pathname ? this.pathnameCleaner() : "";
     const styles = {
       segment: {
         backgroundColor: this.getBackgroundColor(),
@@ -91,11 +92,14 @@ class DesktopWrapper extends Component {
                 secondary
                 style={{ borderBottom: 0 }}
               >
-                <Link href="/">
+                <Link prefetch href="/">
                   <Menu.Item
                     as="a"
                     className="nav-header"
                     style={{ letterSpacing: "3px" }}
+                    onClick={() =>
+                      gaUserTracking("Nav", "Clicked Nav Header AMINROSLAN")
+                    }
                     header
                   >
                     AMIN ROSLAN
@@ -104,14 +108,16 @@ class DesktopWrapper extends Component {
                 <Menu.Menu className="right-menu" position="right">
                   {Object.keys(links).map(i => {
                     return (
-                      <Link key={i} href={links[i].href}>
+                      <Link prefetch key={i} href={links[i].href}>
                         <Menu.Item
                           as="a"
                           className="nav-item"
                           key={i}
                           name={links[i].label}
                           active={links[i].label === pathname}
-                          onClick={this.handleClick}
+                          onClick={() =>
+                            gaUserTracking("Nav", `Clicked ${links[i].label}`)
+                          }
                           position={links[i].position}
                         />
                       </Link>
@@ -160,13 +166,16 @@ class MobileWrapper extends Component {
     }
   };
 
-  handleClickToToggle = () => this.setState({ visible: true });
+  handleClickToToggle = () => {
+    gaUserTracking("Nav", "Open Sidebar");
+    this.setState({ visible: true });
+  };
 
   handleSidebarHide = () => this.setState({ visible: false });
 
   pathnameCleaner = () => {
-    let result = this.props.url.pathname;
-    if (this.props.url.pathname.includes("-")) {
+    let result = this.props.router.pathname;
+    if (this.props.router.pathname.includes("-")) {
       result = result.replace("-", " ");
     }
 
@@ -175,7 +184,7 @@ class MobileWrapper extends Component {
     return result;
   };
   render() {
-    const { activeItem, visible } = this.state;
+    const { visible } = this.state;
     const pathname = this.pathnameCleaner();
 
     const styles = {
@@ -218,7 +227,7 @@ class MobileWrapper extends Component {
           </Menu.Item>
           {Object.keys(links).map(i => {
             return (
-              <Link key={i} href={links[i].href}>
+              <Link prefetch key={i} href={links[i].href}>
                 <Menu.Item
                   as="a"
                   style={styles.sidebarItem}
@@ -228,7 +237,9 @@ class MobileWrapper extends Component {
                     links[i].label === pathname ||
                     links[i].label.includes(pathname)
                   }
-                  onClick={this.handleClick}
+                  onClick={() =>
+                    gaUserTracking("Nav", `Clicked ${links[i].label}`)
+                  }
                   position={links[i].position}
                 />
               </Link>
@@ -239,9 +250,12 @@ class MobileWrapper extends Component {
           <Segment inverted vertical textAlign="center" style={styles.segment}>
             <Container text>
               <Menu inverted pointing secondary style={{ borderBottom: 0 }}>
-                <Link href="/">
+                <Link prefetch href="/">
                   <Menu.Item
                     as="a"
+                    onClick={() =>
+                      gaUserTracking("Nav", `Clicked Nav header AMINROSLAN`)
+                    }
                     className="nav-header"
                     style={{ letterSpacing: "3px" }}
                     header
@@ -277,4 +291,4 @@ class Wrapper extends Component {
   }
 }
 
-export default Wrapper;
+export default withRouter(Wrapper);
