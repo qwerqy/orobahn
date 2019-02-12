@@ -9,7 +9,6 @@ import {
   PinterestShareButton,
   RedditShareButton,
   TumblrShareButton,
-  LineShareButton,
   EmailShareButton
 } from "react-share";
 
