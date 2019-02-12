@@ -43,11 +43,6 @@ class Home extends Component {
     showNav: false,
     width: 0
   };
-  getWidth = () => {
-    const isSSR = typeof window === "undefined";
-
-    return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
-  };
   showFixedMenu = () => {
     this.setState({ showNav: true });
   };
