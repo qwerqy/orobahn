@@ -1,11 +1,11 @@
 import Particles from "react-particles-js";
 
-const ParticlesBackground = () => {
+const ParticlesBackground = ({ width, height }) => {
   if (typeof window !== "undefined") {
     return (
       <Particles
-        width="100vw"
-        height="100vh"
+        width={width || "auto"}
+        height={height || "auto"}
         params={{
           particles: {
             number: {

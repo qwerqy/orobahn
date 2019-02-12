@@ -45,7 +45,7 @@ class Cover extends Component {
     return (
       <Fragment>
         <div className="bg-image">
-          <ParticlesBackground />
+          <ParticlesBackground width="100vw" height="100vh" />
           <HeroText dark />
         </div>
       </Fragment>
