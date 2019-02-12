@@ -49,7 +49,6 @@ class Cover extends Component {
             <Particles
               width="100vw"
               height="100vh"
-              style={{ position: "absolute" }}
               params={{
                 particles: {
                   number: {
