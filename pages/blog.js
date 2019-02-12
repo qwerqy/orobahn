@@ -17,7 +17,11 @@ const ListOfRecentPosts = ({ posts }) => {
       {posts.slice(0, 5).map(post => {
         return (
           <List.Item className="link" key={post.created}>
-            <Link href={`/post?title=${post.slug}`} as={`/posts/${post.slug}`}>
+            <Link
+              prefetch
+              href={`/post?title=${post.slug}`}
+              as={`/posts/${post.slug}`}
+            >
               <a>{post.seo_title}</a>
             </Link>
           </List.Item>
@@ -35,6 +39,7 @@ const BlogPosts = ({ posts }) => {
           <Segment key={post.created} vertical>
             <Header className="post-header">
               <Link
+                prefetch
                 href={`/post?title=${post.slug}`}
                 as={`/posts/${post.slug}`}
               >
@@ -112,7 +117,7 @@ class Blog extends Component {
                   <div>
                     {previous_page && (
                       <Button inverted floated="left">
-                        <Link href={`/?page=${previous_page}`}>
+                        <Link prefetch href={`/?page=${previous_page}`}>
                           <a>Prev Page</a>
                         </Link>
                       </Button>
@@ -120,7 +125,7 @@ class Blog extends Component {
 
                     {next_page && (
                       <Button inverted floated="right">
-                        <Link href={`/?page=${next_page}`}>
+                        <Link prefetch href={`/?page=${next_page}`}>
                           <a>Next Page</a>
                         </Link>
                       </Button>

@@ -24,7 +24,7 @@ const BlogBreadcrumb = props => {
   return (
     <Breadcrumb>
       <Breadcrumb.Section>
-        <Link href="/blog">
+        <Link prefetch href="/blog">
           <a style={{ color: "grey" }}>Blog</a>
         </Link>
       </Breadcrumb.Section>

@@ -27,10 +27,10 @@ class Footer extends Component {
               <Grid.Column width={3}>
                 <Header inverted as="h4" content="About" />
                 <List link inverted>
-                  <Link href="/software">
+                  <Link prefetch href="/software">
                     <List.Item as="a">Projects</List.Item>
                   </Link>
-                  <Link href="/contact">
+                  <Link prefetch href="/contact">
                     <List.Item as="a">Contact Me</List.Item>
                   </Link>
                 </List>

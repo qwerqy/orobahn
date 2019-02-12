@@ -91,7 +91,7 @@ class DesktopWrapper extends Component {
                 secondary
                 style={{ borderBottom: 0 }}
               >
-                <Link href="/">
+                <Link prefetch href="/">
                   <Menu.Item
                     as="a"
                     className="nav-header"
@@ -104,7 +104,7 @@ class DesktopWrapper extends Component {
                 <Menu.Menu className="right-menu" position="right">
                   {Object.keys(links).map(i => {
                     return (
-                      <Link key={i} href={links[i].href}>
+                      <Link prefetch key={i} href={links[i].href}>
                         <Menu.Item
                           as="a"
                           className="nav-item"
@@ -218,7 +218,7 @@ class MobileWrapper extends Component {
           </Menu.Item>
           {Object.keys(links).map(i => {
             return (
-              <Link key={i} href={links[i].href}>
+              <Link prefetch key={i} href={links[i].href}>
                 <Menu.Item
                   as="a"
                   style={styles.sidebarItem}
@@ -239,7 +239,7 @@ class MobileWrapper extends Component {
           <Segment inverted vertical textAlign="center" style={styles.segment}>
             <Container text>
               <Menu inverted pointing secondary style={{ borderBottom: 0 }}>
-                <Link href="/">
+                <Link prefetch href="/">
                   <Menu.Item
                     as="a"
                     className="nav-header"

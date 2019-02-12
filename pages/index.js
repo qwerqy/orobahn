@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Card, Responsive } from "semantic-ui-react";
+import { Card, Label } from "semantic-ui-react";
 import Moment from "react-moment";
 import Link from "next/link";
 
@@ -16,9 +16,16 @@ const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 
 const PostCardContent = ({ post }) => {
   return (
-    <Link href={`/post?title=${post.slug}`} as={`/posts/${post.slug}`}>
+    <Link prefetch href={`/post?title=${post.slug}`} as={`/posts/${post.slug}`}>
       <a>
         <Card.Header as="h3">{post.seo_title}</Card.Header>
+        {post.categories.map((cat, i) => {
+          return (
+            <Label style={{ float: "right" }} key={i} as="a">
+              {cat.name}
+            </Label>
+          );
+        })}
         <Card.Meta>
           <Moment format="D MMM YYYY" withTitle>
             {post.published}
@@ -34,7 +41,7 @@ class Home extends Component {
   static async getInitialProps() {
     const resp = await butter.post.list({
       page: 1,
-      page_size: 3,
+      page_size: 5,
       exclude_body: true
     });
     return resp.data;

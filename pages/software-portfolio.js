@@ -129,6 +129,7 @@ class Software extends Component {
                     <Card.Content>
                       <Card.Header>
                         <Link
+                          prefetch
                           href={`/post?title=${project.slug}`}
                           as={`/posts/${project.slug}`}
                         >
