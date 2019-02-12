@@ -1,7 +1,7 @@
 import { Component, Fragment } from "react";
 import Link from "next/link";
+import { withRouter } from "next/router";
 import {
-  Transition,
   Segment,
   Container,
   Menu,
@@ -49,8 +49,8 @@ class DesktopWrapper extends Component {
   };
 
   pathnameCleaner = () => {
-    let result = this.props.url.pathname;
-    if (this.props.url.pathname.includes("-")) {
+    let result = this.props.router.pathname;
+    if (this.props.router.pathname.includes("-")) {
       result = result.replace("-", " ");
     }
     result = result.replace("/", "");
@@ -59,9 +59,9 @@ class DesktopWrapper extends Component {
   };
 
   render() {
-    const { dark } = this.props;
+    const { dark, router } = this.props;
     const { fixedNav } = this.state;
-    const pathname = this.props.url.pathname ? this.pathnameCleaner() : "";
+    const pathname = router.pathname ? this.pathnameCleaner() : "";
     const styles = {
       segment: {
         backgroundColor: this.getBackgroundColor(),
@@ -165,8 +165,8 @@ class MobileWrapper extends Component {
   handleSidebarHide = () => this.setState({ visible: false });
 
   pathnameCleaner = () => {
-    let result = this.props.url.pathname;
-    if (this.props.url.pathname.includes("-")) {
+    let result = this.props.router.pathname;
+    if (this.props.router.pathname.includes("-")) {
       result = result.replace("-", " ");
     }
 
@@ -175,7 +175,7 @@ class MobileWrapper extends Component {
     return result;
   };
   render() {
-    const { activeItem, visible } = this.state;
+    const { visible } = this.state;
     const pathname = this.pathnameCleaner();
 
     const styles = {
@@ -277,4 +277,4 @@ class Wrapper extends Component {
   }
 }
 
-export default Wrapper;
+export default withRouter(Wrapper);
