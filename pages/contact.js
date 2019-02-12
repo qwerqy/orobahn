@@ -65,7 +65,7 @@ class Contact extends Component {
     };
     return (
       <div>
-        <Head title="Contact Me" />
+        <Head title="Contact" description="If you want to get in touch, send a message!" url="https://aminroslan.com/contact" />
         <Wrapper dark {...this.props}>
           <HeroPage dark>
             <Container style={styles.segment}>

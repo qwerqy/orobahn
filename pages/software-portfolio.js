@@ -85,7 +85,7 @@ class Software extends Component {
     const projects = this.props.data;
     return (
       <div>
-        <Head title="Software Portfolio" />
+        <Head title="Software Portfolio" description="Amin Roslan's Software Portfolio" url="https://aminroslan.com/software-portfolio"/>
         <Wrapper dark {...this.props}>
           <HeroHeader title="software portfolio." />
           <HeroPage

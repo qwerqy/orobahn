@@ -1,16 +1,16 @@
-import React, { Fragment } from 'react'
-import NextHead from 'next/head'
-import { string } from 'prop-types'
+import React, { Fragment } from "react";
+import NextHead from "next/head";
+import { string } from "prop-types";
 
-const defaultDescription = ''
-const defaultOGURL = ''
-const defaultOGImage = ''
+const defaultDescription = "Welcome to Amin Roslan's Online Portfolio & Blog";
+const defaultOGURL = "https://aminroslan.com";
+const defaultOGImage = "";
 
 const Head = props => (
   <Fragment>
     <NextHead>
       <meta charSet="UTF-8" />
-      <title>{props.title || ''}</title>
+      <title>{props.title || ""}</title>
       <meta
         name="description"
         content={props.description || defaultDescription}
@@ -21,7 +21,7 @@ const Head = props => (
       <link rel="mask-icon" href="/static/favicon-mask.svg" color="#49B882" />
       <link rel="icon" href="/static/favicon.ico" />
       <meta property="og:url" content={props.url || defaultOGURL} />
-      <meta property="og:title" content={props.title || ''} />
+      <meta property="og:title" content={props.title || ""} />
       <meta
         property="og:description"
         content={props.description || defaultDescription}
@@ -32,7 +32,10 @@ const Head = props => (
       <meta property="og:image" content={props.ogImage || defaultOGImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+      <link
+        href="https://fonts.googleapis.com/css?family=Roboto"
+        rel="stylesheet"
+      />
       <link
         rel="stylesheet"
         href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"
@@ -41,28 +44,28 @@ const Head = props => (
     <style jsx global>
       {`
         @import url("https://fonts.googleapis.com/css?family=Raleway");
-        
+
         body {
-          font-family: 'Roboto', sans-serif;
+          font-family: "Roboto", sans-serif;
           margin: 0;
         }
         a {
           color: #1b1c1d;
         }
-        
+
         a:hover {
           color: grey;
         }
       `}
     </style>
   </Fragment>
-)
+);
 
 Head.propTypes = {
   title: string,
   description: string,
   url: string,
   ogImage: string
-}
+};
 
-export default Head
+export default Head;

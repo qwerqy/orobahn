@@ -47,6 +47,7 @@ class Post extends Component {
         <Head
           title={post.seo_title}
           ogImage={post.featured_image}
+          url={`https://aminroslan.com/posts/${post.slug}`}
           description={post.meta_description}
         />
         <Wrapper dark solid {...this.props}>

@@ -99,7 +99,11 @@ class Blog extends Component {
 
     return (
       <div>
-        <Head title="Blog" />
+        <Head
+          title="Blog"
+          url="https://aminroslan.com/blog"
+          description="Amin Roslan's Blog"
+        />
         <Wrapper dark {...this.props}>
           <HeroHeader title="the blog." />
           <HeroPage>
