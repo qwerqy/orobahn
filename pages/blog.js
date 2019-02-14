@@ -126,7 +126,7 @@ class Blog extends Component {
           description="Amin Roslan's Blog"
         />
         <Wrapper dark {...this.props}>
-          <HeroHeader title="the blog." />
+          <HeroHeader title="blog" />
           <HeroPage>
             <Grid container stackable>
               <Grid.Row>
