@@ -1,8 +1,9 @@
 import { Component } from "react";
-import { Card, Label, Visibility } from "semantic-ui-react";
+import { Label, Visibility, Image, Header, Grid } from "semantic-ui-react";
 import Moment from "react-moment";
 import Link from "next/link";
 import { ParallaxProvider } from "react-scroll-parallax";
+import Truncate from "react-truncate";
 
 import Head from "../components/head";
 import Cover from "../components/cover";
@@ -19,29 +20,57 @@ const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 
 const PostCardContent = ({ post }) => {
   return (
-    <Link prefetch href={`/post?title=${post.slug}`} as={`/posts/${post.slug}`}>
-      <a
-        onClick={() =>
-          gaUserTracking("Home", `Clicked ${post.slug} on Homepage.`)
+    <div>
+      <br />
+      <Link
+        prefetch
+        href={`/post?title=${post.slug}`}
+        as={`/posts/${post.slug}`}
+      >
+        <a
+          onClick={() =>
+            gaUserTracking("Home", `Clicked ${post.slug} on Homepage.`)
+          }
+        >
+          <Header as="h3">
+            {post.seo_title}
+            <Header.Subheader>
+              <Moment format="D MMM YYYY" withTitle>
+                {post.published}
+              </Moment>
+            </Header.Subheader>
+          </Header>
+        </a>
+      </Link>
+      <br />
+      <Truncate
+        lines={3}
+        ellipsis={
+          <span>
+            ...{" "}
+            <Header sub style={{ marginTop: "1rem" }}>
+              <Link
+                prefetch
+                href={`/post?title=${post.slug}`}
+                as={`/posts/${post.slug}`}
+              >
+                <a
+                  onClick={() =>
+                    gaUserTracking("Home", `Clicked ${post.slug} on Homepage.`)
+                  }
+                >
+                  Read more
+                </a>
+              </Link>
+            </Header>
+          </span>
         }
       >
-        <Card.Header as="h3">{post.seo_title}</Card.Header>
-        {post.categories.map((cat, i) => {
-          return (
-            <Label style={{ float: "right" }} key={i} as="a">
-              {cat.name}
-            </Label>
-          );
-        })}
-        <Card.Meta>
-          <Moment format="D MMM YYYY" withTitle>
-            {post.published}
-          </Moment>
-        </Card.Meta>
-        <br />
-        <Card.Description>{post.summary}</Card.Description>
-      </a>
-    </Link>
+        <div dangerouslySetInnerHTML={{ __html: post.body }} />
+      </Truncate>
+    </div>
+    //   </a>
+    // </Link>
   );
 };
 
@@ -53,8 +82,7 @@ class Home extends Component {
   static async getInitialProps() {
     const blogPosts = await butter.post.list({
       page: 1,
-      page_size: 5,
-      exclude_body: true
+      page_size: 4
     });
     const pageContent = await butter.page.retrieve("*", "index");
     return { blogPost: blogPosts.data, pageContent: pageContent.data };
@@ -101,27 +129,16 @@ class Home extends Component {
             {fields.herobox_2_description}
           </HeroBox>
           <HeroPage title="latest blog posts">
-            <Card.Group>
+            <Grid container columns={4} stackable doubling>
               {posts.map(post => {
                 return (
-                  <Card
-                    fluid
-                    style={{
-                      backgroundImage: `url(${post.featured_image})`,
-                      backgroundPosition: "center",
-                      backgroundSize: "cover"
-                    }}
-                    key={post.created}
-                  >
-                    <Card.Content
-                      style={{ backgroundColor: "rgba(255,255,255,0.7)" }}
-                    >
-                      <PostCardContent post={post} />
-                    </Card.Content>
-                  </Card>
+                  <Grid.Column>
+                    <Image src={post.featured_image} />
+                    <PostCardContent post={post} />
+                  </Grid.Column>
                 );
               })}
-            </Card.Group>
+            </Grid>
           </HeroPage>
           <Footer />
         </Wrapper>

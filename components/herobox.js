@@ -48,8 +48,8 @@ class HeroBox extends Component {
         <Container textAlign={titleAlign}>
           <Parallax
             className="custom-class"
-            offsetXMax={this.props.slideIn === "left" ? -30 : 30}
-            offsetXMin={this.props.slideIn === "left" ? 30 : -30}
+            offsetXMax={this.props.slideIn === "left" ? -10 : 10}
+            offsetXMin={this.props.slideIn === "left" ? 10 : -10}
             // offsetYMax={70}
             // offsetYMin={-70}
             slowerScrollRate

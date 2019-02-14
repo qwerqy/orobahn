@@ -1,7 +1,7 @@
 import { Component, Fragment } from "react";
 import { Header } from "semantic-ui-react";
 import { bool } from "prop-types";
-import { Parallax } from "react-scroll-parallax";
+import { Parallax, ParallaxBanner } from "react-scroll-parallax";
 import ParticlesBackground from "../components/particles";
 
 import "../assets/cover.css";
@@ -13,8 +13,8 @@ const HeroText = ({ dark, fields }) => {
         className="custom-class"
         offsetXMax={0}
         offsetXMin={0}
-        offsetYMax={400}
-        offsetYMin={-400}
+        offsetYMax={200}
+        offsetYMin={-200}
         slowerScrollRate
         tag="figure"
       >
@@ -40,8 +40,21 @@ class Cover extends Component {
     return (
       <Fragment>
         <div className="bg-image">
-          {/* <ParticlesBackground width="100vw" height="100vh" /> */}
-          <HeroText dark {...this.props} />
+          <ParallaxBanner
+            className="your-class"
+            layers={[
+              {
+                image: "../static/background.jpg",
+                amount: 0.3,
+                slowerScrollRate: true
+              }
+            ]}
+            style={{
+              height: "100vh"
+            }}
+          >
+            <HeroText dark {...this.props} />
+          </ParallaxBanner>
         </div>
       </Fragment>
     );
