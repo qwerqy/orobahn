@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Container, Header, Segment } from "semantic-ui-react";
 import { string, bool } from "prop-types";
+import { Parallax } from "react-scroll-parallax";
 
 class HeroBox extends Component {
   capitalizeTitle = title => {
@@ -45,10 +46,24 @@ class HeroBox extends Component {
     return (
       <Segment style={styles.segment} inverted={dark}>
         <Container textAlign={titleAlign}>
-          <Header style={styles.header} textAlign={titleAlign} inverted={dark}>
-            {this.capitalizeTitle(title)}
-          </Header>
-          <p style={styles.paragraph}>{this.props.children}</p>
+          <Parallax
+            className="custom-class"
+            offsetXMax={this.props.slideIn === "left" ? -30 : 30}
+            offsetXMin={this.props.slideIn === "left" ? 30 : -30}
+            // offsetYMax={70}
+            // offsetYMin={-70}
+            slowerScrollRate
+            tag="figure"
+          >
+            <Header
+              style={styles.header}
+              textAlign={titleAlign}
+              inverted={dark}
+            >
+              {this.capitalizeTitle(title)}
+            </Header>
+            <p style={styles.paragraph}>{this.props.children}</p>
+          </Parallax>
         </Container>
       </Segment>
     );

@@ -1,37 +1,32 @@
 import { Component, Fragment } from "react";
 import { Header } from "semantic-ui-react";
 import { bool } from "prop-types";
+import { Parallax } from "react-scroll-parallax";
 import ParticlesBackground from "../components/particles";
 
 import "../assets/cover.css";
 
-const HeroText = ({ dark }) => {
-  // const styles = {
-  //   container: {
-  //     position: "absolute",
-  //     top: "50%",
-  //     left: "50%",
-  //     transform: "translate(-50%, -50%)"
-  //   }
-  // };
+const HeroText = ({ dark, fields }) => {
   return (
     <div className="hero-container">
-      {/* <Container text style={styles.container}> */}
-      <Header inverted={dark} textAlign="center" className="hero-header">
-        AMIN ROSLAN
-        <Header.Subheader className="hero-caption">
-          Software Engineer at{" "}
-          <a
-            style={{ color: "lightgrey" }}
-            href="https://vase.ai"
-            target="_blank"
-          >
-            Vase.ai
-          </a>{" "}
-          . Huge gaming nerd.
-        </Header.Subheader>
-      </Header>
-      {/* </Container> */}
+      <Parallax
+        className="custom-class"
+        offsetXMax={0}
+        offsetXMin={0}
+        offsetYMax={400}
+        offsetYMin={-400}
+        slowerScrollRate
+        tag="figure"
+      >
+        {/* <Container text style={styles.container}> */}
+        <Header inverted={dark} textAlign="center" className="hero-header">
+          {fields.hero_title}
+          <Header.Subheader className="hero-caption">
+            {fields.hero_caption}
+          </Header.Subheader>
+        </Header>
+        {/* </Container> */}
+      </Parallax>
     </div>
   );
 };
@@ -45,8 +40,8 @@ class Cover extends Component {
     return (
       <Fragment>
         <div className="bg-image">
-          <ParticlesBackground width="100vw" height="100vh" />
-          <HeroText dark />
+          {/* <ParticlesBackground width="100vw" height="100vh" /> */}
+          <HeroText dark {...this.props} />
         </div>
       </Fragment>
     );

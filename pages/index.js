@@ -1,7 +1,8 @@
 import { Component } from "react";
-import { Card, Label } from "semantic-ui-react";
+import { Card, Label, Visibility } from "semantic-ui-react";
 import Moment from "react-moment";
 import Link from "next/link";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 import Head from "../components/head";
 import Cover from "../components/cover";
@@ -43,14 +44,20 @@ const PostCardContent = ({ post }) => {
     </Link>
   );
 };
+
 class Home extends Component {
+  state = {
+    herobox1Visible: false,
+    herobox2Visible: false
+  };
   static async getInitialProps() {
-    const resp = await butter.post.list({
+    const blogPosts = await butter.post.list({
       page: 1,
       page_size: 5,
       exclude_body: true
     });
-    return resp.data;
+    const pageContent = await butter.page.retrieve("*", "index");
+    return { blogPost: blogPosts.data, pageContent: pageContent.data };
   }
   state = {
     showNav: false,
@@ -65,33 +72,35 @@ class Home extends Component {
   }
 
   render() {
-    const posts = this.props.data;
+    const posts = this.props.blogPost.data;
+    const { fields } = this.props.pageContent.data;
     return (
-      <div>
+      <ParallaxProvider>
         <Head title="Amin Roslan Online Portfolio" />
         <Wrapper dark {...this.props}>
-          <Cover />
-          <HeroBox title="work" dark slant="right">
-            I am a Full-Stack Software Engineer. I am currently with{" "}
-            <a
-              href="https://vase.ai"
-              target="_blank"
-              style={{ color: "lightgrey" }}
+          <Cover fields={fields} />
+          <Visibility
+            once={false}
+            onBottomVisible={() => this.setState({ herobox1Visible: true })}
+          >
+            <HeroBox
+              visible={this.state.herobox1Visible}
+              title={fields.herobox_1_title}
+              slant="right"
+              slideIn="right"
             >
-              Vase.ai
-            </a>{" "}
-            as their Full-Stack Software Engineer. I am responsible in
-            developing & maintaining their in-house products both for our
-            business clients & consumer clients. All of their products are
-            mostly in Javascript.
+              {fields.herobox_1_description}
+            </HeroBox>
+          </Visibility>
+          <HeroBox
+            title={fields.herobox_2_title}
+            dark
+            slideIn="left"
+            titleAlign="right"
+          >
+            {fields.herobox_2_description}
           </HeroBox>
-          <HeroBox title="game" titleAlign="right">
-            I used to stream on Twitch going under the name 'GreenCheese'. I am
-            currently putting streaming on hold in the hopes of getting better
-            gears for it. I like to play strategy, role-playing, heavy-story
-            based games.
-          </HeroBox>
-          <HeroPage dark title="latest blog posts">
+          <HeroPage title="latest blog posts">
             <Card.Group>
               {posts.map(post => {
                 return (
@@ -116,7 +125,7 @@ class Home extends Component {
           </HeroPage>
           <Footer />
         </Wrapper>
-      </div>
+      </ParallaxProvider>
     );
   }
 }
