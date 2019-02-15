@@ -22,7 +22,7 @@ class HeroPage extends Component {
   };
 
   render() {
-    const { slant, title, dark, size } = this.props;
+    const { slant, title, dark, size, contain } = this.props;
     const styles = {
       segment: {
         borderRadius: 0,
@@ -48,7 +48,7 @@ class HeroPage extends Component {
 
     return (
       <Segment style={styles.segment} inverted={dark}>
-        <Container>
+        <Container text={contain}>
           <Header style={styles.header} inverted={dark}>
             {this.capitalizeTitle(title)}
             <Header.Subheader style={styles.subheader}>
