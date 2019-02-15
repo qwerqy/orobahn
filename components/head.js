@@ -50,7 +50,7 @@ const Head = props => (
           margin: 0;
         }
         a {
-          color: #1b1c1d;
+          color: #1b1c1d !important;
         }
 
         a:hover {
