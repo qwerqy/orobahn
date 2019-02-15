@@ -49,13 +49,6 @@ const Head = props => (
           font-family: "Roboto", sans-serif;
           margin: 0;
         }
-        a {
-          color: #1b1c1d !important;
-        }
-
-        a:hover {
-          color: grey;
-        }
       `}
     </style>
   </Fragment>

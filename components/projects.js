@@ -51,7 +51,7 @@ class ProjectTable extends Component {
                 <Table.Cell>
                   <a
                     target="_blank"
-                    style={{ textDecoration: "none", color: "white" }}
+                    style={{ textDecoration: "none", color: "#1b1c1d" }}
                     href={repos[i].html_url}
                     onClick={() =>
                       gaUserTracking(
