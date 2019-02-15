@@ -4,7 +4,7 @@ import { string } from "prop-types";
 
 const defaultDescription = "Welcome to Amin Roslan's Online Portfolio & Blog";
 const defaultOGURL = "https://aminroslan.com";
-const defaultOGImage = "";
+const defaultOGImage = "/static/ogbackground.png";
 
 const Head = props => (
   <Fragment>
@@ -46,7 +46,9 @@ const Head = props => (
         @import url("https://fonts.googleapis.com/css?family=Raleway");
 
         body {
-          font-family: "Roboto", sans-serif;
+          font-family: "Roboto", -apple-system, BlinkMacSystemFont,
+            "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto,
+            "Segoe UI", Arial, sans-serif !important;
           margin: 0;
         }
       `}
