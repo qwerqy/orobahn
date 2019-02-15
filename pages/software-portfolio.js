@@ -102,65 +102,111 @@ class Software extends Component {
             size="half"
             sub="The skills I've acquired throughout my career in tech."
           >
-            <Segment>
-              <Grid stackable doubling columns={skillset.length}>
-                <Grid.Row>
-                  {skillset.map((list, index) => {
-                    return (
-                      <Grid.Column
-                        style={{ paddingBottom: "1rem" }}
-                        key={index}
-                      >
-                        <Header as="h4" style={{ letterSpacing: "2px" }}>
-                          {list.header}
-                        </Header>
-                        <List bulleted>
-                          {list.items.map((item, index) => (
-                            <List.Item key={index}>{item}</List.Item>
-                          ))}
-                        </List>
-                      </Grid.Column>
-                    );
-                  })}
-                </Grid.Row>
-              </Grid>
-            </Segment>
+            <Grid stackable columns={3}>
+              <Grid.Row>
+                <Grid.Column>
+                  <Segment>
+                    <Header textAlign="center">Front End</Header>
+                  </Segment>
+                  <Segment.Group>
+                    <Segment>React & Vue</Segment>
+                    <Segment>React Native</Segment>
+                    <Segment>Javascript (Vanilla & ES6+)</Segment>
+                    <Segment>
+                      CSS Frameworks such as Semantic UI, Bootstrap, etc.
+                    </Segment>
+                    <Segment>HTML & CSS</Segment>
+                  </Segment.Group>
+                </Grid.Column>
+                <Grid.Column>
+                  <Segment>
+                    <Header textAlign="center">Back End</Header>
+                  </Segment>
+                  <Segment.Group>
+                    <Segment>NodeJS such as Express & Koa</Segment>
+                    <Segment>Ruby such as Rails & Sinatra</Segment>
+                    <Segment>
+                      Cloud database such as MongoDB Atlas & Firestore. Local
+                      database such as Postgresql
+                    </Segment>
+                    <Segment>
+                      Deployments to Heroku, Now.sh, Netlify, etc
+                    </Segment>
+                    <Segment>Server Side Rendering</Segment>
+                  </Segment.Group>
+                </Grid.Column>
+                <Grid.Column>
+                  <Segment>
+                    <Header textAlign="center">Dev Ops</Header>
+                  </Segment>
+                  <Segment.Group>
+                    <Segment>Docker, Docker Compose, Docker Machine</Segment>
+                    <Segment>
+                      Traefik, Nginx for reverse proxy & LetsEncrypt for SSL
+                      cert
+                    </Segment>
+                    <Segment>
+                      VPS such as DigitalOcean Droplet & AWS Lightsail
+                    </Segment>
+                    {/* <Segment></Segment>
+                    <Segment>Bottom</Segment> */}
+                  </Segment.Group>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+            {/* <Segment> */}
+            {/* <Grid stackable doubling stretched columns={skillset.length}>
+              <Grid.Row>
+                {skillset.map((list, index) => {
+                  return (
+                    <Grid.Column style={{ paddingBottom: "1rem" }} key={index}>
+                      <Header as="h4" style={{ letterSpacing: "2px" }}>
+                        {list.header}
+                      </Header>
+                      <List bulleted>
+                        {list.items.map((item, index) => (
+                          <List.Item key={index}>{item}</List.Item>
+                        ))}
+                      </List>
+                    </Grid.Column>
+                  );
+                })}
+              </Grid.Row>
+            </Grid> */}
+            {/* </Segment> */}
           </HeroPage>
           <HeroPage
             size="half"
             title="projects showcase"
             sub="Showcasing my finished projects some of which are live."
           >
-            <Card.Group itemsPerRow={1}>
-              {projects.map((project, i) => {
-                return (
-                  <Card fluid key={i}>
-                    <Card.Content>
-                      <Card.Header>
-                        <Link
-                          prefetch
-                          href={`/post?title=${project.slug}`}
-                          as={`/posts/${project.slug}`}
-                        >
-                          <a
-                            onClick={() =>
-                              gaUserTracking(
-                                "Software Portfolio",
-                                `Clicked ${project.slug} on Projects Showcase`
-                              )
-                            }
-                          >
-                            {project.title}
-                          </a>
-                        </Link>
-                      </Card.Header>
-                      <Card.Meta>{project.meta_description}</Card.Meta>
-                      <Card.Description>{project.description}</Card.Description>
-                    </Card.Content>
-                  </Card>
-                );
-              })}
-            </Card.Group>
+            {projects.map((project, i) => {
+              return (
+                <Segment key={i}>
+                  <Header>
+                    <Link
+                      prefetch
+                      href={`/post?title=${project.slug}`}
+                      as={`/posts/${project.slug}`}
+                    >
+                      <a
+                        onClick={() =>
+                          gaUserTracking(
+                            "Software Portfolio",
+                            `Clicked ${project.slug} on Projects Showcase`
+                          )
+                        }
+                      >
+                        {project.title}
+                      </a>
+                    </Link>
+                    <Header.Subheader>
+                      {project.meta_description}
+                    </Header.Subheader>
+                  </Header>
+                </Segment>
+              );
+            })}
           </HeroPage>
           <HeroPage
             title="personal projects"

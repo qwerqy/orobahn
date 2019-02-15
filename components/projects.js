@@ -22,7 +22,7 @@ class ProjectTable extends Component {
   render() {
     const { repos } = this.state;
     return (
-      <Table celled striped inverted>
+      <Table celled striped>
         <Table.Header style={{ width: "calc( 100% - 1em )" }}>
           <Table.Row>
             <Table.HeaderCell colSpan="3">
@@ -51,7 +51,7 @@ class ProjectTable extends Component {
                 <Table.Cell>
                   <a
                     target="_blank"
-                    style={{ textDecoration: "none", color: "white" }}
+                    style={{ textDecoration: "none", color: "#1b1c1d" }}
                     href={repos[i].html_url}
                     onClick={() =>
                       gaUserTracking(

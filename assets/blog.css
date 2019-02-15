@@ -3,8 +3,20 @@
   font-size: 2.5rem !important;
 }
 
-.post-header > a {
-  color: #1b1c1d;
+.ui.breadcrumb a {
+  color: #1b1c1d !important;
+}
+
+.ui.breadcrumb a:hover {
+  color: grey !important;
+}
+
+.ui.header a {
+  color: #1b1c1d !important;
+}
+
+.ui.header a:hover {
+  color: grey !important;
 }
 
 img {

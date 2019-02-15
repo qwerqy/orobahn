@@ -63,9 +63,7 @@ class Contact extends Component {
   render() {
     const styles = {
       segment: {
-        position: "absolute",
-        top: "50%",
-        transform: "translateY(-50%"
+        marginTop: "4rem"
       }
     };
     return (
@@ -158,6 +156,7 @@ class Contact extends Component {
             </Container>
           </HeroPage>
         </Wrapper>
+        <style jsx>{``}</style>
       </div>
     );
   }
