@@ -129,10 +129,10 @@ class Home extends Component {
             {fields.herobox_2_description}
           </HeroBox>
           <HeroPage title="latest blog posts">
-            <Grid container columns={4} stackable doubling>
-              {posts.map(post => {
+            <Grid columns={4} stackable doubling>
+              {posts.map((post, i) => {
                 return (
-                  <Grid.Column>
+                  <Grid.Column key={i}>
                     <Image src={post.featured_image} />
                     <PostCardContent post={post} />
                   </Grid.Column>

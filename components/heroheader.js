@@ -32,7 +32,7 @@ class HeroHeader extends Component {
     return (
       <Segment style={styles.segment} inverted>
         <Container textAlign="center" style={{ zIndex: 100 }}>
-          <Header className="hero-header" style={styles.header} inverted>
+          <Header as="h1" inverted>
             {this.capitalizeTitle(title)}
           </Header>
           <span className="hero-para" style={styles.paragraph}>
