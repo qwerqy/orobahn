@@ -22,7 +22,7 @@ class ProjectTable extends Component {
   render() {
     const { repos } = this.state;
     return (
-      <Table celled striped inverted>
+      <Table celled striped>
         <Table.Header style={{ width: "calc( 100% - 1em )" }}>
           <Table.Row>
             <Table.HeaderCell colSpan="3">
