@@ -51,6 +51,28 @@ const Head = props => (
             "Segoe UI", Arial, sans-serif !important;
           margin: 0;
         }
+
+        p code {
+          padding: 2px 4px;
+          font-size: 90%;
+          color: #c7254e;
+          background-color: #f9f2f4;
+          border-radius: 4px;
+          font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        }
+
+        pre {
+          display: block;
+          padding: 1em;
+          margin: 0 0 2em;
+          font-size: 1em;
+          line-height: 1.4;
+          word-break: break-all;
+          word-wrap: break-word;
+          color: #333333;
+          background-color: #f5f5f5;
+          font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        }
       `}
     </style>
   </Fragment>
