@@ -2,11 +2,13 @@ import { Component, Fragment } from "react";
 import Link from "next/link";
 import Moment from "react-moment";
 import {
+  Grid,
   Divider,
   Segment,
   Header,
   Breadcrumb,
-  Button
+  Button,
+  Image
 } from "semantic-ui-react";
 import Head from "../components/head";
 import HeroPage from "../components/heropage";
@@ -31,36 +33,39 @@ const BlogPosts = ({ posts, category }) => {
       {(filteredPosts || posts).map(post => {
         return (
           <Segment key={post.created} vertical>
-            <Header as="h2">
-              <Link
-                prefetch
-                href={`/post?title=${post.slug}`}
-                as={`/posts/${post.slug}`}
-              >
-                <a
-                  onClick={() =>
-                    gaUserTracking(
-                      "Blog",
-                      `Opened ${post.seo_title} through Blog timeline`
-                    )
-                  }
-                >
-                  {post.seo_title}
-                </a>
-              </Link>
-              <Header.Subheader>
-                <Moment format="D MMM YYYY" withTitle>
-                  {post.published}
-                </Moment>
-              </Header.Subheader>
-            </Header>
-            {/* {post.categories.map((cat, i) => {
-              return (
-                <Label key={i} color="grey" as="a">
-                  {cat.name}
-                </Label>
-              );
-            })} */}
+            <Grid stackable>
+              <Grid.Row columns={2}>
+                <Grid.Column width={3}>
+                  <Image src={post.featured_image} />
+                </Grid.Column>
+                <Grid.Column width={13}>
+                  <Header as="h2">
+                    <Link
+                      prefetch
+                      href={`/post?title=${post.slug}`}
+                      as={`/posts/${post.slug}`}
+                    >
+                      <a
+                        onClick={() =>
+                          gaUserTracking(
+                            "Blog",
+                            `Opened ${post.seo_title} through Blog timeline`
+                          )
+                        }
+                      >
+                        {post.seo_title}
+                      </a>
+                    </Link>
+                    <Header.Subheader>
+                      <Moment format="D MMM YYYY" withTitle>
+                        {post.published}
+                      </Moment>
+                    </Header.Subheader>
+                  </Header>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+
             <br />
             <Truncate
               lines={5}
@@ -133,7 +138,7 @@ class Blog extends Component {
           description="Amin Roslan's Blog"
         />
         <Wrapper dark {...this.props}>
-          <HeroHeader title="blog / journal / projects / notes" />
+          <HeroHeader title="blog / journal / projects / guides / notes" />
           <HeroPage contain>
             <Breadcrumb size="huge">
               <Breadcrumb.Section
@@ -181,6 +186,24 @@ class Blog extends Component {
                   }}
                 >
                   <i>Projects</i>
+                </a>
+              </Breadcrumb.Section>
+              <Breadcrumb.Divider />
+              <Breadcrumb.Section
+                className="breadcrumb-link"
+                active={isActive === "guide"}
+              >
+                <a
+                  href="#"
+                  onClick={e => {
+                    e.preventDefault();
+                    this.setState({
+                      category: "guide",
+                      isActive: "guide"
+                    });
+                  }}
+                >
+                  <i>Guides</i>
                 </a>
               </Breadcrumb.Section>
             </Breadcrumb>

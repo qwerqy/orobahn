@@ -1,6 +1,8 @@
 {
   "name": "orobahn",
   "author": "qwerqy",
+  "private": true,
+  "repository": "github:qwerqy/orobahn",
   "scripts": {
     "dev": "NODE_ENV=development node server.js",
     "build": "next build",
