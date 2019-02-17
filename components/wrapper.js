@@ -11,8 +11,6 @@ import {
 } from "semantic-ui-react";
 import { gaUserTracking } from "../analytics";
 
-import "../static/nav.css";
-
 const links = [
   { label: "blog", href: "/blog" },
   { label: "software portfolio", href: "/software-portfolio" }
@@ -137,6 +135,7 @@ class DesktopWrapper extends Component {
           {/* </Transition> */}
         </Visibility>
         {this.props.children}
+        <style jsx>{``}</style>
       </div>
     );
   }
@@ -286,6 +285,7 @@ class Wrapper extends Component {
       <Fragment>
         <DesktopWrapper {...this.props}>{this.props.children}</DesktopWrapper>
         <MobileWrapper {...this.props}>{this.props.children}</MobileWrapper>
+        <style jsx>{``}</style>
       </Fragment>
     );
   }

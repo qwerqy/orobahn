@@ -105,7 +105,55 @@ const Head = props => (
           color: #fff;
         }
 
+        .nav-item {
+          margin: 0 !important;
+        }
+
+        .dropper-right {
+          display: none !important;
+        }
+
+        .mobile-wrapper {
+          display: none !important;
+        }
+
+        @media (min-width: 1024px) {
+          .navbar-container {
+            padding: 1em 15em !important;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .navbar-container {
+            padding: 1em 6em !important;
+          }
+        }
+
+        @media (max-width: 550px) {
+          .right-menu {
+            display: none !important;
+          }
+          .dropper-right {
+            display: block !important;
+          }
+
+          .mobile-wrapper {
+            display: block !important;
+          }
+
+          .desktop-wrapper {
+            display: none !important;
+          }
+        }
+
         @media (max-width: 430px) {
+          .nav-header {
+            font-size: 0.8rem !important;
+          }
+
+          .nav-item {
+            font-size: 0.8rem !important;
+          }
           .hero-header {
             font-size: 2.5rem !important;
           }

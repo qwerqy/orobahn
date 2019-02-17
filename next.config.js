@@ -1,4 +1,3 @@
-const withCSS = require("@zeit/next-css");
 const withOffline = moduleExists("next-offline") ? require("next-offline") : {};
 
 const nextConfig = {
@@ -28,8 +27,8 @@ const nextConfig = {
 };
 
 module.exports = moduleExists("next-offline")
-  ? withOffline(withCSS(nextConfig))
-  : withCSS(nextConfig);
+  ? withOffline(nextConfig)
+  : nextConfig;
 
 function moduleExists(name) {
   try {

@@ -18,7 +18,6 @@ import Wrapper from "../components/wrapper";
 import Truncate from "react-truncate";
 import { gaPageTracking, gaUserTracking } from "../analytics";
 
-// import "../assets/blog.css";
 import Butter from "buttercms";
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 
