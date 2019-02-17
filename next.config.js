@@ -23,7 +23,8 @@ const nextConfig = {
   },
   webpack(config, options) {
     return config;
-  }
+  },
+  target: "serverless"
 };
 
 module.exports = moduleExists("next-offline")
