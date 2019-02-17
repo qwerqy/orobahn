@@ -1,32 +1,30 @@
-import { Component, Fragment } from "react";
-import { Header } from "semantic-ui-react";
+import { Component, Fragment, useState } from "react";
+import { Header, Image, Transition } from "semantic-ui-react";
 import { bool } from "prop-types";
-import { Parallax, ParallaxBanner } from "react-scroll-parallax";
 // import ParticlesBackground from "../components/particles";
 
 import "../assets/cover.css";
 
-const HeroText = ({ dark, fields }) => {
+const HeroText = ({ dark, fields, isLoaded }) => {
+  const [isVisible, setVisible] = useState(false);
+
   return (
     <div className="hero-container">
-      <Parallax
-        className="custom-class"
-        offsetXMax={0}
-        offsetXMin={0}
-        offsetYMax={200}
-        offsetYMin={-200}
-        slowerScrollRate
-        tag="figure"
+      <Transition
+        onComplete={() => setVisible(true)}
+        visible={isLoaded}
+        animation="fade up"
+        duration={1000}
       >
-        {/* <Container text style={styles.container}> */}
         <Header inverted={dark} textAlign="center" className="hero-header">
           {fields.hero_title}
-          <Header.Subheader className="hero-caption">
-            {fields.hero_caption}
-          </Header.Subheader>
+          <Transition visible={isVisible} animation="scale" duration={1000}>
+            <Header.Subheader className="hero-caption">
+              {fields.hero_caption}
+            </Header.Subheader>
+          </Transition>
         </Header>
-        {/* </Container> */}
-      </Parallax>
+      </Transition>
     </div>
   );
 };
@@ -36,27 +34,17 @@ HeroText.propTypes = {
 };
 
 class Cover extends Component {
+  state = { isLoaded: false };
+
+  componentDidMount() {
+    this.setState({ isLoaded: true });
+  }
   render() {
+    const { isLoaded } = this.state;
     return (
-      <Fragment>
-        <div className="bg-image">
-          <ParallaxBanner
-            className="your-class"
-            layers={[
-              {
-                image: "../static/background.png",
-                amount: 0.3,
-                slowerScrollRate: true
-              }
-            ]}
-            style={{
-              height: "100vh"
-            }}
-          >
-            <HeroText dark {...this.props} />
-          </ParallaxBanner>
-        </div>
-      </Fragment>
+      <div className="bg-image">
+        <HeroText dark {...this.props} isLoaded={isLoaded} />
+      </div>
     );
   }
 }
