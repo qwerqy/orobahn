@@ -33,18 +33,13 @@ const Head = props => (
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <link rel="manifest" href="/static/manifest.json" />
-      <link
-        href="https://fonts.googleapis.com/css?family=Roboto"
-        rel="stylesheet"
-      />
-      <link
-        rel="stylesheet"
-        href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"
-      />
+      np
     </NextHead>
     <style jsx global>
       {`
+        @import url("https://fonts.googleapis.com/css?family=Roboto");
         @import url("https://fonts.googleapis.com/css?family=Raleway");
+        @import url("//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css");
 
         body {
           font-family: "Roboto", -apple-system, BlinkMacSystemFont,
