@@ -43,31 +43,6 @@ const PostCardContent = ({ post }) => {
         </a>
       </Link>
       <br />
-      <Truncate
-        lines={3}
-        ellipsis={
-          <span>
-            ...{" "}
-            <Header sub style={{ marginTop: "1rem" }}>
-              <Link
-                prefetch
-                href={`/post?title=${post.slug}`}
-                as={`/posts/${post.slug}`}
-              >
-                <a
-                  onClick={() =>
-                    gaUserTracking("Home", `Clicked ${post.slug} on Homepage.`)
-                  }
-                >
-                  Read more
-                </a>
-              </Link>
-            </Header>
-          </span>
-        }
-      >
-        <div dangerouslySetInnerHTML={{ __html: post.body }} />
-      </Truncate>
     </div>
     //   </a>
     // </Link>
@@ -82,7 +57,8 @@ class Home extends Component {
   static async getInitialProps() {
     const blogPosts = await butter.post.list({
       page: 1,
-      page_size: 4
+      page_size: 4,
+      exclude_body: true
     });
     const pageContent = await butter.page.retrieve("*", "index");
     return { blogPost: blogPosts.data, pageContent: pageContent.data };
