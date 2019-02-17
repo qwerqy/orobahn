@@ -57,7 +57,7 @@ class Home extends Component {
   static async getInitialProps() {
     const blogPosts = await butter.post.list({
       page: 1,
-      page_size: 4,
+      page_size: 8,
       exclude_body: true
     });
     const pageContent = await butter.page.retrieve("*", "index");
