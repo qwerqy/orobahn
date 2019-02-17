@@ -2,7 +2,7 @@ import { Component, Fragment } from "react";
 import { Header } from "semantic-ui-react";
 import { bool } from "prop-types";
 import { Parallax, ParallaxBanner } from "react-scroll-parallax";
-import ParticlesBackground from "../components/particles";
+// import ParticlesBackground from "../components/particles";
 
 import "../assets/cover.css";
 
@@ -44,7 +44,7 @@ class Cover extends Component {
             className="your-class"
             layers={[
               {
-                image: "../static/background.jpg",
+                image: "../static/background.png",
                 amount: 0.3,
                 slowerScrollRate: true
               }

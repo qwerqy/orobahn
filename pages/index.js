@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Label, Visibility, Image, Header, Grid } from "semantic-ui-react";
+import { Visibility, Image, Header, Grid } from "semantic-ui-react";
 import Moment from "react-moment";
 import Link from "next/link";
 import { ParallaxProvider } from "react-scroll-parallax";
