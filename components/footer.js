@@ -65,6 +65,7 @@ class Footer extends Component {
                     as="a"
                     href="https://docs.google.com/document/d/1YGuT2nN_RMYockL5b0A6rK02uw2ZsoiQF8iCWHoQMuE/edit?usp=sharing"
                     target="_blank"
+                    rel="noopener"
                     onClick={() => gaUserTracking("Footer", `Clicked Resume`)}
                   >
                     Resume
@@ -101,6 +102,7 @@ class Footer extends Component {
                 <a
                   href="https://buttercms.com"
                   target="_blank"
+                  rel="noopener"
                   onClick={() => gaUserTracking("Footer", `Clicked ButterCMS`)}
                 >
                   <Image size="small" src="/static/butter-w.png" />
