@@ -48,6 +48,10 @@ const Head = props => (
           margin: 0;
         }
 
+        .ui.secondary.inverted.pointing.menu {
+          border-width: 0;
+        }
+
         .ui.breadcrumb a {
           color: #3a6073;
         }
