@@ -33,7 +33,6 @@ const Head = props => (
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <link rel="manifest" href="/static/manifest.json" />
-      np
     </NextHead>
     <style jsx global>
       {`
