@@ -3,7 +3,7 @@ import { Header, Image, Transition } from "semantic-ui-react";
 import { bool } from "prop-types";
 // import ParticlesBackground from "../components/particles";
 
-import "../assets/cover.css";
+import "../static/cover.css";
 
 const HeroText = ({ dark, fields, isLoaded }) => {
   const [isVisible, setVisible] = useState(false);

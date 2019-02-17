@@ -11,7 +11,7 @@ import {
 } from "semantic-ui-react";
 import { gaUserTracking } from "../analytics";
 
-import "../assets/nav.css";
+import "../static/nav.css";
 
 const links = [
   { label: "blog", href: "/blog" },
