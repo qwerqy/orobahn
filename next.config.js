@@ -1,5 +1,5 @@
 const withOffline = moduleExists("next-offline") ? require("next-offline") : {};
-
+const webpack = require(`webpack`);
 const nextConfig = {
   workboxOpts: {
     swDest: "static/service-worker.js",
@@ -22,6 +22,10 @@ const nextConfig = {
     ]
   },
   webpack(config) {
+    config.optimization.minimize;
+    config.node = {
+      fs: "empty"
+    };
     return config;
   },
   target: "serverless"
