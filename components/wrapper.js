@@ -1,4 +1,4 @@
-import { Component, Fragment } from "react";
+import { Component } from "react";
 import Link from "next/link";
 import { withRouter } from "next/router";
 import {
@@ -282,11 +282,11 @@ class MobileWrapper extends Component {
 class Wrapper extends Component {
   render() {
     return (
-      <Fragment>
+      <>
         <DesktopWrapper {...this.props}>{this.props.children}</DesktopWrapper>
         <MobileWrapper {...this.props}>{this.props.children}</MobileWrapper>
         <style jsx>{``}</style>
-      </Fragment>
+      </>
     );
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Fragment } from "react";
+import { Component } from "react";
 import Link from "next/link";
 import Moment from "react-moment";
 import {
@@ -28,7 +28,7 @@ const BlogPosts = ({ posts, category }) => {
       : "";
 
   return (
-    <Fragment>
+    <>
       {(filteredPosts || posts).map(post => {
         return (
           <Segment key={post.created} vertical>
@@ -97,7 +97,7 @@ const BlogPosts = ({ posts, category }) => {
           </Segment>
         );
       })}
-    </Fragment>
+    </>
   );
 };
 
@@ -130,7 +130,7 @@ class Blog extends Component {
     const { category, isActive } = this.state;
 
     return (
-      <div>
+      <>
         <Head
           title="Blog"
           url="https://aminroslan.com/blog"
@@ -278,7 +278,7 @@ class Blog extends Component {
             }
           `}
         </style>
-      </div>
+      </>
     );
   }
 }

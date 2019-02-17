@@ -21,7 +21,7 @@ const nextConfig = {
       }
     ]
   },
-  webpack(config, options) {
+  webpack(config) {
     return config;
   },
   target: "serverless"

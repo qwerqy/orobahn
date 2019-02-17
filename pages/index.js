@@ -3,7 +3,7 @@ import { Component } from "react";
 import Head from "../components/head";
 import Cover from "../components/cover";
 import Wrapper from "../components/wrapper";
-import { gaPageTracking, gaUserTracking } from "../analytics";
+import { gaPageTracking } from "../analytics";
 
 // import "../assets/index.css";
 

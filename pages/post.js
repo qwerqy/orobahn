@@ -55,7 +55,7 @@ class Post extends Component {
     const post = this.props.data;
 
     return (
-      <div>
+      <>
         <Head
           title={post.seo_title}
           ogImage={post.featured_image}
@@ -100,7 +100,7 @@ class Post extends Component {
           </Container>
           <Footer />
         </Wrapper>
-      </div>
+      </>
     );
   }
 }

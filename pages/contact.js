@@ -67,7 +67,7 @@ class Contact extends Component {
       }
     };
     return (
-      <div>
+      <>
         <Head
           title="Contact"
           description="If you want to get in touch, send a message!"
@@ -157,7 +157,7 @@ class Contact extends Component {
           </HeroPage>
         </Wrapper>
         <style jsx>{``}</style>
-      </div>
+      </>
     );
   }
 }
