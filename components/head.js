@@ -33,6 +33,7 @@ const Head = props => (
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <link rel="manifest" href="/static/manifest.json" />
+      <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
     </NextHead>
     <style jsx global>
       {`
@@ -47,6 +48,19 @@ const Head = props => (
           margin: 0;
         }
 
+        .ui.breadcrumb a {
+          color: #3a6073;
+        }
+
+        .ui.header a {
+          color: #3a6073;
+        }
+
+        .blogpost-container a {
+          color: #3a6073;
+          font-weight: bold;
+        }
+
         p code {
           padding: 2px 4px;
           font-size: 90%;
@@ -54,6 +68,10 @@ const Head = props => (
           background-color: #f9f2f4;
           border-radius: 4px;
           font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        }
+
+        img {
+          width: 100%;
         }
 
         pre {

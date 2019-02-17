@@ -95,7 +95,10 @@ const BlogPosts = ({ posts, category }) => {
                 </span>
               }
             >
-              <div dangerouslySetInnerHTML={{ __html: post.body }} />
+              <div
+                className="blogpost-container"
+                dangerouslySetInnerHTML={{ __html: post.body }}
+              />
             </Truncate>
           </Segment>
         );

@@ -50,8 +50,18 @@ class Cover extends Component {
             width: 100vw;
             top: 0;
             position: relative;
-            background-color: #1b1c1d;
-            background-image: url("/static/background.webp");
+            background: #16222a; /* fallback for old browsers */
+            background: -webkit-linear-gradient(
+              to left,
+              #3a6073,
+              #16222a
+            ); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(
+              to left,
+              #3a6073,
+              #16222a
+            ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

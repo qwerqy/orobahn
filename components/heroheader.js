@@ -17,7 +17,14 @@ class HeroHeader extends Component {
         height: "auto",
         width: "100vw",
         paddingTop: "5em",
-        border: 0
+        border: 0,
+        background: "#16222A" /* fallback for old browsers */,
+        // eslint-disable-next-line no-dupe-keys
+        background:
+          "-webkit-linear-gradient(to left, #3A6073, #16222A)" /* Chrome 10-25, Safari 5.1-6 */,
+        // eslint-disable-next-line no-dupe-keys
+        background:
+          "linear-gradient(to left, #3A6073, #16222A)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       },
       container: {
         position: "absolute",
@@ -30,16 +37,18 @@ class HeroHeader extends Component {
     };
 
     return (
-      <Segment style={styles.segment} inverted>
-        <Container textAlign="center" style={{ zIndex: 100 }}>
-          <Header as="h1" inverted>
-            {this.capitalizeTitle(title)}
-          </Header>
-          <span className="hero-para" style={styles.paragraph}>
-            {this.props.children}
-          </span>
-        </Container>
-      </Segment>
+      <>
+        <Segment style={styles.segment}>
+          <Container textAlign="center" style={{ zIndex: 100 }}>
+            <Header as="h1" inverted>
+              {this.capitalizeTitle(title)}
+            </Header>
+            <span className="hero-para" style={styles.paragraph}>
+              {this.props.children}
+            </span>
+          </Container>
+        </Segment>
+      </>
     );
   }
 }

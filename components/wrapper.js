@@ -40,8 +40,6 @@ class DesktopWrapper extends Component {
 
     if (fixedNav) {
       return "white";
-    } else if (solid) {
-      return "#1b1c1d";
     } else {
       return "transparent";
     }
@@ -58,12 +56,20 @@ class DesktopWrapper extends Component {
   };
 
   render() {
-    const { dark, router } = this.props;
+    const { dark, router, solid } = this.props;
     const { fixedNav } = this.state;
     const pathname = router.pathname ? this.pathnameCleaner() : "";
     const styles = {
       segment: {
-        backgroundColor: this.getBackgroundColor(),
+        background: solid ? "#314755" : this.getBackgroundColor(),
+        // eslint-disable-next-line no-dupe-keys
+        background: solid
+          ? "-webkit-linear-gradient(to right, #314755, #26a0da)"
+          : this.getBackgroundColor(),
+        // eslint-disable-next-line no-dupe-keys
+        background: solid
+          ? "linear-gradient(to left, #3A6073, #16222A)"
+          : this.getBackgroundColor(),
         border: 0,
         position: this.getPosition(),
         zIndex: "100",

@@ -88,7 +88,10 @@ class Post extends Component {
               </Moment>
             </Header>
             <Divider />
-            <div dangerouslySetInnerHTML={{ __html: post.body }} />
+            <div
+              className="blogpost-container"
+              dangerouslySetInnerHTML={{ __html: post.body }}
+            />
             <Header sub>Tags:</Header>
             {post.tags.map((tag, i) => {
               return (
