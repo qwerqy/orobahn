@@ -22,7 +22,7 @@ class HeroPage extends Component {
   };
 
   render() {
-    const { slant, title, dark, size, contain } = this.props;
+    const { slant, title, dark, size, contain, gradient } = this.props;
     const styles = {
       segment: {
         borderRadius: 0,
@@ -32,6 +32,18 @@ class HeroPage extends Component {
         padding: "2em 0em",
         clipPath: this.slantDirection(slant),
         WebkitClipPath: this.slantDirection(slant),
+        background: gradient
+          ? "#0F2027"
+          : "white" /* fallback for old browsers */,
+        // eslint-disable-next-line no-dupe-keys
+        background: gradient
+          ? "-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)"
+          : "white" /* Chrome 10-25, Safari 5.1-6 */,
+        // eslint-disable-next-line no-dupe-keys
+        background: gradient
+          ? "linear-gradient(to right, #2C5364, #203A43, #0F2027)"
+          : "white" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
+
         border: 0
       },
       header: {
@@ -47,7 +59,7 @@ class HeroPage extends Component {
     };
 
     return (
-      <Segment style={styles.segment} inverted={dark}>
+      <Segment style={styles.segment}>
         <Container text={contain}>
           <Header style={styles.header} inverted={dark}>
             {this.capitalizeTitle(title)}

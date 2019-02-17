@@ -74,7 +74,7 @@ class Contact extends Component {
           url="https://aminroslan.com/contact"
         />
         <Wrapper dark {...this.props}>
-          <HeroPage dark>
+          <HeroPage gradient>
             <Container style={styles.segment}>
               <Header className="contact-header" textAlign="center" inverted>
                 Let's talk! Send me an email.
