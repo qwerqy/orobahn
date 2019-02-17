@@ -51,6 +51,7 @@ class ProjectTable extends Component {
                 <Table.Cell>
                   <a
                     target="_blank"
+                    rel="noopener"
                     style={{ textDecoration: "none", color: "#1b1c1d" }}
                     href={repos[i].html_url}
                     onClick={() =>

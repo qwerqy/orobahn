@@ -1,4 +1,4 @@
-import { Component, Fragment } from "react";
+import { Component } from "react";
 import Link from "next/link";
 import Moment from "react-moment";
 import {
@@ -18,7 +18,6 @@ import Wrapper from "../components/wrapper";
 import Truncate from "react-truncate";
 import { gaPageTracking, gaUserTracking } from "../analytics";
 
-import "../assets/blog.css";
 import Butter from "buttercms";
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 
@@ -29,14 +28,17 @@ const BlogPosts = ({ posts, category }) => {
       : "";
 
   return (
-    <Fragment>
+    <>
       {(filteredPosts || posts).map(post => {
         return (
           <Segment key={post.created} vertical>
             <Grid stackable>
               <Grid.Row columns={2}>
                 <Grid.Column width={3}>
-                  <Image src={post.featured_image} />
+                  <Image
+                    src={post.featured_image}
+                    alt={`featured image for ${post.slug}`}
+                  />
                 </Grid.Column>
                 <Grid.Column width={13}>
                   <Header as="h2">
@@ -93,12 +95,15 @@ const BlogPosts = ({ posts, category }) => {
                 </span>
               }
             >
-              <div dangerouslySetInnerHTML={{ __html: post.body }} />
+              <div
+                className="blogpost-container"
+                dangerouslySetInnerHTML={{ __html: post.body }}
+              />
             </Truncate>
           </Segment>
         );
       })}
-    </Fragment>
+    </>
   );
 };
 
@@ -131,7 +136,7 @@ class Blog extends Component {
     const { category, isActive } = this.state;
 
     return (
-      <div>
+      <>
         <Head
           title="Blog"
           url="https://aminroslan.com/blog"
@@ -230,7 +235,56 @@ class Blog extends Component {
           </HeroPage>
           <Footer />
         </Wrapper>
-      </div>
+        <style jsx>
+          {`
+            .post-header {
+              font-family: "Raleway", "Roboto", sans-serif !important;
+              font-size: 2.5rem !important;
+            }
+
+            .ui.breadcrumb a {
+              color: #1b1c1d !important;
+            }
+
+            .ui.breadcrumb a:hover {
+              color: grey !important;
+            }
+
+            .ui.header a {
+              color: #1b1c1d !important;
+            }
+
+            .ui.header a:hover {
+              color: grey !important;
+            }
+
+            img {
+              max-width: 100%;
+              height: auto;
+            }
+
+            .recent-posts {
+              letter-spacing: 3px !important;
+              font-size: 1.5em !important;
+            }
+
+            .link > a {
+              color: #1b1c1d;
+            }
+
+            .link > a:hover {
+              color: grey;
+              text-decoration-line: underline;
+            }
+
+            @media (max-width: 425px) {
+              .hide-if-mobile {
+                display: none !important;
+              }
+            }
+          `}
+        </style>
+      </>
     );
   }
 }

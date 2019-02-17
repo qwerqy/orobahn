@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import NextHead from "next/head";
 import { string } from "prop-types";
 
@@ -32,24 +32,33 @@ const Head = props => (
       <meta property="og:image" content={props.ogImage || defaultOGImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <link
-        href="https://fonts.googleapis.com/css?family=Roboto"
-        rel="stylesheet"
-      />
-      <link
-        rel="stylesheet"
-        href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"
-      />
+      <link rel="manifest" href="/static/manifest.json" />
+      <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
     </NextHead>
     <style jsx global>
       {`
+        @import url("https://fonts.googleapis.com/css?family=Roboto");
         @import url("https://fonts.googleapis.com/css?family=Raleway");
+        @import url("//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css");
 
         body {
           font-family: "Roboto", -apple-system, BlinkMacSystemFont,
             "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto,
             "Segoe UI", Arial, sans-serif !important;
           margin: 0;
+        }
+
+        .ui.breadcrumb a {
+          color: #3a6073;
+        }
+
+        .ui.header a {
+          color: #3a6073;
+        }
+
+        .blogpost-container a {
+          color: #3a6073;
+          font-weight: bold;
         }
 
         p code {
@@ -59,6 +68,10 @@ const Head = props => (
           background-color: #f9f2f4;
           border-radius: 4px;
           font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        }
+
+        img {
+          width: 100%;
         }
 
         pre {
@@ -72,6 +85,97 @@ const Head = props => (
           color: #333333;
           background-color: #f5f5f5;
           font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        }
+
+        .hero-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .hero-header {
+          font-family: "Raleway", "Roboto", sans-serif !important;
+          font-size: 4rem !important;
+          font-weight: 300 !important;
+          margin: 0 !important;
+          letter-spacing: 8px !important;
+          z-index: 100 !important;
+        }
+
+        .hero-caption {
+          font-family: "Roboto", sans-serif !important;
+          font-size: 2rem;
+          font-weight: 300;
+          letter-spacing: 4px !important;
+          color: #fff;
+          text-align: center;
+        }
+
+        .hero-para {
+          font-size: 1.2rem;
+          font-weight: 300;
+          color: #fff;
+        }
+
+        .nav-item {
+          margin: 0 !important;
+        }
+
+        .dropper-right {
+          display: none !important;
+        }
+
+        .mobile-wrapper {
+          display: none !important;
+        }
+
+        @media (min-width: 1024px) {
+          .navbar-container {
+            padding: 1em 15em !important;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .navbar-container {
+            padding: 1em 6em !important;
+          }
+        }
+
+        @media (max-width: 550px) {
+          .right-menu {
+            display: none !important;
+          }
+          .dropper-right {
+            display: block !important;
+          }
+
+          .mobile-wrapper {
+            display: block !important;
+          }
+
+          .desktop-wrapper {
+            display: none !important;
+          }
+        }
+
+        @media (max-width: 430px) {
+          .nav-header {
+            font-size: 0.8rem !important;
+          }
+
+          .nav-item {
+            font-size: 0.8rem !important;
+          }
+          .hero-header {
+            font-size: 2.5rem !important;
+          }
+          .hero-caption {
+            font-size: 1.2rem !important;
+          }
+          .hero-para {
+            display: none !important;
+          }
         }
       `}
     </style>

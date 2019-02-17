@@ -67,14 +67,14 @@ class Contact extends Component {
       }
     };
     return (
-      <div>
+      <>
         <Head
           title="Contact"
           description="If you want to get in touch, send a message!"
           url="https://aminroslan.com/contact"
         />
         <Wrapper dark {...this.props}>
-          <HeroPage dark>
+          <HeroPage gradient>
             <Container style={styles.segment}>
               <Header className="contact-header" textAlign="center" inverted>
                 Let's talk! Send me an email.
@@ -157,7 +157,7 @@ class Contact extends Component {
           </HeroPage>
         </Wrapper>
         <style jsx>{``}</style>
-      </div>
+      </>
     );
   }
 }

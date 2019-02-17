@@ -18,7 +18,7 @@ import Wrapper from "../components/wrapper";
 import Footer from "../components/footer";
 import ShareLinks from "../components/sharelinks";
 import { gaPageTracking, gaUserTracking } from "../analytics";
-import "../assets/blog.css";
+// import "../assets/blog.css";
 
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 
@@ -55,7 +55,7 @@ class Post extends Component {
     const post = this.props.data;
 
     return (
-      <div>
+      <>
         <Head
           title={post.seo_title}
           ogImage={post.featured_image}
@@ -67,7 +67,10 @@ class Post extends Component {
             <Segment style={{ marginTop: "1rem", paddingLeft: 0 }} basic>
               <BlogBreadcrumb title={post.seo_title} />
             </Segment>
-            <Image src={post.featured_image} />
+            <Image
+              src={post.featured_image}
+              alt={`featured image with ${post.slug}`}
+            />
             <Header className="post-header">
               {post.title}
               <Header.Subheader>{post.meta_description}</Header.Subheader>
@@ -85,7 +88,10 @@ class Post extends Component {
               </Moment>
             </Header>
             <Divider />
-            <div dangerouslySetInnerHTML={{ __html: post.body }} />
+            <div
+              className="blogpost-container"
+              dangerouslySetInnerHTML={{ __html: post.body }}
+            />
             <Header sub>Tags:</Header>
             {post.tags.map((tag, i) => {
               return (
@@ -100,7 +106,7 @@ class Post extends Component {
           </Container>
           <Footer />
         </Wrapper>
-      </div>
+      </>
     );
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Fragment } from "react";
+import { Component } from "react";
 import Link from "next/link";
 import { withRouter } from "next/router";
 import {
@@ -10,8 +10,6 @@ import {
   Visibility
 } from "semantic-ui-react";
 import { gaUserTracking } from "../analytics";
-
-import "../assets/nav.css";
 
 const links = [
   { label: "blog", href: "/blog" },
@@ -42,8 +40,6 @@ class DesktopWrapper extends Component {
 
     if (fixedNav) {
       return "white";
-    } else if (solid) {
-      return "#1b1c1d";
     } else {
       return "transparent";
     }
@@ -60,12 +56,20 @@ class DesktopWrapper extends Component {
   };
 
   render() {
-    const { dark, router } = this.props;
+    const { dark, router, solid } = this.props;
     const { fixedNav } = this.state;
     const pathname = router.pathname ? this.pathnameCleaner() : "";
     const styles = {
       segment: {
-        backgroundColor: this.getBackgroundColor(),
+        background: solid ? "#314755" : this.getBackgroundColor(),
+        // eslint-disable-next-line no-dupe-keys
+        background: solid
+          ? "-webkit-linear-gradient(to right, #314755, #26a0da)"
+          : this.getBackgroundColor(),
+        // eslint-disable-next-line no-dupe-keys
+        background: solid
+          ? "linear-gradient(to left, #3A6073, #16222A)"
+          : this.getBackgroundColor(),
         border: 0,
         position: this.getPosition(),
         zIndex: "100",
@@ -137,6 +141,7 @@ class DesktopWrapper extends Component {
           {/* </Transition> */}
         </Visibility>
         {this.props.children}
+        <style jsx>{``}</style>
       </div>
     );
   }
@@ -283,10 +288,11 @@ class MobileWrapper extends Component {
 class Wrapper extends Component {
   render() {
     return (
-      <Fragment>
+      <>
         <DesktopWrapper {...this.props}>{this.props.children}</DesktopWrapper>
         <MobileWrapper {...this.props}>{this.props.children}</MobileWrapper>
-      </Fragment>
+        <style jsx>{``}</style>
+      </>
     );
   }
 }

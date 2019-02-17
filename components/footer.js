@@ -20,7 +20,16 @@ class Footer extends Component {
       <Segment
         inverted
         vertical
-        style={{ backgroundColor: "black", padding: "5em 0em" }}
+        style={{
+          background: "#0F2027" /* fallback for old browsers */,
+          // eslint-disable-next-line no-dupe-keys
+          background:
+            "-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)" /* Chrome 10-25, Safari 5.1-6 */,
+          // eslint-disable-next-line no-dupe-keys
+          background:
+            "linear-gradient(to right, #2C5364, #203A43, #0F2027)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
+          padding: "5em 0em"
+        }}
       >
         <Container>
           <Grid divided inverted stackable>
@@ -65,6 +74,7 @@ class Footer extends Component {
                     as="a"
                     href="https://docs.google.com/document/d/1YGuT2nN_RMYockL5b0A6rK02uw2ZsoiQF8iCWHoQMuE/edit?usp=sharing"
                     target="_blank"
+                    rel="noopener"
                     onClick={() => gaUserTracking("Footer", `Clicked Resume`)}
                   >
                     Resume
@@ -101,9 +111,14 @@ class Footer extends Component {
                 <a
                   href="https://buttercms.com"
                   target="_blank"
+                  rel="noopener"
                   onClick={() => gaUserTracking("Footer", `Clicked ButterCMS`)}
                 >
-                  <Image size="small" src="/static/butter-w.png" />
+                  <Image
+                    size="small"
+                    src="/static/butter-w.png"
+                    alt="ButterCMS Logo"
+                  />
                 </a>
               </Grid.Column>
               <Grid.Column width={3}>
