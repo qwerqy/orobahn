@@ -51,7 +51,7 @@ class Cover extends Component {
             top: 0;
             position: relative;
             background-color: #1b1c1d;
-            background-image: url("/static/background.png");
+            background-image: url("/static/background.webp");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
