@@ -54,6 +54,7 @@ class Cover extends Component {
             background-image: url("/static/background.png");
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
           }
 
           .hero-container {

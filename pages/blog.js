@@ -35,7 +35,10 @@ const BlogPosts = ({ posts, category }) => {
             <Grid stackable>
               <Grid.Row columns={2}>
                 <Grid.Column width={3}>
-                  <Image src={post.featured_image} />
+                  <Image
+                    src={post.featured_image}
+                    alt={`featured image for ${post.slug}`}
+                  />
                 </Grid.Column>
                 <Grid.Column width={13}>
                   <Header as="h2">

@@ -105,7 +105,11 @@ class Footer extends Component {
                   rel="noopener"
                   onClick={() => gaUserTracking("Footer", `Clicked ButterCMS`)}
                 >
-                  <Image size="small" src="/static/butter-w.png" />
+                  <Image
+                    size="small"
+                    src="/static/butter-w.png"
+                    alt="ButterCMS Logo"
+                  />
                 </a>
               </Grid.Column>
               <Grid.Column width={3}>

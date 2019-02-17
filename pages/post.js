@@ -67,7 +67,10 @@ class Post extends Component {
             <Segment style={{ marginTop: "1rem", paddingLeft: 0 }} basic>
               <BlogBreadcrumb title={post.seo_title} />
             </Segment>
-            <Image src={post.featured_image} />
+            <Image
+              src={post.featured_image}
+              alt={`featured image with ${post.slug}`}
+            />
             <Header className="post-header">
               {post.title}
               <Header.Subheader>{post.meta_description}</Header.Subheader>
