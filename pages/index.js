@@ -5,7 +5,7 @@ import Cover from "../components/cover";
 import Wrapper from "../components/wrapper";
 import { gaPageTracking, gaUserTracking } from "../analytics";
 
-import "../assets/index.css";
+// import "../assets/index.css";
 
 import Butter from "buttercms";
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
@@ -31,7 +31,7 @@ class Home extends Component {
     const { fields } = this.props.pageContent.data;
     return (
       <>
-        <Head title="Amin Roslan Online Portfolio" />
+        <Head title="Amin Roslan's Online Portfolio" />
         <Wrapper dark {...this.props}>
           <Cover fields={fields} />
         </Wrapper>

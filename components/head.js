@@ -73,6 +73,49 @@ const Head = props => (
           background-color: #f5f5f5;
           font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
         }
+
+        .hero-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .hero-header {
+          font-family: "Raleway", "Roboto", sans-serif !important;
+          font-size: 4rem !important;
+          font-weight: 300 !important;
+          margin: 0 !important;
+          letter-spacing: 8px !important;
+          z-index: 100 !important;
+        }
+
+        .hero-caption {
+          font-family: "Roboto", sans-serif !important;
+          font-size: 2rem;
+          font-weight: 300;
+          letter-spacing: 4px !important;
+          color: #fff;
+          text-align: center;
+        }
+
+        .hero-para {
+          font-size: 1.2rem;
+          font-weight: 300;
+          color: #fff;
+        }
+
+        @media (max-width: 430px) {
+          .hero-header {
+            font-size: 2.5rem !important;
+          }
+          .hero-caption {
+            font-size: 1.2rem !important;
+          }
+          .hero-para {
+            display: none !important;
+          }
+        }
       `}
     </style>
   </Fragment>

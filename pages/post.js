@@ -18,7 +18,7 @@ import Wrapper from "../components/wrapper";
 import Footer from "../components/footer";
 import ShareLinks from "../components/sharelinks";
 import { gaPageTracking, gaUserTracking } from "../analytics";
-import "../assets/blog.css";
+// import "../assets/blog.css";
 
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 

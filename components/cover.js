@@ -42,9 +42,23 @@ class Cover extends Component {
   render() {
     const { isLoaded } = this.state;
     return (
-      <div className="bg-image">
-        <HeroText dark {...this.props} isLoaded={isLoaded} />
-      </div>
+      <>
+        <div className="bg-image">
+          <HeroText dark {...this.props} isLoaded={isLoaded} />
+        </div>
+        <style jsx>{`
+          .bg-image {
+            height: 100vh;
+            width: 100vw;
+            top: 0;
+            position: relative;
+            background-color: #1b1c1d;
+            background-image: url("/static/background.png");
+            background-size: cover;
+            background-position: center;
+          }
+        `}</style>
+      </>
     );
   }
 }
