@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Header, Grid, Segment } from "semantic-ui-react";
+import { Header, Grid, Segment, Card, Image } from "semantic-ui-react";
 import Link from "next/link";
 import Head from "../components/head";
 import HeroPage from "../components/heropage";
@@ -14,8 +14,6 @@ const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 class Software extends Component {
   static async getInitialProps() {
     const resp = await butter.post.list({
-      page: 1,
-      page_size: 10,
       category_slug: "projects"
     });
     return resp.data;
@@ -105,33 +103,35 @@ class Software extends Component {
             title="projects showcase"
             sub="Showcasing my finished projects some of which are live."
           >
-            {projects.map((project, i) => {
-              return (
-                <Segment key={i}>
-                  <Header>
-                    <Link
-                      prefetch
-                      href={`/post?title=${project.slug}`}
-                      as={`/posts/${project.slug}`}
-                    >
-                      <a
-                        onClick={() =>
-                          gaUserTracking(
-                            "Software Portfolio",
-                            `Clicked ${project.slug} on Projects Showcase`
-                          )
-                        }
+            <Card.Group>
+              {projects.map((project, i) => {
+                return (
+                  <Card>
+                    <Image src={project.featured_image} />
+                    <Card.Content>
+                      <Link
+                        prefetch
+                        href={`/post?title=${project.slug}`}
+                        as={`/posts/${project.slug}`}
                       >
-                        {project.title}
-                      </a>
-                    </Link>
-                    <Header.Subheader>
-                      {project.meta_description}
-                    </Header.Subheader>
-                  </Header>
-                </Segment>
-              );
-            })}
+                        <Card.Header
+                          as="a"
+                          onClick={() =>
+                            gaUserTracking(
+                              "Software Portfolio",
+                              `Clicked ${project.slug} on Projects Showcase`
+                            )
+                          }
+                        >
+                          {project.title}
+                        </Card.Header>
+                      </Link>
+                      <Card.Meta>{project.meta_description}</Card.Meta>
+                    </Card.Content>
+                  </Card>
+                );
+              })}
+            </Card.Group>
           </HeroPage>
           <HeroPage
             title="personal projects"
