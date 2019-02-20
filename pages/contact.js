@@ -120,6 +120,7 @@ class Contact extends Component {
                     content="Don't worry! You can still reach me at amnrsln@gmail.com! Can't wait to hear from you soon!"
                   />
                   <Button
+                    role="button"
                     onClick={() =>
                       gaUserTracking("Contact", `User sent a Message.`)
                     }

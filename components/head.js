@@ -10,6 +10,7 @@ const Head = props => (
   <Fragment>
     <NextHead>
       <meta charSet="UTF-8" />
+      <meta name="theme-color" />
       <title>{props.title || ""}</title>
       <meta
         name="description"

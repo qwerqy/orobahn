@@ -272,7 +272,7 @@ class Blog extends Component {
             <br />
             <div>
               {previous_page && (
-                <Button inverted floated="left">
+                <Button role="button" inverted floated="left">
                   <Link prefetch href={`/?page=${previous_page}`}>
                     <a>Prev Page</a>
                   </Link>
@@ -280,7 +280,7 @@ class Blog extends Component {
               )}
 
               {next_page && (
-                <Button inverted floated="right">
+                <Button role="button" inverted floated="right">
                   <Link prefetch href={`/?page=${next_page}`}>
                     <a>Next Page</a>
                   </Link>
