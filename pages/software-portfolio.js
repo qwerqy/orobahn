@@ -110,7 +110,10 @@ class Software extends Component {
               {projects.map((project, i) => {
                 return (
                   <Card key={i}>
-                    <Image src={project.featured_image} />
+                    <Image
+                      alt="project featured image"
+                      src={project.featured_image}
+                    />
                     <Card.Content>
                       <Link
                         prefetch

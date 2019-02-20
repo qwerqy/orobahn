@@ -103,8 +103,13 @@ const Head = props => (
         }
 
         img {
+          height: auto !important;
+          max-width: 700px !important;
+        }
+
+        .ui.grid > .row > .column > img {
           height: auto;
-          width: 700px;
+          max-width: 100px !important;
         }
 
         pre {

@@ -154,7 +154,13 @@ class Blog extends Component {
             <Grid centered columns={2}>
               <Grid.Row verticalAlign="middle">
                 <Grid.Column tablet={2} computer={2} mobile={4}>
-                  <Image fluid circular src="/static/profile.jpg" />
+                  <Image
+                    className="profic-picture"
+                    fluid
+                    alt="profile picture"
+                    circular
+                    src="/static/profile.jpg"
+                  />
                 </Grid.Column>
                 <Grid.Column tablet={14} computer={14} mobile={12}>
                   <p className="hero-intro">
