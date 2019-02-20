@@ -13,6 +13,7 @@ import { gaUserTracking } from "../analytics";
 
 const links = [
   { label: "blog", href: "/" },
+  { label: "notes", href: "https://amnrsln.gitbook.io/notes/" },
   { label: "software portfolio", href: "/software-portfolio" }
   // { label: "gaming", href: "/gaming" }
 ];
@@ -103,20 +104,36 @@ class DesktopWrapper extends Component {
                 </Link>
                 <Menu.Menu className="right-menu" position="right">
                   {Object.keys(links).map(i => {
-                    return (
-                      <Link prefetch key={i} href={links[i].href}>
+                    if (links[i].label !== "notes") {
+                      return (
+                        <Link prefetch key={i} href={links[i].href}>
+                          <Menu.Item
+                            as="a"
+                            className="nav-item"
+                            key={i}
+                            name={links[i].label}
+                            onClick={() =>
+                              gaUserTracking("Nav", `Clicked ${links[i].label}`)
+                            }
+                            position={links[i].position}
+                          />
+                        </Link>
+                      );
+                    } else {
+                      return (
                         <Menu.Item
                           as="a"
                           className="nav-item"
                           key={i}
+                          href={links[i].href}
                           name={links[i].label}
                           onClick={() =>
                             gaUserTracking("Nav", `Clicked ${links[i].label}`)
                           }
                           position={links[i].position}
                         />
-                      </Link>
-                    );
+                      );
+                    }
                   })}
                 </Menu.Menu>
                 <Menu.Item
