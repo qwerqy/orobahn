@@ -10,7 +10,7 @@ const Head = props => (
   <Fragment>
     <NextHead>
       <meta charSet="UTF-8" />
-      <meta name="theme-color" />
+      <meta name="theme-color" content="#1b1c1d" />
       <title>{props.title || ""}</title>
       <meta
         name="description"
@@ -103,7 +103,8 @@ const Head = props => (
         }
 
         img {
-          width: 100%;
+          height: auto;
+          width: 700px;
         }
 
         pre {
