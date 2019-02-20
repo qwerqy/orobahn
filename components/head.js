@@ -102,9 +102,10 @@ const Head = props => (
           font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
         }
 
-        img {
+        .blogpost-container img {
           height: auto !important;
           max-width: 700px !important;
+          width: 100% !important;
         }
 
         .ui.grid > .row > .column > img {

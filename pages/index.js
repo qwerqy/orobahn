@@ -34,42 +34,43 @@ const BlogPosts = ({ posts, category }) => {
       {(filteredPosts || posts).map(post => {
         return (
           <Segment key={post.created} vertical>
-            {/* <Grid verticleAlign="center" stackable>
+            <Grid verticleAlign="center" stackable>
               <Grid.Row columns={2}>
-                <Grid.Column width={3}> */}
-            {/* <Image
+                <Grid.Column width={3}>
+                  <Image
+                    style={{ maxWidth: "100px" }}
                     src={post.featured_image}
                     alt={`featured image for ${post.slug}`}
                   />
                 </Grid.Column>
-                <Grid.Column width={13}> */}
-            <Header as="h2">
-              <Link
-                prefetch
-                href={`/post?title=${post.slug}`}
-                as={`/posts/${post.slug}`}
-              >
-                <a
-                  onClick={() =>
-                    gaUserTracking(
-                      "Blog",
-                      `Opened ${post.seo_title} through Blog timeline`
-                    )
-                  }
-                >
-                  {post.seo_title}
-                </a>
-              </Link>
-              <Header.Subheader sub>
-                <Moment format="D MMM YYYY" withTitle>
-                  {post.published}
-                </Moment>
-              </Header.Subheader>
-            </Header>
-            {post.summary}
-            {/* </Grid.Column>
+                <Grid.Column width={13}>
+                  <Header as="h2">
+                    <Link
+                      prefetch
+                      href={`/post?title=${post.slug}`}
+                      as={`/posts/${post.slug}`}
+                    >
+                      <a
+                        onClick={() =>
+                          gaUserTracking(
+                            "Blog",
+                            `Opened ${post.seo_title} through Blog timeline`
+                          )
+                        }
+                      >
+                        {post.seo_title}
+                      </a>
+                    </Link>
+                    <Header.Subheader sub>
+                      <Moment format="D MMM YYYY" withTitle>
+                        {post.published}
+                      </Moment>
+                    </Header.Subheader>
+                  </Header>
+                  {post.summary}
+                </Grid.Column>
               </Grid.Row>
-            </Grid> */}
+            </Grid>
 
             <br />
             {/* <Truncate

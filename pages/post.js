@@ -68,6 +68,7 @@ class Post extends Component {
               <BlogBreadcrumb title={post.seo_title} />
             </Segment>
             <Image
+              style={{ maxWidth: "700px" }}
               src={post.featured_image}
               alt={`featured image with ${post.slug}`}
             />
