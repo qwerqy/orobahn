@@ -8,7 +8,8 @@ import {
   Header,
   Breadcrumb,
   Button,
-  Image
+  Image,
+  Icon
   // Responsive
 } from "semantic-ui-react";
 import Head from "../components/head";
@@ -243,6 +244,26 @@ class Blog extends Component {
                   }}
                 >
                   <i>Guides</i>
+                </a>
+              </Breadcrumb.Section>
+              <Breadcrumb.Divider />
+              <Breadcrumb.Section
+                className="breadcrumb-link"
+                active={isActive === "notes"}
+              >
+                <a
+                  href="https://amnrsln.gitbook.io/notes/"
+                  target="_blank"
+                  rel="noopener"
+                  onClick={() => {
+                    this.setState({
+                      isActive: "notes"
+                    });
+                  }}
+                >
+                  <i>
+                    Notes <Icon size="small" name="external alternate" />
+                  </i>
                 </a>
               </Breadcrumb.Section>
             </Breadcrumb>
