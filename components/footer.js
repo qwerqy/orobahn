@@ -21,23 +21,23 @@ class Footer extends Component {
         inverted
         vertical
         style={{
-          background: "#0F2027" /* fallback for old browsers */,
-          // eslint-disable-next-line no-dupe-keys
-          background:
-            "-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)" /* Chrome 10-25, Safari 5.1-6 */,
-          // eslint-disable-next-line no-dupe-keys
-          background:
-            "linear-gradient(to right, #2C5364, #203A43, #0F2027)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
+          // background: "#3494e6" /* fallback for old browsers */,
+          // // eslint-disable-next-line no-dupe-keys
+          // background:
+          //   "-webkit-linear-gradient(to right, #3494e6, #ec6ead)" /* Chrome 10-25, Safari 5.1-6 */,
+          // // eslint-disable-next-line no-dupe-keys
+          // background:
+          //   "linear-gradient(to right, #3494e6, #ec6ead)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
           padding: "5em 0em"
         }}
       >
-        <Container>
+        <Container text>
           <Grid divided inverted stackable>
             <Grid.Row>
-              <Grid.Column width={3}>
+              <Grid.Column width={4}>
                 <Header inverted as="h4" content="About" />
                 <List link inverted>
-                  <Link prefetch href="/software">
+                  <Link prefetch href="/software-portfolio">
                     <List.Item
                       as="a"
                       onClick={() =>
@@ -59,7 +59,7 @@ class Footer extends Component {
                   </Link>
                 </List>
               </Grid.Column>
-              <Grid.Column width={3}>
+              <Grid.Column width={4}>
                 <Header inverted as="h4" content="Services" />
                 <List link inverted>
                   <List.Item
@@ -81,7 +81,7 @@ class Footer extends Component {
                   </List.Item>
                 </List>
               </Grid.Column>
-              <Grid.Column width={4}>
+              <Grid.Column width={6}>
                 <Header as="h4" inverted>
                   Social Media
                 </Header>
@@ -119,51 +119,6 @@ class Footer extends Component {
                     src="/static/butter-w.png"
                     alt="ButterCMS Logo"
                   />
-                </a>
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <Header as="h4" inverted>
-                  Background Image by
-                </Header>
-                <a
-                  style={{
-                    backgroundColor: "#252525",
-                    color: "white",
-                    textDecoration: "none",
-                    padding: "4px 6px",
-                    fontFamily:
-                      '-apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif',
-                    fontSize: "12px",
-                    fontWeight: "bold",
-                    lineHeight: 1.2,
-                    display: "inline-block",
-                    borderRadius: "3px"
-                  }}
-                  href="https://unsplash.com/@adrienolichon?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Download free do whatever you want high-resolution photos from Adrien Olichon"
-                >
-                  <span style={{ display: "inline-block", padding: "2px 3px" }}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      style={{
-                        height: "12px",
-                        width: "auto",
-                        position: "relative",
-                        verticalAlign: "middle",
-                        top: "-2px",
-                        fill: "white"
-                      }}
-                      viewBox="0 0 32 32"
-                    >
-                      <title>unsplash-logo</title>
-                      <path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z" />
-                    </svg>
-                  </span>
-                  <span style={{ display: "inline-block", padding: "2px 3px" }}>
-                    Adrien Olichon
-                  </span>
                 </a>
               </Grid.Column>
             </Grid.Row>

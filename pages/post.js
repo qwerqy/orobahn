@@ -26,7 +26,7 @@ const BlogBreadcrumb = props => {
   return (
     <Breadcrumb>
       <Breadcrumb.Section>
-        <Link prefetch href="/blog">
+        <Link prefetch href="/">
           <a
             onClick={() => gaUserTracking("Post", `Clicked Blog breadcrumb`)}
             style={{ color: "grey" }}
@@ -57,12 +57,12 @@ class Post extends Component {
     return (
       <>
         <Head
-          title={post.seo_title}
+          title={`Amin Roslan - ${post.seo_title}`}
           ogImage={post.featured_image}
           url={`https://aminroslan.com/posts/${post.slug}`}
           description={post.meta_description}
         />
-        <Wrapper dark solid {...this.props}>
+        <Wrapper solid {...this.props}>
           <Container style={{ marginBottom: "3rem" }} text>
             <Segment style={{ marginTop: "1rem", paddingLeft: 0 }} basic>
               <BlogBreadcrumb title={post.seo_title} />
@@ -71,7 +71,7 @@ class Post extends Component {
               src={post.featured_image}
               alt={`featured image with ${post.slug}`}
             />
-            <Header className="post-header">
+            <Header as="h1" className="post-header">
               {post.title}
               <Header.Subheader>{post.meta_description}</Header.Subheader>
             </Header>

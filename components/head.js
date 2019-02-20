@@ -39,6 +39,7 @@ const Head = props => (
       {`
         @import url("https://fonts.googleapis.com/css?family=Roboto");
         @import url("https://fonts.googleapis.com/css?family=Raleway");
+        @import url("https://fonts.googleapis.com/css?family=Merriweather");
         @import url("//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css");
 
         body {
@@ -46,6 +47,16 @@ const Head = props => (
             "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto,
             "Segoe UI", Arial, sans-serif !important;
           margin: 0;
+          background: #fafafa;
+        }
+
+        a:hover {
+          color: #3494e6 !important;
+        }
+
+        .hero-intro {
+          color: #1b1c1d;
+          font-family: "Merriweather", "Times New Roman", serif;
         }
 
         .ui.secondary.inverted.pointing.menu {
@@ -53,16 +64,32 @@ const Head = props => (
         }
 
         .ui.breadcrumb a {
-          color: #3a6073;
+          color: #1b1c1d;
+        }
+
+        .ui.breadcrumb .active.section {
+          color: #3494e6;
+        }
+
+        .ui.breadcrumb a:hover {
+          color: #3494e6 !important;
         }
 
         .ui.header a {
-          color: #3a6073;
+          color: #3494e6;
+        }
+
+        .ui.header a:hover {
+          color: #3494e6 !important;
+        }
+
+        .post-header {
+          color: #3494e6 !important;
         }
 
         .blogpost-container a {
-          color: #3a6073;
-          font-weight: bold;
+          color: #3494e6;
+          text-decoration: underline;
         }
 
         p code {
@@ -164,6 +191,9 @@ const Head = props => (
         }
 
         @media (max-width: 430px) {
+          .hero-intro {
+            font-size: 0.9rem;
+          }
           .nav-header {
             font-size: 0.8rem !important;
           }

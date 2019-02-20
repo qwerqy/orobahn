@@ -69,14 +69,14 @@ class Contact extends Component {
     return (
       <>
         <Head
-          title="Contact"
+          title="Amin Roslan - Contact"
           description="If you want to get in touch, send a message!"
           url="https://aminroslan.com/contact"
         />
-        <Wrapper dark {...this.props}>
-          <HeroPage gradient>
+        <Wrapper {...this.props}>
+          <HeroPage>
             <Container style={styles.segment}>
-              <Header className="contact-header" textAlign="center" inverted>
+              <Header className="contact-header" textAlign="center">
                 Let's talk! Send me an email.
               </Header>
               <Segment as={Container} text>
@@ -144,7 +144,7 @@ class Contact extends Component {
                             `Clicked Social Media button: ${link.icon}`
                           )
                         }
-                        style={{ textDecoration: "none", color: "white" }}
+                        style={{ textDecoration: "none", color: "#1b1c1d" }}
                         href={link.link}
                       >
                         <Icon size="large" name={link.icon} />
