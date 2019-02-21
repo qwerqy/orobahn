@@ -56,47 +56,191 @@ class Software extends Component {
             <Grid stackable columns={3}>
               <Grid.Row>
                 <Grid.Column>
-                  <Segment>
+                  <Segment
+                    style={{
+                      background: store.darkMode ? "#232323" : "#fff",
+                      webkitBoxShadow: store.darkMode
+                        ? "0 1px 3px 0 black"
+                        : "0 1px 3px 0 #d4d4d5"
+                    }}
+                    inverted={store.darkMode}
+                  >
                     <Header textAlign="center">Front End</Header>
                   </Segment>
                   <Segment.Group>
-                    <Segment>React & Vue</Segment>
-                    <Segment>React Native</Segment>
-                    <Segment>Javascript (Vanilla & ES6+)</Segment>
-                    <Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      React & Vue
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      React Native
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      Javascript (Vanilla & ES6+)
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
                       CSS Frameworks such as Semantic UI, Bootstrap, etc.
                     </Segment>
-                    <Segment>HTML & CSS</Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      HTML & CSS
+                    </Segment>
                   </Segment.Group>
                 </Grid.Column>
                 <Grid.Column>
-                  <Segment>
+                  <Segment
+                    style={{
+                      background: store.darkMode ? "#232323" : "#fff",
+                      webkitBoxShadow: store.darkMode
+                        ? "0 1px 3px 0 black"
+                        : "0 1px 3px 0 #d4d4d5"
+                    }}
+                    inverted={store.darkMode}
+                  >
                     <Header textAlign="center">Back End</Header>
                   </Segment>
                   <Segment.Group>
-                    <Segment>NodeJS such as Express & Koa</Segment>
-                    <Segment>Ruby such as Rails & Sinatra</Segment>
-                    <Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      NodeJS such as Express & Koa
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      Ruby such as Rails & Sinatra
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
                       Cloud database such as MongoDB Atlas & Firestore. Local
                       database such as Postgresql
                     </Segment>
-                    <Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
                       Deployments to Heroku, Now.sh, Netlify, etc
                     </Segment>
-                    <Segment>Server Side Rendering</Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      Server Side Rendering
+                    </Segment>
                   </Segment.Group>
                 </Grid.Column>
                 <Grid.Column>
-                  <Segment>
+                  <Segment
+                    style={{
+                      background: store.darkMode ? "#232323" : "#fff",
+                      webkitBoxShadow: store.darkMode
+                        ? "0 1px 3px 0 black"
+                        : "0 1px 3px 0 #d4d4d5"
+                    }}
+                    inverted={store.darkMode}
+                  >
                     <Header textAlign="center">Dev Ops</Header>
                   </Segment>
                   <Segment.Group>
-                    <Segment>Docker, Docker Compose, Docker Machine</Segment>
-                    <Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      Docker, Docker Compose, Docker Machine
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
                       Traefik, Nginx for reverse proxy & LetsEncrypt for SSL
                       cert
                     </Segment>
-                    <Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
                       VPS such as DigitalOcean Droplet & AWS Lightsail
                     </Segment>
                   </Segment.Group>
