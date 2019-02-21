@@ -30,14 +30,14 @@ const BlogBreadcrumb = observer(props => {
         <Link prefetch href="/">
           <a
             onClick={() => gaUserTracking("Post", `Clicked Blog breadcrumb`)}
-            style={{ color: props.store.darkMode ? "#darkgrey" : "grey" }}
+            style={{ color: props.store.darkMode ? "darkgrey" : "grey" }}
           >
             Blog
           </a>
         </Link>
       </Breadcrumb.Section>
       <Breadcrumb.Divider
-        style={{ color: props.store.darkMode ? "#darkgrey" : "grey" }}
+        style={{ color: props.store.darkMode ? "darkgrey" : "grey" }}
       >
         /
       </Breadcrumb.Divider>

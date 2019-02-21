@@ -166,7 +166,7 @@ class Blog extends Component {
                 </a>
               </Breadcrumb.Section>
               <Breadcrumb.Divider
-                style={{ color: store.darkMode ? "#darkgrey" : "grey" }}
+                style={{ color: store.darkMode ? "darkgrey" : "grey" }}
               />
               <Breadcrumb.Section
                 className="breadcrumb-link"
@@ -184,7 +184,7 @@ class Blog extends Component {
                 </a>
               </Breadcrumb.Section>
               <Breadcrumb.Divider
-                style={{ color: store.darkMode ? "#darkgrey" : "grey" }}
+                style={{ color: store.darkMode ? "darkgrey" : "grey" }}
               />
               <Breadcrumb.Section
                 className="breadcrumb-link"
@@ -205,7 +205,7 @@ class Blog extends Component {
                 </a>
               </Breadcrumb.Section>
               <Breadcrumb.Divider
-                style={{ color: store.darkMode ? "#darkgrey" : "grey" }}
+                style={{ color: store.darkMode ? "darkgrey" : "grey" }}
               />
               <Breadcrumb.Section
                 className="breadcrumb-link"
@@ -226,7 +226,7 @@ class Blog extends Component {
                 </a>
               </Breadcrumb.Section>
               <Breadcrumb.Divider
-                style={{ color: store.darkMode ? "#darkgrey" : "grey" }}
+                style={{ color: store.darkMode ? "darkgrey" : "grey" }}
               />
               <Breadcrumb.Section
                 className="breadcrumb-link"
@@ -277,55 +277,6 @@ class Blog extends Component {
           </HeroPage>
           <Footer />
         </Wrapper>
-        <style jsx>
-          {`
-            .post-header {
-              font-family: "Raleway", "Roboto", sans-serif !important;
-              font-size: 2.5rem !important;
-            }
-
-            .ui.breadcrumb a {
-              color: #1b1c1d !important;
-            }
-
-            .ui.breadcrumb a:hover {
-              color: #3494e6 !important;
-            }
-
-            .ui.header a {
-              color: #1b1c1d !important;
-            }
-
-            .ui.header a:hover {
-              color: #3494e6 !important;
-            }
-
-            img {
-              max-width: 100%;
-              height: auto;
-            }
-
-            .recent-posts {
-              letter-spacing: 3px !important;
-              font-size: 1.5em !important;
-            }
-
-            .link > a {
-              color: #1b1c1d;
-            }
-
-            .link > a:hover {
-              color: grey;
-              text-decoration-line: underline;
-            }
-
-            @media (max-width: 425px) {
-              .hide-if-mobile {
-                display: none !important;
-              }
-            }
-          `}
-        </style>
       </>
     );
   }
