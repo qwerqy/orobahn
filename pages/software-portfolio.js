@@ -9,8 +9,11 @@ import Projects from "../components/projects";
 import HeroHeader from "../components/heroheader";
 import { gaPageTracking, gaUserTracking } from "../analytics";
 import Butter from "buttercms";
+import { inject, observer } from "mobx-react";
 
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
+@inject("store")
+@observer
 class Software extends Component {
   static async getInitialProps() {
     const resp = await butter.post.list({
@@ -33,6 +36,7 @@ class Software extends Component {
 
   render() {
     const projects = this.props.data;
+    const { store } = this.props;
     return (
       <div>
         <Head
@@ -40,9 +44,10 @@ class Software extends Component {
           description="Amin Roslan's Software Portfolio"
           url="https://aminroslan.com/software-portfolio"
         />
-        <Wrapper {...this.props}>
-          <HeroHeader title="Software Portfolio." />
+        <Wrapper store={store} {...this.props}>
+          <HeroHeader store={store} title="Software Portfolio." />
           <HeroPage
+            store={store}
             contain
             title="skillset"
             size="half"
@@ -51,47 +56,191 @@ class Software extends Component {
             <Grid stackable columns={3}>
               <Grid.Row>
                 <Grid.Column>
-                  <Segment>
+                  <Segment
+                    style={{
+                      background: store.darkMode ? "#232323" : "#fff",
+                      webkitBoxShadow: store.darkMode
+                        ? "0 1px 3px 0 black"
+                        : "0 1px 3px 0 #d4d4d5"
+                    }}
+                    inverted={store.darkMode}
+                  >
                     <Header textAlign="center">Front End</Header>
                   </Segment>
                   <Segment.Group>
-                    <Segment>React & Vue</Segment>
-                    <Segment>React Native</Segment>
-                    <Segment>Javascript (Vanilla & ES6+)</Segment>
-                    <Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      React & Vue
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      React Native
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      Javascript (Vanilla & ES6+)
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
                       CSS Frameworks such as Semantic UI, Bootstrap, etc.
                     </Segment>
-                    <Segment>HTML & CSS</Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      HTML & CSS
+                    </Segment>
                   </Segment.Group>
                 </Grid.Column>
                 <Grid.Column>
-                  <Segment>
+                  <Segment
+                    style={{
+                      background: store.darkMode ? "#232323" : "#fff",
+                      webkitBoxShadow: store.darkMode
+                        ? "0 1px 3px 0 black"
+                        : "0 1px 3px 0 #d4d4d5"
+                    }}
+                    inverted={store.darkMode}
+                  >
                     <Header textAlign="center">Back End</Header>
                   </Segment>
                   <Segment.Group>
-                    <Segment>NodeJS such as Express & Koa</Segment>
-                    <Segment>Ruby such as Rails & Sinatra</Segment>
-                    <Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      NodeJS such as Express & Koa
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      Ruby such as Rails & Sinatra
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
                       Cloud database such as MongoDB Atlas & Firestore. Local
                       database such as Postgresql
                     </Segment>
-                    <Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
                       Deployments to Heroku, Now.sh, Netlify, etc
                     </Segment>
-                    <Segment>Server Side Rendering</Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      Server Side Rendering
+                    </Segment>
                   </Segment.Group>
                 </Grid.Column>
                 <Grid.Column>
-                  <Segment>
+                  <Segment
+                    style={{
+                      background: store.darkMode ? "#232323" : "#fff",
+                      webkitBoxShadow: store.darkMode
+                        ? "0 1px 3px 0 black"
+                        : "0 1px 3px 0 #d4d4d5"
+                    }}
+                    inverted={store.darkMode}
+                  >
                     <Header textAlign="center">Dev Ops</Header>
                   </Segment>
                   <Segment.Group>
-                    <Segment>Docker, Docker Compose, Docker Machine</Segment>
-                    <Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
+                      Docker, Docker Compose, Docker Machine
+                    </Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
                       Traefik, Nginx for reverse proxy & LetsEncrypt for SSL
                       cert
                     </Segment>
-                    <Segment>
+                    <Segment
+                      style={{
+                        background: store.darkMode ? "#232323" : "#fff",
+                        webkitBoxShadow: store.darkMode
+                          ? "0 1px 3px 0 black"
+                          : "0 1px 3px 0 #d4d4d5"
+                      }}
+                      inverted={store.darkMode}
+                    >
                       VPS such as DigitalOcean Droplet & AWS Lightsail
                     </Segment>
                   </Segment.Group>
@@ -100,6 +249,7 @@ class Software extends Component {
             </Grid>
           </HeroPage>
           <HeroPage
+            store={store}
             contain
             size="half"
             title="projects showcase"
@@ -109,7 +259,15 @@ class Software extends Component {
             <Card.Group doubling stackable itemsPerRow={3}>
               {projects.map((project, i) => {
                 return (
-                  <Card key={i}>
+                  <Card
+                    style={{
+                      backgroundColor: store.darkMode ? "#232323" : "#fff",
+                      webkitBoxShadow: store.darkMode
+                        ? "0 1px 3px 0 black"
+                        : "0 1px 3px 0 #d4d4d5"
+                    }}
+                    key={i}
+                  >
                     <Image
                       alt="project featured image"
                       src={project.featured_image}
@@ -121,6 +279,7 @@ class Software extends Component {
                         as={`/posts/${project.slug}`}
                       >
                         <Card.Header
+                          style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}
                           as="a"
                           onClick={() =>
                             gaUserTracking(
@@ -132,7 +291,13 @@ class Software extends Component {
                           {project.title}
                         </Card.Header>
                       </Link>
-                      <Card.Meta>{project.meta_description}</Card.Meta>
+                      <Card.Meta
+                        style={{
+                          color: store.darkMode ? "darkgrey" : "#1b1c1d"
+                        }}
+                      >
+                        {project.meta_description}
+                      </Card.Meta>
                     </Card.Content>
                   </Card>
                 );
@@ -140,11 +305,12 @@ class Software extends Component {
             </Card.Group>
           </HeroPage>
           <HeroPage
+            store={store}
             contain
             title="personal projects"
             sub="Project repos from my github which are public."
           >
-            <Projects />
+            <Projects store={store} />
           </HeroPage>
           <Footer />
         </Wrapper>

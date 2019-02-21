@@ -14,7 +14,10 @@ import Wrapper from "../components/wrapper";
 import HeroPage from "../components/heropage";
 import { links } from "../components/helpers/index";
 import { gaPageTracking, gaUserTracking } from "../analytics";
+import { inject, observer } from "mobx-react";
 
+@inject("store")
+@observer
 class Contact extends Component {
   state = {
     formStatus: ""
@@ -61,6 +64,7 @@ class Contact extends Component {
   }
 
   render() {
+    const { store } = this.props;
     const styles = {
       segment: {
         marginTop: "4rem"
@@ -73,14 +77,28 @@ class Contact extends Component {
           description="If you want to get in touch, send a message!"
           url="https://aminroslan.com/contact"
         />
-        <Wrapper {...this.props}>
-          <HeroPage>
+        <Wrapper store={store} {...this.props}>
+          <HeroPage store={store}>
             <Container style={styles.segment}>
-              <Header className="contact-header" textAlign="center">
+              <Header
+                inverted={store.darkMode}
+                className="contact-header"
+                textAlign="center"
+              >
                 Let's talk! Send me an email.
               </Header>
-              <Segment as={Container} text>
+              <Segment
+                style={{
+                  backgroundColor: store.darkMode ? "#232323" : "#fff",
+                  webkitBoxShadow: store.darkMode
+                    ? "0 1px 3px 0 black"
+                    : "0 1px 3px 0 #d4d4d5"
+                }}
+                as={Container}
+                text
+              >
                 <Form
+                  inverted={store.darkMode}
                   error={this.state.formStatus === "error" ? true : false}
                   success={this.state.formStatus === "success" ? true : false}
                   id="contact-form"
@@ -121,6 +139,7 @@ class Contact extends Component {
                   />
                   <Button
                     role="button"
+                    color={store.darkMode ? "blue" : "black"}
                     onClick={() =>
                       gaUserTracking("Contact", `User sent a Message.`)
                     }
@@ -148,7 +167,11 @@ class Contact extends Component {
                         style={{ textDecoration: "none", color: "#1b1c1d" }}
                         href={link.link}
                       >
-                        <Icon size="large" name={link.icon} />
+                        <Icon
+                          inverted={store.darkMode}
+                          size="large"
+                          name={link.icon}
+                        />
                       </a>
                     </List.Item>
                   );

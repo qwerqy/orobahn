@@ -1,15 +1,16 @@
 import { Component } from "react";
 import { Segment, Container, Header } from "semantic-ui-react";
 import { string } from "prop-types";
+import { observer } from "mobx-react";
 
-// import "../assets/cover.css";
+@observer
 class HeroHeader extends Component {
   capitalizeTitle = title => {
     return title ? title.toUpperCase() : null;
   };
 
   render() {
-    const { title } = this.props;
+    const { title, store } = this.props;
     const styles = {
       segment: {
         borderRadius: 0,
@@ -38,10 +39,11 @@ class HeroHeader extends Component {
 
     return (
       <>
-        <Segment style={styles.segment}>
+        <Segment inverted={store.darkMode} style={styles.segment}>
           <Container text style={{ zIndex: 100 }}>
             {title && (
               <Header
+                inverted={store.darkMode}
                 style={{
                   fontFamily: '"Merriweather", "Times New Roman", serif'
                 }}

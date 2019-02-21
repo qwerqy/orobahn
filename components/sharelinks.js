@@ -13,11 +13,15 @@ import {
 } from "react-share";
 import { gaUserTracking } from "../analytics";
 
-const ShareLinks = ({ post }) => {
+const ShareLinks = ({ post, store }) => {
   const shareUrl = `https://aminroslan.com/posts/${post.slug}`;
   return (
     <Fragment>
-      <Label color="black" style={{ marginBottom: "5px" }} as="a">
+      <Label
+        color={store.darkMode ? "blue" : "black"}
+        style={{ marginBottom: "5px" }}
+        as="a"
+      >
         <FacebookShareButton
           name="facebook button"
           role="button"
@@ -31,7 +35,11 @@ const ShareLinks = ({ post }) => {
         </FacebookShareButton>
       </Label>
 
-      <Label color="black" style={{ marginBottom: "5px" }} as="a">
+      <Label
+        color={store.darkMode ? "blue" : "black"}
+        style={{ marginBottom: "5px" }}
+        as="a"
+      >
         <LinkedinShareButton
           name="linked in button"
           role="button"
@@ -45,7 +53,11 @@ const ShareLinks = ({ post }) => {
         </LinkedinShareButton>
       </Label>
 
-      <Label color="black" style={{ marginBottom: "5px" }} as="a">
+      <Label
+        color={store.darkMode ? "blue" : "black"}
+        style={{ marginBottom: "5px" }}
+        as="a"
+      >
         <TwitterShareButton
           name="twitter button"
           role="button"
@@ -59,7 +71,11 @@ const ShareLinks = ({ post }) => {
         </TwitterShareButton>
       </Label>
 
-      <Label color="black" style={{ marginBottom: "5px" }} as="a">
+      <Label
+        color={store.darkMode ? "blue" : "black"}
+        style={{ marginBottom: "5px" }}
+        as="a"
+      >
         <TelegramShareButton
           name="telegram button"
           role="button"
@@ -73,7 +89,11 @@ const ShareLinks = ({ post }) => {
         </TelegramShareButton>
       </Label>
 
-      <Label color="black" style={{ marginBottom: "5px" }} as="a">
+      <Label
+        color={store.darkMode ? "blue" : "black"}
+        style={{ marginBottom: "5px" }}
+        as="a"
+      >
         <WhatsappShareButton
           name="whatsapp button"
           role="button"
@@ -87,7 +107,11 @@ const ShareLinks = ({ post }) => {
         </WhatsappShareButton>
       </Label>
 
-      <Label color="black" style={{ marginBottom: "5px" }} as="a">
+      <Label
+        color={store.darkMode ? "blue" : "black"}
+        style={{ marginBottom: "5px" }}
+        as="a"
+      >
         <PinterestShareButton
           name="pinterest button"
           role="button"
@@ -101,7 +125,11 @@ const ShareLinks = ({ post }) => {
         </PinterestShareButton>
       </Label>
 
-      <Label color="black" style={{ marginBottom: "5px" }} as="a">
+      <Label
+        color={store.darkMode ? "blue" : "black"}
+        style={{ marginBottom: "5px" }}
+        as="a"
+      >
         <RedditShareButton
           role="button"
           style={{ display: "inline-block" }}
@@ -114,7 +142,11 @@ const ShareLinks = ({ post }) => {
         </RedditShareButton>
       </Label>
 
-      <Label color="black" style={{ marginBottom: "5px" }} as="a">
+      <Label
+        color={store.darkMode ? "blue" : "black"}
+        style={{ marginBottom: "5px" }}
+        as="a"
+      >
         <TumblrShareButton
           name="tumblr button"
           role="button"
@@ -128,7 +160,11 @@ const ShareLinks = ({ post }) => {
         </TumblrShareButton>
       </Label>
 
-      <Label color="black" style={{ marginBottom: "5px" }} as="a">
+      <Label
+        color={store.darkMode ? "blue" : "black"}
+        style={{ marginBottom: "5px" }}
+        as="a"
+      >
         <EmailShareButton
           name="email button"
           role="button"
