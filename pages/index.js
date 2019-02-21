@@ -12,6 +12,8 @@ import {
   Icon
   // Responsive
 } from "semantic-ui-react";
+import { autorun } from "mobx";
+import { inject, observer } from "mobx-react";
 import Head from "../components/head";
 import HeroPage from "../components/heropage";
 import Footer from "../components/footer";
@@ -19,11 +21,12 @@ import HeroHeader from "../components/heroheader";
 import Wrapper from "../components/wrapper";
 // import Truncate from "react-truncate";
 import { gaPageTracking, gaUserTracking } from "../analytics";
+import NProgress from "nprogress";
 
 import Butter from "buttercms";
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 
-const BlogPosts = ({ posts, category }) => {
+const BlogPosts = observer(({ posts, category, store }) => {
   const filteredPosts =
     category !== ""
       ? posts.filter(post => post.categories[0].slug === category)
@@ -33,17 +36,8 @@ const BlogPosts = ({ posts, category }) => {
     <>
       {(filteredPosts || posts).map(post => {
         return (
-          <Segment key={post.created} vertical>
-            {/* <Grid verticleAlign="center" stackable>
-              <Grid.Row columns={2}>
-                <Grid.Column width={3}> */}
-            {/* <Image
-                    src={post.featured_image}
-                    alt={`featured image for ${post.slug}`}
-                  />
-                </Grid.Column>
-                <Grid.Column width={13}> */}
-            <Header as="h2">
+          <Segment inverted={store.darkMode} key={post.created} vertical>
+            <Header inverted={store.darkMode} as="h2">
               <Link
                 prefetch
                 href={`/post?title=${post.slug}`}
@@ -67,49 +61,16 @@ const BlogPosts = ({ posts, category }) => {
               </Header.Subheader>
             </Header>
             {post.summary}
-            {/* </Grid.Column>
-              </Grid.Row>
-            </Grid> */}
-
             <br />
-            {/* <Truncate
-              lines={5}
-              ellipsis={
-                <span>
-                  ...{" "}
-                  <Header sub style={{ marginTop: "1rem" }}>
-                    <Link
-                      prefetch
-                      href={`/post?title=${post.slug}`}
-                      as={`/posts/${post.slug}`}
-                    >
-                      <a
-                        onClick={() =>
-                          gaUserTracking(
-                            "Home",
-                            `Clicked ${post.slug} on Homepage.`
-                          )
-                        }
-                      >
-                        Read more
-                      </a>
-                    </Link>
-                  </Header>
-                </span>
-              }
-            >
-              <div
-                className="blogpost-container"
-                dangerouslySetInnerHTML={{ __html: post.body }}
-              />
-            </Truncate> */}
           </Segment>
         );
       })}
     </>
   );
-};
+});
 
+@inject("store")
+@observer
 class Blog extends Component {
   static async getInitialProps({ query }) {
     let page = query.page || 1;
@@ -133,11 +94,8 @@ class Blog extends Component {
     this.setState({ showNav: true });
   };
 
-  componentDidMount() {
-    gaPageTracking("/blog");
-  }
-
   render() {
+    const { store } = this.props;
     const { next_page, previous_page } = this.props.meta;
     const posts = this.props.data;
     const { category, isActive } = this.state;
@@ -149,8 +107,8 @@ class Blog extends Component {
           url="https://aminroslan.com/"
           description="Amin Roslan's Software Portfolio"
         />
-        <Wrapper {...this.props}>
-          <HeroHeader>
+        <Wrapper store={store} {...this.props}>
+          <HeroHeader store={store}>
             <Grid centered columns={2}>
               <Grid.Row verticalAlign="middle">
                 <Grid.Column tablet={2} computer={2} mobile={4}>
@@ -163,14 +121,19 @@ class Blog extends Component {
                   />
                 </Grid.Column>
                 <Grid.Column tablet={14} computer={14} mobile={12}>
-                  <p className="hero-intro">
+                  <p
+                    style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}
+                    className="hero-intro"
+                  >
                     <b>
                       <span style={{ color: "#3494E6" }}>Amin Roslan</span>
                     </b>{" "}
                     is a Software Engineer for{" "}
                     <b>
                       <a
-                        style={{ color: "#1b1c1d" }}
+                        style={{
+                          color: store.darkMode ? "lightgrey" : "#1b1c1d"
+                        }}
                         href="https://vase.ai"
                         rel="noopener"
                         target="_blank"
@@ -185,7 +148,7 @@ class Blog extends Component {
               </Grid.Row>
             </Grid>
           </HeroHeader>
-          <HeroPage contain>
+          <HeroPage store={store} contain>
             <Breadcrumb size="huge">
               <Breadcrumb.Section
                 className="breadcrumb-link"
@@ -193,6 +156,7 @@ class Blog extends Component {
               >
                 <a
                   href="#"
+                  style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}
                   onClick={e => {
                     e.preventDefault();
                     this.setState({ category: "", isActive: "all" });
@@ -201,13 +165,16 @@ class Blog extends Component {
                   <i>All</i>
                 </a>
               </Breadcrumb.Section>
-              <Breadcrumb.Divider />
+              <Breadcrumb.Divider
+                style={{ color: store.darkMode ? "#darkgrey" : "grey" }}
+              />
               <Breadcrumb.Section
                 className="breadcrumb-link"
                 active={isActive === "journal"}
               >
                 <a
                   href="#"
+                  style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}
                   onClick={e => {
                     e.preventDefault();
                     this.setState({ category: "journal", isActive: "journal" });
@@ -216,13 +183,16 @@ class Blog extends Component {
                   <i>Journal</i>
                 </a>
               </Breadcrumb.Section>
-              <Breadcrumb.Divider />
+              <Breadcrumb.Divider
+                style={{ color: store.darkMode ? "#darkgrey" : "grey" }}
+              />
               <Breadcrumb.Section
                 className="breadcrumb-link"
                 active={isActive === "projects"}
               >
                 <a
                   href="#"
+                  style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}
                   onClick={e => {
                     e.preventDefault();
                     this.setState({
@@ -234,13 +204,16 @@ class Blog extends Component {
                   <i>Projects</i>
                 </a>
               </Breadcrumb.Section>
-              <Breadcrumb.Divider />
+              <Breadcrumb.Divider
+                style={{ color: store.darkMode ? "#darkgrey" : "grey" }}
+              />
               <Breadcrumb.Section
                 className="breadcrumb-link"
                 active={isActive === "guide"}
               >
                 <a
                   href="#"
+                  style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}
                   onClick={e => {
                     e.preventDefault();
                     this.setState({
@@ -252,7 +225,9 @@ class Blog extends Component {
                   <i>Guides</i>
                 </a>
               </Breadcrumb.Section>
-              <Breadcrumb.Divider />
+              <Breadcrumb.Divider
+                style={{ color: store.darkMode ? "#darkgrey" : "grey" }}
+              />
               <Breadcrumb.Section
                 className="breadcrumb-link"
                 active={isActive === "notes"}
@@ -261,6 +236,7 @@ class Blog extends Component {
                   href="https://amnrsln.gitbook.io/notes/"
                   target="_blank"
                   rel="noopener"
+                  style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}
                   onClick={() => {
                     this.setState({
                       isActive: "notes"
@@ -268,13 +244,18 @@ class Blog extends Component {
                   }}
                 >
                   <i>
-                    Notes <Icon size="small" name="external alternate" />
+                    Notes{" "}
+                    <Icon
+                      style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}
+                      size="small"
+                      name="external alternate"
+                    />
                   </i>
                 </a>
               </Breadcrumb.Section>
             </Breadcrumb>
             <Divider />
-            <BlogPosts posts={posts} category={category} />
+            <BlogPosts store={store} posts={posts} category={category} />
             <br />
             <div>
               {previous_page && (

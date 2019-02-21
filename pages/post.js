@@ -18,29 +18,35 @@ import Wrapper from "../components/wrapper";
 import Footer from "../components/footer";
 import ShareLinks from "../components/sharelinks";
 import { gaPageTracking, gaUserTracking } from "../analytics";
+import { inject, observer } from "mobx-react";
 // import "../assets/blog.css";
 
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 
-const BlogBreadcrumb = props => {
+const BlogBreadcrumb = observer(props => {
   return (
     <Breadcrumb>
       <Breadcrumb.Section>
         <Link prefetch href="/">
           <a
             onClick={() => gaUserTracking("Post", `Clicked Blog breadcrumb`)}
-            style={{ color: "grey" }}
+            style={{ color: props.store.darkMode ? "#darkgrey" : "grey" }}
           >
             Blog
           </a>
         </Link>
       </Breadcrumb.Section>
-      <Breadcrumb.Divider>/</Breadcrumb.Divider>
+      <Breadcrumb.Divider
+        style={{ color: props.store.darkMode ? "#darkgrey" : "grey" }}
+      >
+        /
+      </Breadcrumb.Divider>
       <Breadcrumb.Section active>{props.title}</Breadcrumb.Section>
     </Breadcrumb>
   );
-};
-
+});
+@inject("store")
+@observer
 class Post extends Component {
   static async getInitialProps({ query }) {
     const resp = await butter.post.retrieve(query.title);
@@ -52,6 +58,7 @@ class Post extends Component {
   }
 
   render() {
+    const { store } = this.props;
     const post = this.props.data;
 
     return (
@@ -62,51 +69,79 @@ class Post extends Component {
           url={`https://aminroslan.com/posts/${post.slug}`}
           description={post.meta_description}
         />
-        <Wrapper solid {...this.props}>
-          <Container style={{ marginBottom: "3rem" }} text>
-            <Segment style={{ marginTop: "1rem", paddingLeft: 0 }} basic>
-              <BlogBreadcrumb title={post.title} />
-            </Segment>
-            {post.featured_image && (
-              <Image
-                // style={{ maxWidth: "700px", height: "auto" }}
-                src={post.featured_image}
-                alt={`featured image with ${post.slug}`}
+        <Wrapper solid store={store} {...this.props}>
+          <Segment basic style={{ margin: "0" }} inverted={store.darkMode}>
+            <Container
+              style={{
+                marginBottom: "3rem",
+                backgroundColor: store.darkMode ? "#1b1c1d" : "#fff"
+              }}
+              text
+            >
+              <Segment style={{ marginTop: "1rem", paddingLeft: 0 }} basic>
+                <BlogBreadcrumb store={store} title={post.title} />
+              </Segment>
+              {post.featured_image && (
+                <Image
+                  // style={{ maxWidth: "700px", height: "auto" }}
+                  src={post.featured_image}
+                  alt={`featured image with ${post.slug}`}
+                />
+              )}
+              <Header inverted={store.darkMode} as="h1" className="post-header">
+                {post.title}
+                <Header.Subheader>{post.meta_description}</Header.Subheader>
+              </Header>
+              {post.categories.map((cat, i) => {
+                return (
+                  <Label
+                    key={i}
+                    color={store.darkMode ? "blue" : "black"}
+                    as="a"
+                  >
+                    {cat.name}
+                  </Label>
+                );
+              })}
+              <Header sub inverted={store.darkMode}>
+                <Moment format="D MMM YYYY" withTitle>
+                  {post.published}
+                </Moment>
+              </Header>
+              <Divider />
+              <div
+                className="post-container"
+                dangerouslySetInnerHTML={{ __html: post.body }}
               />
-            )}
-            <Header as="h1" className="post-header">
-              {post.title}
-              <Header.Subheader>{post.meta_description}</Header.Subheader>
-            </Header>
-            {post.categories.map((cat, i) => {
-              return (
-                <Label key={i} color="black" as="a">
-                  {cat.name}
-                </Label>
-              );
-            })}
-            <Header sub>
-              <Moment format="D MMM YYYY" withTitle>
-                {post.published}
-              </Moment>
-            </Header>
-            <Divider />
-            <div
-              className="post-container"
-              dangerouslySetInnerHTML={{ __html: post.body }}
-            />
-            <Header sub>Tags:</Header>
-            {post.tags.map((tag, i) => {
-              return (
-                <Label key={i} as="a">
-                  {tag.name}
-                </Label>
-              );
-            })}
-            <br />
-            <Header sub>Share:</Header>
-            <ShareLinks post={post} />
-          </Container>
+              <Header
+                sub
+                style={{ marginBottom: "0.7rem" }}
+                inverted={store.darkMode}
+              >
+                Tags:
+              </Header>
+              {post.tags.map((tag, i) => {
+                return (
+                  <Label
+                    color={store.darkMode ? "blue" : "black"}
+                    key={i}
+                    as="a"
+                  >
+                    {tag.name}
+                  </Label>
+                );
+              })}
+              <br />
+              <Header
+                sub
+                style={{ marginBottom: "0.7rem" }}
+                inverted={store.darkMode}
+              >
+                Share:
+              </Header>
+              <ShareLinks store={store} post={post} />
+            </Container>
+          </Segment>
           <Footer />
         </Wrapper>
       </>

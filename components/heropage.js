@@ -1,7 +1,8 @@
 import { Component } from "react";
 import { Segment, Header, Container } from "semantic-ui-react";
 import { string, bool } from "prop-types";
-
+import { observer } from "mobx-react";
+@observer
 class HeroPage extends Component {
   slantDirection = direction => {
     switch (direction) {
@@ -22,7 +23,7 @@ class HeroPage extends Component {
   };
 
   render() {
-    const { slant, title, dark, size, contain, gradient } = this.props;
+    const { slant, title, dark, size, contain, gradient, store } = this.props;
     const styles = {
       segment: {
         borderRadius: 0,
@@ -30,19 +31,17 @@ class HeroPage extends Component {
         minHeight: size === "half" ? "50vh" : "100vh",
         width: "100vw",
         padding: "2em 0em",
-        clipPath: this.slantDirection(slant),
-        WebkitClipPath: this.slantDirection(slant),
-        background: gradient
-          ? "#0F2027"
+        background: store.darkMode
+          ? "#1b1c1d"
           : "white" /* fallback for old browsers */,
         // eslint-disable-next-line no-dupe-keys
-        background: gradient
-          ? "-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)"
-          : "white" /* Chrome 10-25, Safari 5.1-6 */,
-        // eslint-disable-next-line no-dupe-keys
-        background: gradient
-          ? "linear-gradient(to right, #2C5364, #203A43, #0F2027)"
-          : "white" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
+        // background: gradient
+        //   ? "-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)"
+        //   : "white" /* Chrome 10-25, Safari 5.1-6 */,
+        // // eslint-disable-next-line no-dupe-keys
+        // background: gradient
+        //   ? "linear-gradient(to right, #2C5364, #203A43, #0F2027)"
+        //   : "white" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
 
         border: 0
       },
@@ -61,7 +60,7 @@ class HeroPage extends Component {
     return (
       <Segment style={styles.segment}>
         <Container text={contain}>
-          <Header style={styles.header} inverted={dark}>
+          <Header style={styles.header} inverted={store.darkMode}>
             {this.capitalizeTitle(title)}
             <Header.Subheader style={styles.subheader}>
               {this.props.sub}

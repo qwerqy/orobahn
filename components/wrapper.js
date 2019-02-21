@@ -1,15 +1,20 @@
 import { Component } from "react";
 import Link from "next/link";
 import { withRouter } from "next/router";
+import { observer } from "mobx-react";
 import {
   Segment,
   Container,
   Menu,
   Icon,
   Sidebar,
-  Visibility
+  Visibility,
+  Checkbox,
+  Grid
 } from "semantic-ui-react";
 import { gaUserTracking } from "../analytics";
+import { autorun } from "mobx";
+import NProgress from "nprogress";
 
 const links = [
   { label: "blog", href: "/" },
@@ -17,6 +22,7 @@ const links = [
   // { label: "gaming", href: "/gaming" }
 ];
 
+@observer
 class DesktopWrapper extends Component {
   state = {
     fixedNav: false
@@ -36,10 +42,15 @@ class DesktopWrapper extends Component {
 
   getBackgroundColor = () => {
     const { fixedNav } = this.state;
-    const { solid } = this.props;
+    const { solid, store } = this.props;
+    if (solid && store.darkMode) {
+      return "#1b1c1d";
+    }
 
-    if (fixedNav) {
-      return "white";
+    if (fixedNav && store.darkMode) {
+      return "#1b1c1d";
+    } else if (fixedNav && !store.darkMode) {
+      return "#fff";
     } else {
       return "transparent";
     }
@@ -56,12 +67,12 @@ class DesktopWrapper extends Component {
   };
 
   render() {
-    const { dark, router, solid } = this.props;
+    const { dark, router, solid, store } = this.props;
     const { fixedNav } = this.state;
     const pathname = router.pathname ? this.pathnameCleaner() : "";
     const styles = {
       segment: {
-        background: solid ? "transparent" : this.getBackgroundColor(),
+        background: this.getBackgroundColor(),
         border: 0,
         position: this.getPosition(),
         zIndex: "100",
@@ -80,10 +91,10 @@ class DesktopWrapper extends Component {
           onBottomPassedReverse={() => this.setState({ fixedNav: false })}
         >
           {/* <Transition visible={} animation="fade down" duration={500}> */}
-          <Segment inverted vertical textAlign="center" style={styles.segment}>
+          <Segment vertical textAlign="center" style={styles.segment}>
             <Container text>
               <Menu
-                inverted={dark && !fixedNav}
+                inverted={store.darkMode}
                 pointing
                 secondary
                 style={{ borderBottom: 0 }}
@@ -118,6 +129,21 @@ class DesktopWrapper extends Component {
                       </Link>
                     );
                   })}
+                  <Menu.Item>
+                    <Icon
+                      style={{ marginLeft: ".35714286em" }}
+                      name="sun outline"
+                    />
+                    <Checkbox
+                      toggle
+                      defaultChecked={store.darkMode}
+                      onChange={(e, data) => {
+                        // console.log(data);
+                        store.toggleDarkMode(data.checked);
+                      }}
+                    />
+                    <Icon name="moon" style={{ marginLeft: ".35714286em" }} />
+                  </Menu.Item>
                 </Menu.Menu>
                 <Menu.Item
                   className="dropper-right"
@@ -138,6 +164,7 @@ class DesktopWrapper extends Component {
   }
 }
 
+@observer
 class MobileWrapper extends Component {
   state = {
     visible: false
@@ -154,7 +181,9 @@ class MobileWrapper extends Component {
 
   getBackgroundColor = () => {
     // const { solid } = this.props;
-
+    if (this.props.store.darkMode) {
+      return "#1b1c1d";
+    }
     // if (solid) {
     //   return "#1b1c1d";
     // } else {
@@ -181,6 +210,7 @@ class MobileWrapper extends Component {
   };
   render() {
     const { visible } = this.state;
+    const { store } = this.props;
     const pathname = this.pathnameCleaner();
 
     const styles = {
@@ -207,7 +237,7 @@ class MobileWrapper extends Component {
           style={{ padding: "0px 5px" }}
           animation="overlay"
           icon="labeled"
-          inverted
+          inverted={store.darkMode}
           direction="right"
           onHide={this.handleSidebarHide}
           vertical
@@ -241,11 +271,41 @@ class MobileWrapper extends Component {
               </Link>
             );
           })}
+          <Menu.Item>
+            <Grid columns={3}>
+              <Grid.Row verticalAlign="middle">
+                <Grid.Column width={5} style={{ padding: 0 }}>
+                  <Icon
+                    style={{ marginLeft: ".35714286em" }}
+                    name="sun outline"
+                  />
+                </Grid.Column>
+                <Grid.Column width={6} style={{ padding: 0 }}>
+                  <Checkbox
+                    toggle
+                    defaultChecked={store.darkMode}
+                    onChange={(e, data) => {
+                      // console.log(data);
+                      store.toggleDarkMode(data.checked);
+                    }}
+                  />
+                </Grid.Column>
+                <Grid.Column width={5} style={{ padding: 0 }}>
+                  <Icon name="moon" style={{ marginLeft: ".35714286em" }} />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Menu.Item>
         </Sidebar>
         <Sidebar.Pusher dimmed={visible}>
-          <Segment inverted vertical textAlign="center" style={styles.segment}>
+          <Segment vertical textAlign="center" style={styles.segment}>
             <Container text>
-              <Menu pointing secondary style={{ borderBottom: 0 }}>
+              <Menu
+                inverted={store.darkMode}
+                pointing
+                secondary
+                style={{ borderBottom: 0 }}
+              >
                 <Link prefetch href="/">
                   <Menu.Item
                     as="a"
@@ -277,6 +337,22 @@ class MobileWrapper extends Component {
 }
 
 class Wrapper extends Component {
+  componentDidMount() {
+    const { store } = this.props;
+    autorun(() => {
+      NProgress.configure({
+        template: `<div style="${
+          store.darkMode ? "background: #fff;" : ""
+        }" class="bar" role="bar"><div style="${
+          store.darkMode ? "box-shadow: 0 0 10px #fff, 0 0 5px #fff;" : ""
+        }" class="peg"></div></div><div class="spinner" role="spinner"><div style="${
+          store.darkMode
+            ? "border-top-color: #fff; border-left-color: #fff;"
+            : ""
+        }" class="spinner-icon"></div></div>`
+      });
+    });
+  }
   render() {
     return (
       <>
