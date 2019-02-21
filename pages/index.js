@@ -57,7 +57,7 @@ const BlogPosts = ({ posts, category }) => {
                     )
                   }
                 >
-                  {post.seo_title}
+                  {post.title}
                 </a>
               </Link>
               <Header.Subheader sub="true">

@@ -65,7 +65,7 @@ class Post extends Component {
         <Wrapper solid {...this.props}>
           <Container style={{ marginBottom: "3rem" }} text>
             <Segment style={{ marginTop: "1rem", paddingLeft: 0 }} basic>
-              <BlogBreadcrumb title={post.seo_title} />
+              <BlogBreadcrumb title={post.title} />
             </Segment>
             {post.featured_image && (
               <Image
