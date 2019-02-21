@@ -60,7 +60,7 @@ const BlogPosts = ({ posts, category }) => {
                   {post.seo_title}
                 </a>
               </Link>
-              <Header.Subheader sub>
+              <Header.Subheader sub="true">
                 <Moment format="D MMM YYYY" withTitle>
                   {post.published}
                 </Moment>

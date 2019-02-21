@@ -112,12 +112,60 @@ const Head = props => (
           color: #3494e6 !important;
         }
 
-        .blogpost-container a {
+        .post-container h1 h2 h3 h4 h5 {
+          font-weight: 600;
+          margin-bottom: 1em;
+          margin-top: 1.5em;
+        }
+
+        .post-container ul ol {
+          margin-bottom: 1.25em;
+        }
+        .post-container li {
+          margin-bottom: 0.25em;
+        }
+
+        .post-container p {
+          font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+          font-size: 1.25em;
+          line-height: 1.58;
+          margin-bottom: 1.25em;
+          font-weight: 400;
+          letter-spacing: -0.003em;
+        }
+
+        /* Responsive default image width */
+        .post-container img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        .post-container a {
           color: #3494e6;
           text-decoration: underline;
         }
 
-        p code {
+        /* Responsive floating */
+        @media only screen and (min-width: 720px) {
+          .post-container .butter-float-left {
+            float: left;
+            margin: 0px 10px 10px 0px;
+          }
+
+          .post-container .butter-float-right {
+            float: right;
+            margin: 0px 0px 10px 10px;
+          }
+        }
+
+        /* Image caption */
+        .post-container figcaption {
+          font-style: italic;
+          text-align: center;
+          color: #ccc;
+        }
+
+        .post-container p code {
           padding: 2px 4px;
           font-size: 90%;
           color: #c7254e;
@@ -126,18 +174,8 @@ const Head = props => (
           font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
         }
 
-        .blogpost-container img {
-          height: auto !important;
-          max-width: 700px !important;
-          width: 100% !important;
-        }
-
-        .ui.grid > .row > .column > img {
-          height: auto;
-          max-width: 100px !important;
-        }
-
-        pre {
+        .post-container pre {
+          overflow-x: scroll;
           display: block;
           padding: 1em;
           margin: 0 0 2em;
@@ -145,9 +183,14 @@ const Head = props => (
           line-height: 1.4;
           word-break: break-all;
           word-wrap: break-word;
-          color: #333333;
-          background-color: #f5f5f5;
+          color: lightgrey;
+          background-color: #232323;
           font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        }
+
+        .ui.grid > .row > .column > img {
+          height: auto;
+          max-width: 100px !important;
         }
 
         .hero-container {

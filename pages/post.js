@@ -67,11 +67,13 @@ class Post extends Component {
             <Segment style={{ marginTop: "1rem", paddingLeft: 0 }} basic>
               <BlogBreadcrumb title={post.seo_title} />
             </Segment>
-            <Image
-              // style={{ maxWidth: "700px", height: "auto" }}
-              src={post.featured_image}
-              alt={`featured image with ${post.slug}`}
-            />
+            {post.featured_image && (
+              <Image
+                // style={{ maxWidth: "700px", height: "auto" }}
+                src={post.featured_image}
+                alt={`featured image with ${post.slug}`}
+              />
+            )}
             <Header as="h1" className="post-header">
               {post.title}
               <Header.Subheader>{post.meta_description}</Header.Subheader>
@@ -90,7 +92,7 @@ class Post extends Component {
             </Header>
             <Divider />
             <div
-              className="blogpost-container"
+              className="post-container"
               dangerouslySetInnerHTML={{ __html: post.body }}
             />
             <Header sub>Tags:</Header>
