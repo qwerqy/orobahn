@@ -10,6 +10,31 @@ const Head = props => (
   <Fragment>
     <NextHead>
       <meta charSet="UTF-8" />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/static/icons/apple-touch-icon.png"
+      />
+      >
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/static/icons/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/static/icons/favicon-16x16.png"
+      />
+      <link
+        rel="mask-icon"
+        href="/static/icons/safari-pinned-tab.svg"
+        color="#5bbad5"
+      />
+      <meta name="msapplication-TileColor" content="#da532c" />
+      <meta name="theme-color" content="#1b1c1d" />
       <title>{props.title || ""}</title>
       <meta
         name="description"
@@ -39,6 +64,7 @@ const Head = props => (
       {`
         @import url("https://fonts.googleapis.com/css?family=Roboto");
         @import url("https://fonts.googleapis.com/css?family=Raleway");
+        @import url("https://fonts.googleapis.com/css?family=Merriweather");
         @import url("//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css");
 
         body {
@@ -46,6 +72,16 @@ const Head = props => (
             "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto,
             "Segoe UI", Arial, sans-serif !important;
           margin: 0;
+          background: #fafafa;
+        }
+
+        a:hover {
+          color: #3494e6 !important;
+        }
+
+        .hero-intro {
+          color: #1b1c1d;
+          font-family: "Merriweather", "Times New Roman", serif;
         }
 
         .ui.secondary.inverted.pointing.menu {
@@ -53,16 +89,32 @@ const Head = props => (
         }
 
         .ui.breadcrumb a {
-          color: #3a6073;
+          color: #1b1c1d;
+        }
+
+        .ui.breadcrumb .active.section {
+          color: #3494e6;
+        }
+
+        .ui.breadcrumb a:hover {
+          color: #3494e6 !important;
         }
 
         .ui.header a {
-          color: #3a6073;
+          color: #3494e6;
+        }
+
+        .ui.header a:hover {
+          color: #3494e6 !important;
+        }
+
+        .post-header {
+          color: #3494e6 !important;
         }
 
         .blogpost-container a {
-          color: #3a6073;
-          font-weight: bold;
+          color: #3494e6;
+          text-decoration: underline;
         }
 
         p code {
@@ -74,8 +126,15 @@ const Head = props => (
           font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
         }
 
-        img {
-          width: 100%;
+        .blogpost-container img {
+          height: auto !important;
+          max-width: 700px !important;
+          width: 100% !important;
+        }
+
+        .ui.grid > .row > .column > img {
+          height: auto;
+          max-width: 100px !important;
         }
 
         pre {
@@ -164,6 +223,9 @@ const Head = props => (
         }
 
         @media (max-width: 430px) {
+          .hero-intro {
+            font-size: 0.9rem;
+          }
           .nav-header {
             font-size: 0.8rem !important;
           }

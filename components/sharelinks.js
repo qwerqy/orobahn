@@ -19,6 +19,8 @@ const ShareLinks = ({ post }) => {
     <Fragment>
       <Label color="black" style={{ marginBottom: "5px" }} as="a">
         <FacebookShareButton
+          name="facebook button"
+          role="button"
           style={{ display: "inline-block" }}
           url={shareUrl}
           beforeOnClick={() =>
@@ -31,6 +33,8 @@ const ShareLinks = ({ post }) => {
 
       <Label color="black" style={{ marginBottom: "5px" }} as="a">
         <LinkedinShareButton
+          name="linked in button"
+          role="button"
           style={{ display: "inline-block" }}
           url={shareUrl}
           beforeOnClick={() =>
@@ -43,6 +47,8 @@ const ShareLinks = ({ post }) => {
 
       <Label color="black" style={{ marginBottom: "5px" }} as="a">
         <TwitterShareButton
+          name="twitter button"
+          role="button"
           style={{ display: "inline-block" }}
           url={shareUrl}
           beforeOnClick={() =>
@@ -55,6 +61,8 @@ const ShareLinks = ({ post }) => {
 
       <Label color="black" style={{ marginBottom: "5px" }} as="a">
         <TelegramShareButton
+          name="telegram button"
+          role="button"
           style={{ display: "inline-block" }}
           url={shareUrl}
           beforeOnClick={() =>
@@ -67,6 +75,8 @@ const ShareLinks = ({ post }) => {
 
       <Label color="black" style={{ marginBottom: "5px" }} as="a">
         <WhatsappShareButton
+          name="whatsapp button"
+          role="button"
           style={{ display: "inline-block" }}
           url={shareUrl}
           beforeOnClick={() =>
@@ -79,6 +89,8 @@ const ShareLinks = ({ post }) => {
 
       <Label color="black" style={{ marginBottom: "5px" }} as="a">
         <PinterestShareButton
+          name="pinterest button"
+          role="button"
           style={{ display: "inline-block" }}
           url={shareUrl}
           beforeOnClick={() =>
@@ -91,6 +103,7 @@ const ShareLinks = ({ post }) => {
 
       <Label color="black" style={{ marginBottom: "5px" }} as="a">
         <RedditShareButton
+          role="button"
           style={{ display: "inline-block" }}
           url={shareUrl}
           beforeOnClick={() =>
@@ -103,6 +116,8 @@ const ShareLinks = ({ post }) => {
 
       <Label color="black" style={{ marginBottom: "5px" }} as="a">
         <TumblrShareButton
+          name="tumblr button"
+          role="button"
           style={{ display: "inline-block" }}
           url={shareUrl}
           beforeOnClick={() =>
@@ -115,6 +130,8 @@ const ShareLinks = ({ post }) => {
 
       <Label color="black" style={{ marginBottom: "5px" }} as="a">
         <EmailShareButton
+          name="email button"
+          role="button"
           style={{ display: "inline-block" }}
           url={shareUrl}
           beforeOnClick={() =>

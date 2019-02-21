@@ -36,13 +36,14 @@ class Software extends Component {
     return (
       <div>
         <Head
-          title="Software Portfolio"
+          title="Amin Roslan - Software Portfolio"
           description="Amin Roslan's Software Portfolio"
           url="https://aminroslan.com/software-portfolio"
         />
-        <Wrapper dark {...this.props}>
-          <HeroHeader title="software portfolio." />
+        <Wrapper {...this.props}>
+          <HeroHeader title="Software Portfolio." />
           <HeroPage
+            contain
             title="skillset"
             size="half"
             sub="The skills I've acquired throughout my career in tech."
@@ -99,15 +100,20 @@ class Software extends Component {
             </Grid>
           </HeroPage>
           <HeroPage
+            contain
             size="half"
             title="projects showcase"
             sub="Showcasing my finished projects some of which are live."
           >
-            <Card.Group>
+            <br />
+            <Card.Group doubling stackable itemsPerRow={3}>
               {projects.map((project, i) => {
                 return (
-                  <Card>
-                    <Image src={project.featured_image} />
+                  <Card key={i}>
+                    <Image
+                      alt="project featured image"
+                      src={project.featured_image}
+                    />
                     <Card.Content>
                       <Link
                         prefetch
@@ -134,6 +140,7 @@ class Software extends Component {
             </Card.Group>
           </HeroPage>
           <HeroPage
+            contain
             title="personal projects"
             sub="Project repos from my github which are public."
           >

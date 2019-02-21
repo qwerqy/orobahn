@@ -12,7 +12,7 @@ import {
 import { gaUserTracking } from "../analytics";
 
 const links = [
-  { label: "blog", href: "/blog" },
+  { label: "blog", href: "/" },
   { label: "software portfolio", href: "/software-portfolio" }
   // { label: "gaming", href: "/gaming" }
 ];
@@ -61,15 +61,7 @@ class DesktopWrapper extends Component {
     const pathname = router.pathname ? this.pathnameCleaner() : "";
     const styles = {
       segment: {
-        background: solid ? "#314755" : this.getBackgroundColor(),
-        // eslint-disable-next-line no-dupe-keys
-        background: solid
-          ? "-webkit-linear-gradient(to right, #314755, #26a0da)"
-          : this.getBackgroundColor(),
-        // eslint-disable-next-line no-dupe-keys
-        background: solid
-          ? "linear-gradient(to left, #3A6073, #16222A)"
-          : this.getBackgroundColor(),
+        background: solid ? "transparent" : this.getBackgroundColor(),
         border: 0,
         position: this.getPosition(),
         zIndex: "100",
@@ -118,7 +110,6 @@ class DesktopWrapper extends Component {
                           className="nav-item"
                           key={i}
                           name={links[i].label}
-                          active={links[i].label === pathname}
                           onClick={() =>
                             gaUserTracking("Nav", `Clicked ${links[i].label}`)
                           }
@@ -162,13 +153,13 @@ class MobileWrapper extends Component {
   };
 
   getBackgroundColor = () => {
-    const { solid } = this.props;
+    // const { solid } = this.props;
 
-    if (solid) {
-      return "#1b1c1d";
-    } else {
-      return "transparent";
-    }
+    // if (solid) {
+    //   return "#1b1c1d";
+    // } else {
+    return "transparent";
+    // }
   };
 
   handleClickToToggle = () => {
@@ -254,7 +245,7 @@ class MobileWrapper extends Component {
         <Sidebar.Pusher dimmed={visible}>
           <Segment inverted vertical textAlign="center" style={styles.segment}>
             <Container text>
-              <Menu inverted pointing secondary style={{ borderBottom: 0 }}>
+              <Menu pointing secondary style={{ borderBottom: 0 }}>
                 <Link prefetch href="/">
                   <Menu.Item
                     as="a"

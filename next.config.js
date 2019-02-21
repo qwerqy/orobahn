@@ -1,4 +1,5 @@
 const withOffline = moduleExists("next-offline") ? require("next-offline") : {};
+const withOptimizedImages = require("next-optimized-images");
 const webpack = require(`webpack`);
 const nextConfig = {
   workboxOpts: {
@@ -12,7 +13,7 @@ const nextConfig = {
           networkTimeoutSeconds: 15,
           expiration: {
             maxEntries: 150,
-            maxAgeSeconds: 30 * 24 * 60 * 60 // 1 month
+            maxAgeSeconds: 31536000
           },
           cacheableResponse: {
             statuses: [0, 200]
@@ -32,8 +33,8 @@ const nextConfig = {
 };
 
 module.exports = moduleExists("next-offline")
-  ? withOffline(nextConfig)
-  : nextConfig;
+  ? withOffline(withOptimizedImages(nextConfig))
+  : withOptimizedImages(nextConfig);
 
 function moduleExists(name) {
   try {
