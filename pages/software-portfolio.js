@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Header, Grid, Segment, Card, Image } from "semantic-ui-react";
+import { Header, Grid, List, Segment, Card, Image } from "semantic-ui-react";
 import Link from "next/link";
 import Head from "../components/head";
 import HeroPage from "../components/heropage";
@@ -10,15 +10,14 @@ import HeroHeader from "../components/heroheader";
 import { gaPageTracking, gaUserTracking } from "../analytics";
 import Butter from "buttercms";
 import { inject, observer } from "mobx-react";
+import Moment from "react-moment";
 
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 @inject("store")
 @observer
 class Software extends Component {
   static async getInitialProps() {
-    const resp = await butter.post.list({
-      category_slug: "projects"
-    });
+    const resp = await butter.content.retrieve(["work-experience"]);
     return resp.data;
   }
 
@@ -35,7 +34,7 @@ class Software extends Component {
   }
 
   render() {
-    const projects = this.props.data;
+    const workExp = this.props.data["work-experience"];
     const { store } = this.props;
     return (
       <div>
@@ -135,6 +134,44 @@ class Software extends Component {
             <br />
             <Header>Open Source Projects</Header>
             <Projects store={store} />
+            <br />
+            <Header>Work History</Header>
+            <List>
+              {Object.keys(workExp).map(i => {
+                return (
+                  <List.Item key={i}>
+                    <Header className="list-hero-text">
+                      {workExp[i].position}, {workExp[i].company}
+                    </Header>
+                    {workExp[i]["end-date"] !== "" ? (
+                      <Header sub>
+                        From{" "}
+                        <Moment format="YYYY" withTitle>
+                          {workExp[i]["start-date"]}
+                        </Moment>{" "}
+                        to{" "}
+                        <Moment format="YYYY" withTitle>
+                          {workExp[i]["end-date"]}
+                        </Moment>{" "}
+                      </Header>
+                    ) : (
+                      <Header sub>
+                        From{" "}
+                        <Moment format="YYYY" withTitle>
+                          {workExp[i]["start-date"]}
+                        </Moment>{" "}
+                        to Present
+                      </Header>
+                    )}
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: workExp[i].description
+                      }}
+                    />
+                  </List.Item>
+                );
+              })}
+            </List>
           </HeroPage>
           <Footer />
         </Wrapper>

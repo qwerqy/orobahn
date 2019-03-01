@@ -23,12 +23,11 @@ class ProjectTable extends Component {
   render() {
     const { repos } = this.state;
     // const { store } = this.props;
-    console.log(repos);
     return (
       <Grid stackable columns={3}>
         {Object.keys(repos).map(i => {
           return (
-            <Grid.Row>
+            <Grid.Row key={i}>
               <Grid.Column width={6}>
                 <Header className="list-hero-text">{repos[i].name}</Header>
               </Grid.Column>
