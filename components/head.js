@@ -136,12 +136,9 @@ const Head = inject("store")(
             margin-bottom: 0.25em;
           }
 
-          .post-container p {
+          p {
             font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-            font-size: 1.25em;
-            line-height: 1.58;
             margin-bottom: 1.25em;
-            font-weight: 400;
             letter-spacing: -0.003em;
           }
 

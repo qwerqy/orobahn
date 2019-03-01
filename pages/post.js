@@ -90,7 +90,7 @@ class Post extends Component {
               )}
               <Header inverted={store.darkMode} as="h1" className="post-header">
                 {post.title}
-                <Header.Subheader>{post.meta_description}</Header.Subheader>
+                {/* <Header.Subheader>{post.meta_description}</Header.Subheader> */}
               </Header>
               {post.categories.map((cat, i) => {
                 return (

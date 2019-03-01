@@ -60,7 +60,7 @@ const BlogPosts = observer(({ posts, category, store }) => {
                 </Moment>
               </Header.Subheader>
             </Header>
-            {post.summary}
+            <p>{post.summary}</p>
             <br />
           </Segment>
         );
