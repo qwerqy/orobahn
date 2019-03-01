@@ -84,7 +84,7 @@ class Post extends Component {
               {post.featured_image && (
                 <Image
                   // style={{ maxWidth: "700px", height: "auto" }}
-                  src={post.featured_image}
+                  src={`${post.featured_image}?webp`}
                   alt={`featured image with ${post.slug}`}
                 />
               )}
