@@ -22,22 +22,30 @@ class ProjectTable extends Component {
 
   render() {
     const { repos } = this.state;
-    // const { store } = this.props;
+    const { store } = this.props;
     return (
       <Grid stackable columns={3}>
         {Object.keys(repos).map(i => {
           return (
             <Grid.Row key={i}>
               <Grid.Column width={6}>
-                <Header className="list-hero-text">{repos[i].name}</Header>
+                <Header inverted={store.darkMode} className="list-hero-text">
+                  {repos[i].name}
+                </Header>
               </Grid.Column>
               <Grid.Column width={2}>
-                <Moment format="YYYY" withTitle>
+                <Moment
+                  format="YYYY"
+                  withTitle
+                  style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}
+                >
                   {repos[i].created_at}
                 </Moment>
               </Grid.Column>
               <Grid.Column width={8}>
-                <p>{repos[i].description}</p>
+                <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+                  {repos[i].description}
+                </p>
                 <a href={repos[i].url} target="_blank">
                   Source
                 </a>

@@ -46,16 +46,15 @@ class Software extends Component {
         <Wrapper store={store} {...this.props}>
           <HeroHeader store={store} title="Software Portfolio." />
           <HeroPage store={store} contain>
-            <Header as="h1">
+            <Header style={{ color: "#3494e6" }} as="h1">
               Full Stack Software Engineer
-              {/* <Header.Subheader>Vase.ai</Header.Subheader> */}
             </Header>
-            <p>
+            <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
               I have always been a fan of Tech. Getting myself involved in
               software engineering is something I dream since I was in high
               school. I strive for perfection and functionality.
             </p>
-            <p>
+            <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
               My work mostly involves the whole ecosystem of a software. The
               front-end, the back-end and devOps. I have an eye in design
               language, and I work great in teams. I frequently use Javascript
@@ -67,25 +66,31 @@ class Software extends Component {
             <Grid stackable columns={4}>
               <Grid.Row>
                 <Grid.Column>
-                  <Header>Skills</Header>
+                  <Header style={{ color: "#3494e6" }}>Skills</Header>
                 </Grid.Column>
                 <Grid.Column>
-                  <Header className="list-hero-text">Leadership</Header>
-                  <p>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Leadership
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
                     Able to motivate & educate; Handled a sales team of 10
                     people for 2 years in a Health industry company.
                   </p>
                 </Grid.Column>
                 <Grid.Column>
-                  <Header className="list-hero-text">Speech</Header>
-                  <p>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Speech
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
                     Negotiation & Management; Been in numerous businesses
                     involved in making deals between two parties for 3 years.
                   </p>
                 </Grid.Column>
                 <Grid.Column>
-                  <Header className="list-hero-text">Software</Header>
-                  <p>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Software
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
                     1 year software experience in Web, Mobile & Automation
                     applications.
                   </p>
@@ -93,22 +98,30 @@ class Software extends Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <Header>Technologies</Header>
+                  <Header style={{ color: "#3494e6" }}>Technologies</Header>
                 </Grid.Column>
                 <Grid.Column>
-                  <Header className="list-hero-text">Languages</Header>
-                  <p>Javascript, Node.js, HTML, CSS, MongoDB, Ruby, Python</p>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Languages
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+                    Javascript, Node.js, HTML, CSS, MongoDB, Ruby, Python
+                  </p>
                 </Grid.Column>
                 <Grid.Column>
-                  <Header className="list-hero-text">Frameworks</Header>
-                  <p>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Frameworks
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
                     React, React Native, Vue, Next, Nuxt, Mobx, Vuex, Webpack,
                     Babel, Semantic UI, Bootstrap
                   </p>
                 </Grid.Column>
                 <Grid.Column>
-                  <Header className="list-hero-text">Tools</Header>
-                  <p>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Tools
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
                     Docker, CircleCI, Cypress, Mocha, Heroku, DO Droplet, AWS
                     Lambda, Serverless, Redis
                   </p>
@@ -116,13 +129,18 @@ class Software extends Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column width={4}>
-                  <Header>Education</Header>
+                  <Header
+                    inverted={store.darkMode}
+                    style={{ color: "#3494e6" }}
+                  >
+                    Education
+                  </Header>
                 </Grid.Column>
                 <Grid.Column width={12}>
-                  <Header className="list-hero-text">
+                  <Header inverted={store.darkMode} className="list-hero-text">
                     Next Academy Coding Bootcamp
                   </Header>
-                  <p>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
                     Attended the Full Stack Web Development bootcamp that lasted
                     for 10 weeks. Studied development on a Web app using Ruby on
                     Rails, created 3 standalone projects needed to graduate the
@@ -132,42 +150,47 @@ class Software extends Component {
               </Grid.Row>
             </Grid>
             <br />
-            <Header>Open Source Projects</Header>
+            <Header style={{ color: "#3494e6" }}>Open Source Projects</Header>
             <Projects store={store} />
             <br />
-            <Header>Work History</Header>
+            <Header style={{ color: "#3494e6" }}>Work History</Header>
             <List>
               {Object.keys(workExp).map(i => {
                 return (
                   <List.Item key={i}>
-                    <Header className="list-hero-text">
-                      {workExp[i].position}, {workExp[i].company}
-                    </Header>
-                    {workExp[i]["end-date"] !== "" ? (
-                      <Header sub>
-                        From{" "}
-                        <Moment format="YYYY" withTitle>
-                          {workExp[i]["start-date"]}
-                        </Moment>{" "}
-                        to{" "}
-                        <Moment format="YYYY" withTitle>
-                          {workExp[i]["end-date"]}
-                        </Moment>{" "}
+                    <Segment basic inverted={store.darkMode}>
+                      <Header
+                        inverted={store.darkMode}
+                        className="list-hero-text"
+                      >
+                        {workExp[i].position}, {workExp[i].company}
                       </Header>
-                    ) : (
-                      <Header sub>
-                        From{" "}
-                        <Moment format="YYYY" withTitle>
-                          {workExp[i]["start-date"]}
-                        </Moment>{" "}
-                        to Present
-                      </Header>
-                    )}
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: workExp[i].description
-                      }}
-                    />
+                      {workExp[i]["end-date"] !== "" ? (
+                        <Header inverted={store.darkMode} sub>
+                          From{" "}
+                          <Moment format="YYYY" withTitle>
+                            {workExp[i]["start-date"]}
+                          </Moment>{" "}
+                          to{" "}
+                          <Moment format="YYYY" withTitle>
+                            {workExp[i]["end-date"]}
+                          </Moment>{" "}
+                        </Header>
+                      ) : (
+                        <Header inverted={store.darkMode} sub>
+                          From{" "}
+                          <Moment format="YYYY" withTitle>
+                            {workExp[i]["start-date"]}
+                          </Moment>{" "}
+                          to Present
+                        </Header>
+                      )}
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: workExp[i].description
+                        }}
+                      />
+                    </Segment>
                   </List.Item>
                 );
               })}
