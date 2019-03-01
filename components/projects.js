@@ -46,7 +46,7 @@ class ProjectTable extends Component {
                 <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
                   {repos[i].description}
                 </p>
-                <a href={repos[i].url} target="_blank">
+                <a href={repos[i].html_url} target="_blank">
                   Source
                 </a>
               </Grid.Column>
