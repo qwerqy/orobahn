@@ -82,6 +82,10 @@ const Head = inject("store")(
             color: #3494e6 !important;
           }
 
+          .list-hero-text {
+            font-weight: normal !important;
+          }
+
           .hero-intro {
             font-family: "Merriweather", "Times New Roman", serif;
           }
