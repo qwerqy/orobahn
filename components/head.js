@@ -187,7 +187,7 @@ const Head = inject("store")(
             display: block;
             padding: 1em;
             margin: 0 0 2em;
-            font-size: 1em;
+            font-size: 1rem;
             line-height: 1.4;
             word-break: break-all;
             word-wrap: break-word;
