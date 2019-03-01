@@ -1,5 +1,6 @@
 const withOffline = moduleExists("next-offline") ? require("next-offline") : {};
 const withOptimizedImages = require("next-optimized-images");
+const withCSS = require("@zeit/next-css");
 const webpack = require(`webpack`);
 const nextConfig = {
   workboxOpts: {
@@ -33,8 +34,8 @@ const nextConfig = {
 };
 
 module.exports = moduleExists("next-offline")
-  ? withOffline(withOptimizedImages(nextConfig))
-  : withOptimizedImages(nextConfig);
+  ? withOffline(withOptimizedImages(withCSS(nextConfig)))
+  : withOptimizedImages(withCSS(nextConfig));
 
 function moduleExists(name) {
   try {

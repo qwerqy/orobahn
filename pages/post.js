@@ -19,6 +19,7 @@ import Footer from "../components/footer";
 import ShareLinks from "../components/sharelinks";
 import { gaPageTracking, gaUserTracking } from "../analytics";
 import { inject, observer } from "mobx-react";
+import Prism from "prismjs";
 // import "../assets/blog.css";
 
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
@@ -55,6 +56,7 @@ class Post extends Component {
 
   componentDidMount() {
     gaPageTracking(`/posts/${this.props.data.slug}`);
+    Prism.highlightAll();
   }
 
   render() {

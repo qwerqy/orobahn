@@ -5,6 +5,20 @@ import Router from "next/router";
 import { initializeStore } from "../store";
 import { Provider } from "mobx-react";
 
+/** Prism */
+import "prismjs";
+// Theme
+import "prismjs/themes/prism-okaidia.css";
+// Plugins
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers";
+// Components
+import "prismjs/components/prism-go.min.js";
+import "prismjs/components/prism-java.min.js";
+import "prismjs/components/prism-json.min.js";
+import "prismjs/components/prism-bash.min.js";
+import "prismjs/components/prism-jsx.min.js";
+
 Router.events.on("routeChangeStart", url => {
   // console.log(`Loading: ${url}`);
   NProgress.start();
