@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Header, Grid, Segment, Card, Image } from "semantic-ui-react";
+import { Header, Grid, List, Segment, Card, Image } from "semantic-ui-react";
 import Link from "next/link";
 import Head from "../components/head";
 import HeroPage from "../components/heropage";
@@ -10,15 +10,14 @@ import HeroHeader from "../components/heroheader";
 import { gaPageTracking, gaUserTracking } from "../analytics";
 import Butter from "buttercms";
 import { inject, observer } from "mobx-react";
+import Moment from "react-moment";
 
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 @inject("store")
 @observer
 class Software extends Component {
   static async getInitialProps() {
-    const resp = await butter.post.list({
-      category_slug: "projects"
-    });
+    const resp = await butter.content.retrieve(["work-experience"]);
     return resp.data;
   }
 
@@ -35,7 +34,7 @@ class Software extends Component {
   }
 
   render() {
-    const projects = this.props.data;
+    const workExp = this.props.data["work-experience"];
     const { store } = this.props;
     return (
       <div>
@@ -46,271 +45,156 @@ class Software extends Component {
         />
         <Wrapper store={store} {...this.props}>
           <HeroHeader store={store} title="Software Portfolio." />
-          <HeroPage
-            store={store}
-            contain
-            title="skillset"
-            size="half"
-            sub="The skills I've acquired throughout my career in tech."
-          >
-            <Grid stackable columns={3}>
+          <HeroPage store={store} contain>
+            <Header style={{ color: "#3494e6" }} as="h1">
+              Full Stack Software Engineer
+            </Header>
+            <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+              I have always been a fan of Tech. Getting myself involved in
+              software engineering is something I dream since I was in high
+              school. I strive for perfection and functionality.
+            </p>
+            <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+              My work mostly involves the whole ecosystem of a software. The
+              front-end, the back-end and devOps. I have an eye in design
+              language, and I work great in teams. I frequently use Javascript
+              as my programming language for personal projects and work. I
+              curate the deployment process from setting up CI all the way to
+              deployment in a Docker container.
+            </p>
+            <br />
+            <Grid stackable columns={4}>
               <Grid.Row>
                 <Grid.Column>
-                  <Segment
-                    style={{
-                      background: store.darkMode ? "#232323" : "#fff",
-                      webkitBoxShadow: store.darkMode
-                        ? "0 1px 3px 0 black"
-                        : "0 1px 3px 0 #d4d4d5"
-                    }}
-                    inverted={store.darkMode}
-                  >
-                    <Header textAlign="center">Front End</Header>
-                  </Segment>
-                  <Segment.Group>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      React & Vue
-                    </Segment>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      React Native
-                    </Segment>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      Javascript (Vanilla & ES6+)
-                    </Segment>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      CSS Frameworks such as Semantic UI, Bootstrap, etc.
-                    </Segment>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      HTML & CSS
-                    </Segment>
-                  </Segment.Group>
+                  <Header style={{ color: "#3494e6" }}>Skills</Header>
                 </Grid.Column>
                 <Grid.Column>
-                  <Segment
-                    style={{
-                      background: store.darkMode ? "#232323" : "#fff",
-                      webkitBoxShadow: store.darkMode
-                        ? "0 1px 3px 0 black"
-                        : "0 1px 3px 0 #d4d4d5"
-                    }}
-                    inverted={store.darkMode}
-                  >
-                    <Header textAlign="center">Back End</Header>
-                  </Segment>
-                  <Segment.Group>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      NodeJS such as Express & Koa
-                    </Segment>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      Ruby such as Rails & Sinatra
-                    </Segment>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      Cloud database such as MongoDB Atlas & Firestore. Local
-                      database such as Postgresql
-                    </Segment>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      Deployments to Heroku, Now.sh, Netlify, etc
-                    </Segment>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      Server Side Rendering
-                    </Segment>
-                  </Segment.Group>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Leadership
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+                    Able to motivate & educate; Handled a sales team of 10
+                    people for 2 years in a Health industry company.
+                  </p>
                 </Grid.Column>
                 <Grid.Column>
-                  <Segment
-                    style={{
-                      background: store.darkMode ? "#232323" : "#fff",
-                      webkitBoxShadow: store.darkMode
-                        ? "0 1px 3px 0 black"
-                        : "0 1px 3px 0 #d4d4d5"
-                    }}
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Speech
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+                    Negotiation & Management; Been in numerous businesses
+                    involved in making deals between two parties for 3 years.
+                  </p>
+                </Grid.Column>
+                <Grid.Column>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Software
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+                    1 year software experience in Web, Mobile & Automation
+                    applications.
+                  </p>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>
+                  <Header style={{ color: "#3494e6" }}>Technologies</Header>
+                </Grid.Column>
+                <Grid.Column>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Languages
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+                    Javascript, Node.js, HTML, CSS, MongoDB, Ruby, Python
+                  </p>
+                </Grid.Column>
+                <Grid.Column>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Frameworks
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+                    React, React Native, Vue, Next, Nuxt, Mobx, Vuex, Webpack,
+                    Babel, Semantic UI, Bootstrap
+                  </p>
+                </Grid.Column>
+                <Grid.Column>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Tools
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+                    Docker, CircleCI, Cypress, Mocha, Heroku, DO Droplet, AWS
+                    Lambda, Serverless, Redis
+                  </p>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column width={4}>
+                  <Header
                     inverted={store.darkMode}
+                    style={{ color: "#3494e6" }}
                   >
-                    <Header textAlign="center">Dev Ops</Header>
-                  </Segment>
-                  <Segment.Group>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      Docker, Docker Compose, Docker Machine
-                    </Segment>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      Traefik, Nginx for reverse proxy & LetsEncrypt for SSL
-                      cert
-                    </Segment>
-                    <Segment
-                      style={{
-                        background: store.darkMode ? "#232323" : "#fff",
-                        webkitBoxShadow: store.darkMode
-                          ? "0 1px 3px 0 black"
-                          : "0 1px 3px 0 #d4d4d5"
-                      }}
-                      inverted={store.darkMode}
-                    >
-                      VPS such as DigitalOcean Droplet & AWS Lightsail
-                    </Segment>
-                  </Segment.Group>
+                    Education
+                  </Header>
+                </Grid.Column>
+                <Grid.Column width={12}>
+                  <Header inverted={store.darkMode} className="list-hero-text">
+                    Next Academy Coding Bootcamp
+                  </Header>
+                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+                    Attended the Full Stack Web Development bootcamp that lasted
+                    for 10 weeks. Studied development on a Web app using Ruby on
+                    Rails, created 3 standalone projects needed to graduate the
+                    class.
+                  </p>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-          </HeroPage>
-          <HeroPage
-            store={store}
-            contain
-            size="half"
-            title="projects showcase"
-            sub="Showcasing my finished projects some of which are live."
-          >
             <br />
-            <Card.Group doubling stackable itemsPerRow={3}>
-              {projects.map((project, i) => {
+            <Header style={{ color: "#3494e6" }}>Open Source Projects</Header>
+            <Projects store={store} />
+            <br />
+            <Header style={{ color: "#3494e6" }}>Work History</Header>
+            <List>
+              {Object.keys(workExp).map(i => {
                 return (
-                  <Card
-                    style={{
-                      backgroundColor: store.darkMode ? "#232323" : "#fff",
-                      webkitBoxShadow: store.darkMode
-                        ? "0 1px 3px 0 black"
-                        : "0 1px 3px 0 #d4d4d5"
-                    }}
-                    key={i}
-                  >
-                    <Image
-                      alt="project featured image"
-                      src={project.featured_image}
-                    />
-                    <Card.Content>
-                      <Link
-                        prefetch
-                        href={`/post?title=${project.slug}`}
-                        as={`/posts/${project.slug}`}
+                  <List.Item key={i}>
+                    <Segment basic inverted={store.darkMode}>
+                      <Header
+                        inverted={store.darkMode}
+                        className="list-hero-text"
                       >
-                        <Card.Header
-                          style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}
-                          as="a"
-                          onClick={() =>
-                            gaUserTracking(
-                              "Software Portfolio",
-                              `Clicked ${project.slug} on Projects Showcase`
-                            )
-                          }
-                        >
-                          {project.title}
-                        </Card.Header>
-                      </Link>
-                      <Card.Meta
-                        style={{
-                          color: store.darkMode ? "darkgrey" : "#1b1c1d"
+                        {workExp[i].position}, {workExp[i].company}
+                      </Header>
+                      {workExp[i]["end-date"] !== "" ? (
+                        <Header inverted={store.darkMode} sub>
+                          From{" "}
+                          <Moment format="YYYY" withTitle>
+                            {workExp[i]["start-date"]}
+                          </Moment>{" "}
+                          to{" "}
+                          <Moment format="YYYY" withTitle>
+                            {workExp[i]["end-date"]}
+                          </Moment>{" "}
+                        </Header>
+                      ) : (
+                        <Header inverted={store.darkMode} sub>
+                          From{" "}
+                          <Moment format="YYYY" withTitle>
+                            {workExp[i]["start-date"]}
+                          </Moment>{" "}
+                          to Present
+                        </Header>
+                      )}
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: workExp[i].description
                         }}
-                      >
-                        {project.meta_description}
-                      </Card.Meta>
-                    </Card.Content>
-                  </Card>
+                      />
+                    </Segment>
+                  </List.Item>
                 );
               })}
-            </Card.Group>
-          </HeroPage>
-          <HeroPage
-            store={store}
-            contain
-            title="personal projects"
-            sub="Project repos from my github which are public."
-          >
-            <Projects store={store} />
+            </List>
           </HeroPage>
           <Footer />
         </Wrapper>

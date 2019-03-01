@@ -1,6 +1,7 @@
 import { Component } from "react";
-import { Table } from "semantic-ui-react";
-import { gaUserTracking } from "../analytics";
+import { Header, Grid } from "semantic-ui-react";
+// import { gaUserTracking } from "../analytics";
+import Moment from "react-moment";
 
 class ProjectTable extends Component {
   state = {
@@ -23,57 +24,36 @@ class ProjectTable extends Component {
     const { repos } = this.state;
     const { store } = this.props;
     return (
-      <Table inverted={store.darkMode} celled striped>
-        <Table.Header style={{ width: "calc( 100% - 1em )" }}>
-          <Table.Row>
-            <Table.HeaderCell colSpan="3">
-              Latest Updated Git Repository
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body
-          style={{
-            height: "70vh",
-            display: "block",
-            overflowY: "scroll",
-            overflowX: "hidden"
-          }}
-        >
-          {Object.keys(repos).map(i => {
-            return (
-              <Table.Row
-                style={{
-                  display: "table",
-                  width: "100%",
-                  tableLayout: "fixed"
-                }}
-                key={i}
-              >
-                <Table.Cell>
-                  <a
-                    target="_blank"
-                    rel="noopener"
-                    style={{
-                      textDecoration: "none",
-                      color: store.darkMode ? "#fff" : "#1b1c1d"
-                    }}
-                    href={repos[i].html_url}
-                    onClick={() =>
-                      gaUserTracking(
-                        "Projects",
-                        `Clicked Github Repo ${repos[i].name}`
-                      )
-                    }
-                  >
-                    {repos[i].name}
-                  </a>
-                </Table.Cell>
-                <Table.Cell>{repos[i].description}</Table.Cell>
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
-      </Table>
+      <Grid stackable columns={3}>
+        {Object.keys(repos).map(i => {
+          return (
+            <Grid.Row key={i}>
+              <Grid.Column width={6}>
+                <Header inverted={store.darkMode} className="list-hero-text">
+                  {repos[i].name}
+                </Header>
+              </Grid.Column>
+              <Grid.Column width={2}>
+                <Moment
+                  format="YYYY"
+                  withTitle
+                  style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}
+                >
+                  {repos[i].created_at}
+                </Moment>
+              </Grid.Column>
+              <Grid.Column width={8}>
+                <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
+                  {repos[i].description}
+                </p>
+                <a href={repos[i].url} target="_blank">
+                  Source
+                </a>
+              </Grid.Column>
+            </Grid.Row>
+          );
+        })}
+      </Grid>
     );
   }
 }

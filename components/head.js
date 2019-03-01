@@ -82,6 +82,10 @@ const Head = inject("store")(
             color: #3494e6 !important;
           }
 
+          .list-hero-text {
+            font-weight: normal !important;
+          }
+
           .hero-intro {
             font-family: "Merriweather", "Times New Roman", serif;
           }
@@ -132,12 +136,9 @@ const Head = inject("store")(
             margin-bottom: 0.25em;
           }
 
-          .post-container p {
+          p {
             font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-            font-size: 1.25em;
-            line-height: 1.58;
             margin-bottom: 1.25em;
-            font-weight: 400;
             letter-spacing: -0.003em;
           }
 
@@ -186,7 +187,7 @@ const Head = inject("store")(
             display: block;
             padding: 1em;
             margin: 0 0 2em;
-            font-size: 1em;
+            font-size: 1rem;
             line-height: 1.4;
             word-break: break-all;
             word-wrap: break-word;

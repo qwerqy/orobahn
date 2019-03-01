@@ -116,7 +116,7 @@ class Footer extends Component {
                 >
                   <Image
                     size="small"
-                    src="/static/butter-w.png"
+                    src="/static/butter-w.png?webp"
                     alt="ButterCMS Logo"
                   />
                 </a>

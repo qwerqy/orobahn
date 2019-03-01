@@ -19,6 +19,7 @@ import Footer from "../components/footer";
 import ShareLinks from "../components/sharelinks";
 import { gaPageTracking, gaUserTracking } from "../analytics";
 import { inject, observer } from "mobx-react";
+import Prism from "prismjs";
 // import "../assets/blog.css";
 
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
@@ -55,6 +56,7 @@ class Post extends Component {
 
   componentDidMount() {
     gaPageTracking(`/posts/${this.props.data.slug}`);
+    Prism.highlightAll();
   }
 
   render() {
@@ -84,13 +86,13 @@ class Post extends Component {
               {post.featured_image && (
                 <Image
                   // style={{ maxWidth: "700px", height: "auto" }}
-                  src={post.featured_image}
+                  src={`${post.featured_image}?webp`}
                   alt={`featured image with ${post.slug}`}
                 />
               )}
               <Header inverted={store.darkMode} as="h1" className="post-header">
                 {post.title}
-                <Header.Subheader>{post.meta_description}</Header.Subheader>
+                {/* <Header.Subheader>{post.meta_description}</Header.Subheader> */}
               </Header>
               {post.categories.map((cat, i) => {
                 return (

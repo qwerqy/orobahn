@@ -60,7 +60,7 @@ const BlogPosts = observer(({ posts, category, store }) => {
                 </Moment>
               </Header.Subheader>
             </Header>
-            {post.summary}
+            <p>{post.summary}</p>
             <br />
           </Segment>
         );
@@ -117,7 +117,7 @@ class Blog extends Component {
                     fluid
                     alt="profile picture"
                     circular
-                    src="/static/profile.jpg"
+                    src="/static/profile.jpg?webp"
                   />
                 </Grid.Column>
                 <Grid.Column tablet={14} computer={14} mobile={12}>
