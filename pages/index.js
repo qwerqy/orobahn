@@ -91,15 +91,15 @@ class Index extends Component {
   };
 
   render() {
-    const { store } = this.props;
-    const { next_page, previous_page } = this.props.meta;
-    const posts = this.props.data;
+    const { store, data, meta } = this.props;
     const { category, isActive } = this.state;
+    const { next_page, previous_page } = meta;
+    const posts = data;
 
     return (
       <>
         <Head
-          title="Amin Roslan - Home"
+          title="Amin Roslan - Online Portfolio Home"
           url="https://aminroslan.com/"
           description="Amin Roslan's Software Portfolio"
         />

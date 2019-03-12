@@ -1,13 +1,12 @@
 import { Component } from "react";
-import { Header, Grid, List, Segment, Card, Image } from "semantic-ui-react";
-import Link from "next/link";
+import { Header, Grid, List, Segment } from "semantic-ui-react";
 import Head from "../components/head";
 import HeroPage from "../components/heropage";
 import Footer from "../components/footer";
 import Wrapper from "../components/wrapper";
 import Projects from "../components/projects";
 import HeroHeader from "../components/heroheader";
-import { gaPageTracking, gaUserTracking } from "../analytics";
+import { gaPageTracking } from "../analytics";
 import Butter from "buttercms";
 import { inject, observer } from "mobx-react";
 import Moment from "react-moment";
