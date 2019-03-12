@@ -1,7 +1,6 @@
 const withOffline = moduleExists("next-offline") ? require("next-offline") : {};
 const withOptimizedImages = require("next-optimized-images");
 const withCSS = require("@zeit/next-css");
-const webpack = require(`webpack`);
 const nextConfig = {
   workboxOpts: {
     swDest: "static/service-worker.js",

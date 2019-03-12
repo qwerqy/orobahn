@@ -158,7 +158,6 @@ class DesktopWrapper extends Component {
           {/* </Transition> */}
         </Visibility>
         {this.props.children}
-        <style jsx>{``}</style>
       </div>
     );
   }
@@ -358,7 +357,6 @@ class Wrapper extends Component {
       <>
         <DesktopWrapper {...this.props}>{this.props.children}</DesktopWrapper>
         <MobileWrapper {...this.props}>{this.props.children}</MobileWrapper>
-        <style jsx>{``}</style>
       </>
     );
   }

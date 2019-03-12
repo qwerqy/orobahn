@@ -19,6 +19,8 @@ import "prismjs/components/prism-json.min.js";
 import "prismjs/components/prism-bash.min.js";
 import "prismjs/components/prism-jsx.min.js";
 
+import "../assets/_app.css";
+
 Router.events.on("routeChangeStart", url => {
   // console.log(`Loading: ${url}`);
   NProgress.start();

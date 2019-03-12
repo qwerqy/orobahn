@@ -180,7 +180,6 @@ class Contact extends Component {
             </Container>
           </HeroPage>
         </Wrapper>
-        <style jsx>{``}</style>
       </>
     );
   }
