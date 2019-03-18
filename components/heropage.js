@@ -58,7 +58,7 @@ class HeroPage extends Component {
     };
 
     return (
-      <Segment style={styles.segment}>
+      <Segment inverted={store.darkMode} style={styles.segment}>
         <Container text={contain}>
           <Header style={styles.header} inverted={store.darkMode}>
             {this.capitalizeTitle(title)}
