@@ -74,7 +74,7 @@ class Software extends Component {
                       >
                         {skill.category}
                       </Header>
-                      {skill.description}
+                      <p>{skill.description}</p>
                     </Grid.Column>
                   );
                 })}
@@ -92,7 +92,7 @@ class Software extends Component {
                       >
                         {t.category}
                       </Header>
-                      {t.description}
+                      <p>{t.description}</p>
                     </Grid.Column>
                   );
                 })}

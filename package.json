@@ -19,6 +19,7 @@
     "imagemin-svgo": "^7.0.0",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
+    "mobx-react-lite": "^1.1.1",
     "moment": "^2.24.0",
     "next": "^8.0.1",
     "next-offline": "^3.3.5",
