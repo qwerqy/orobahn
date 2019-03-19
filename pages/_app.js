@@ -19,6 +19,8 @@ import "prismjs/components/prism-json.min.js";
 import "prismjs/components/prism-bash.min.js";
 import "prismjs/components/prism-jsx.min.js";
 
+import "../assets/_app.css";
+
 Router.events.on("routeChangeStart", url => {
   // console.log(`Loading: ${url}`);
   NProgress.start();
@@ -50,7 +52,7 @@ export default class MyApp extends App {
     return (
       <Container>
         <Provider store={this.mobxStore}>
-          <Component {...pageProps} />
+          <Component {...pageProps} store={this.mobxStore} />
         </Provider>
       </Container>
     );

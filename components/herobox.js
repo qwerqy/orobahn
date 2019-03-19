@@ -50,8 +50,6 @@ class HeroBox extends Component {
             className="custom-class"
             offsetXMax={this.props.slideIn === "left" ? -10 : 10}
             offsetXMin={this.props.slideIn === "left" ? 10 : -10}
-            // offsetYMax={70}
-            // offsetYMin={-70}
             slowerScrollRate
             tag="figure"
           >

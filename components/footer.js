@@ -13,7 +13,6 @@ import {
 import { links } from "./helpers/index";
 import { gaUserTracking } from "../analytics";
 
-// TODO: anchor all links here.
 class Footer extends Component {
   render() {
     return (
@@ -21,13 +20,6 @@ class Footer extends Component {
         inverted
         vertical
         style={{
-          // background: "#3494e6" /* fallback for old browsers */,
-          // // eslint-disable-next-line no-dupe-keys
-          // background:
-          //   "-webkit-linear-gradient(to right, #3494e6, #ec6ead)" /* Chrome 10-25, Safari 5.1-6 */,
-          // // eslint-disable-next-line no-dupe-keys
-          // background:
-          //   "linear-gradient(to right, #3494e6, #ec6ead)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
           padding: "5em 0em"
         }}
       >

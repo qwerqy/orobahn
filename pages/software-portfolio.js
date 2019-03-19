@@ -1,13 +1,12 @@
 import { Component } from "react";
-import { Header, Grid, List, Segment, Card, Image } from "semantic-ui-react";
-import Link from "next/link";
+import { Header, Grid, List, Segment } from "semantic-ui-react";
 import Head from "../components/head";
 import HeroPage from "../components/heropage";
 import Footer from "../components/footer";
 import Wrapper from "../components/wrapper";
 import Projects from "../components/projects";
 import HeroHeader from "../components/heroheader";
-import { gaPageTracking, gaUserTracking } from "../analytics";
+import { gaPageTracking } from "../analytics";
 import Butter from "buttercms";
 import { inject, observer } from "mobx-react";
 import Moment from "react-moment";
@@ -17,7 +16,13 @@ const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
 @observer
 class Software extends Component {
   static async getInitialProps() {
-    const resp = await butter.content.retrieve(["work-experience"]);
+    const resp = await butter.content.retrieve([
+      "work",
+      "education",
+      "skills",
+      "tech",
+      "superDescription"
+    ]);
     return resp.data;
   }
 
@@ -34,7 +39,7 @@ class Software extends Component {
   }
 
   render() {
-    const workExp = this.props.data["work-experience"];
+    const { education, skills, tech, work, superDescription } = this.props.data;
     const { store } = this.props;
     return (
       <div>
@@ -47,85 +52,50 @@ class Software extends Component {
           <HeroHeader store={store} title="Software Portfolio." />
           <HeroPage store={store} contain>
             <Header style={{ color: "#3494e6" }} as="h1">
-              Full Stack Software Engineer
+              {superDescription[0].heroText}
             </Header>
-            <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
-              I have always been a fan of Tech. Getting myself involved in
-              software engineering is something I dream since I was in high
-              school. I strive for perfection and functionality.
-            </p>
-            <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
-              My work mostly involves the whole ecosystem of a software. The
-              front-end, the back-end and devOps. I have an eye in design
-              language, and I work great in teams. I frequently use Javascript
-              as my programming language for personal projects and work. I
-              curate the deployment process from setting up CI all the way to
-              deployment in a Docker container.
-            </p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: superDescription[0].description
+              }}
+            />
             <br />
             <Grid stackable columns={4}>
               <Grid.Row>
                 <Grid.Column>
                   <Header style={{ color: "#3494e6" }}>Skills</Header>
                 </Grid.Column>
-                <Grid.Column>
-                  <Header inverted={store.darkMode} className="list-hero-text">
-                    Leadership
-                  </Header>
-                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
-                    Able to motivate & educate; Handled a sales team of 10
-                    people for 2 years in a Health industry company.
-                  </p>
-                </Grid.Column>
-                <Grid.Column>
-                  <Header inverted={store.darkMode} className="list-hero-text">
-                    Speech
-                  </Header>
-                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
-                    Negotiation & Management; Been in numerous businesses
-                    involved in making deals between two parties for 3 years.
-                  </p>
-                </Grid.Column>
-                <Grid.Column>
-                  <Header inverted={store.darkMode} className="list-hero-text">
-                    Software
-                  </Header>
-                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
-                    1 year software experience in Web, Mobile & Automation
-                    applications.
-                  </p>
-                </Grid.Column>
+                {skills.map(skill => {
+                  return (
+                    <Grid.Column>
+                      <Header
+                        inverted={store.darkMode}
+                        className="list-hero-text"
+                      >
+                        {skill.category}
+                      </Header>
+                      <p>{skill.description}</p>
+                    </Grid.Column>
+                  );
+                })}
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
                   <Header style={{ color: "#3494e6" }}>Technologies</Header>
                 </Grid.Column>
-                <Grid.Column>
-                  <Header inverted={store.darkMode} className="list-hero-text">
-                    Languages
-                  </Header>
-                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
-                    Javascript, Node.js, HTML, CSS, MongoDB, Ruby, Python
-                  </p>
-                </Grid.Column>
-                <Grid.Column>
-                  <Header inverted={store.darkMode} className="list-hero-text">
-                    Frameworks
-                  </Header>
-                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
-                    React, React Native, Vue, Next, Nuxt, Mobx, Vuex, Webpack,
-                    Babel, Semantic UI, Bootstrap
-                  </p>
-                </Grid.Column>
-                <Grid.Column>
-                  <Header inverted={store.darkMode} className="list-hero-text">
-                    Tools
-                  </Header>
-                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
-                    Docker, CircleCI, Cypress, Mocha, Heroku, DO Droplet, AWS
-                    Lambda, Serverless, Redis
-                  </p>
-                </Grid.Column>
+                {tech.map(t => {
+                  return (
+                    <Grid.Column>
+                      <Header
+                        inverted={store.darkMode}
+                        className="list-hero-text"
+                      >
+                        {t.category}
+                      </Header>
+                      <p>{t.description}</p>
+                    </Grid.Column>
+                  );
+                })}
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column width={4}>
@@ -136,17 +106,21 @@ class Software extends Component {
                     Education
                   </Header>
                 </Grid.Column>
-                <Grid.Column width={12}>
-                  <Header inverted={store.darkMode} className="list-hero-text">
-                    Next Academy Coding Bootcamp
-                  </Header>
-                  <p style={{ color: store.darkMode ? "#fff" : "#1b1c1d" }}>
-                    Attended the Full Stack Web Development bootcamp that lasted
-                    for 10 weeks. Studied development on a Web app using Ruby on
-                    Rails, created 3 standalone projects needed to graduate the
-                    class.
-                  </p>
-                </Grid.Column>
+                {education.map(edu => {
+                  return (
+                    <Grid.Column width={12}>
+                      <Header
+                        inverted={store.darkMode}
+                        className="list-hero-text"
+                      >
+                        {edu.institution}
+                      </Header>
+                      <div
+                        dangerouslySetInnerHTML={{ __html: edu.description }}
+                      />
+                    </Grid.Column>
+                  );
+                })}
               </Grid.Row>
             </Grid>
             <br />
@@ -155,7 +129,7 @@ class Software extends Component {
             <br />
             <Header style={{ color: "#3494e6" }}>Work History</Header>
             <List>
-              {Object.keys(workExp).map(i => {
+              {Object.keys(work).map(i => {
                 return (
                   <List.Item key={i}>
                     <Segment basic inverted={store.darkMode}>
@@ -163,31 +137,31 @@ class Software extends Component {
                         inverted={store.darkMode}
                         className="list-hero-text"
                       >
-                        {workExp[i].position}, {workExp[i].company}
+                        {work[i].position}, {work[i].company}
                       </Header>
-                      {workExp[i]["end-date"] !== "" ? (
+                      {work[i]["end-date"] !== "" ? (
                         <Header inverted={store.darkMode} sub>
                           From{" "}
                           <Moment format="YYYY" withTitle>
-                            {workExp[i]["start-date"]}
+                            {work[i]["start-date"]}
                           </Moment>{" "}
                           to{" "}
                           <Moment format="YYYY" withTitle>
-                            {workExp[i]["end-date"]}
+                            {work[i]["end-date"]}
                           </Moment>{" "}
                         </Header>
                       ) : (
                         <Header inverted={store.darkMode} sub>
                           From{" "}
                           <Moment format="YYYY" withTitle>
-                            {workExp[i]["start-date"]}
+                            {work[i]["start-date"]}
                           </Moment>{" "}
                           to Present
                         </Header>
                       )}
                       <div
                         dangerouslySetInnerHTML={{
-                          __html: workExp[i].description
+                          __html: work[i].description
                         }}
                       />
                     </Segment>

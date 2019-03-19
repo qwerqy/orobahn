@@ -10,18 +10,14 @@ import {
   Button,
   Image,
   Icon
-  // Responsive
 } from "semantic-ui-react";
-import { autorun } from "mobx";
 import { inject, observer } from "mobx-react";
 import Head from "../components/head";
 import HeroPage from "../components/heropage";
 import Footer from "../components/footer";
 import HeroHeader from "../components/heroheader";
 import Wrapper from "../components/wrapper";
-// import Truncate from "react-truncate";
-import { gaPageTracking, gaUserTracking } from "../analytics";
-import NProgress from "nprogress";
+import { gaUserTracking } from "../analytics";
 
 import Butter from "buttercms";
 const butter = Butter("fd1efe394a6740dbfe76ff507508849f406c2aca");
@@ -71,7 +67,7 @@ const BlogPosts = observer(({ posts, category, store }) => {
 
 @inject("store")
 @observer
-class Blog extends Component {
+class Index extends Component {
   static async getInitialProps({ query }) {
     let page = query.page || 1;
 
@@ -95,15 +91,15 @@ class Blog extends Component {
   };
 
   render() {
-    const { store } = this.props;
-    const { next_page, previous_page } = this.props.meta;
-    const posts = this.props.data;
+    const { store, data, meta } = this.props;
     const { category, isActive } = this.state;
+    const { next_page, previous_page } = meta;
+    const posts = data;
 
     return (
       <>
         <Head
-          title="Amin Roslan - Home"
+          title="Amin Roslan - Online Portfolio Home"
           url="https://aminroslan.com/"
           description="Amin Roslan's Software Portfolio"
         />
@@ -282,4 +278,4 @@ class Blog extends Component {
   }
 }
 
-export default Blog;
+export default Index;
