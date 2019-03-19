@@ -52,7 +52,7 @@ export default class MyApp extends App {
     return (
       <Container>
         <Provider store={this.mobxStore}>
-          <Component {...pageProps} />
+          <Component {...pageProps} store={this.mobxStore} />
         </Provider>
       </Container>
     );
