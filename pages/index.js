@@ -255,21 +255,22 @@ class Index extends Component {
             <br />
             <div>
               {previous_page && (
-                <Button role="button" inverted floated="left">
+                <div style={{ float: "left" }}>
                   <Link prefetch href={`/?page=${previous_page}`}>
                     <a>Prev Page</a>
                   </Link>
-                </Button>
+                </div>
               )}
 
               {next_page && (
-                <Button role="button" inverted floated="right">
+                <div style={{ float: "right" }}>
                   <Link prefetch href={`/?page=${next_page}`}>
                     <a>Next Page</a>
                   </Link>
-                </Button>
+                </div>
               )}
             </div>
+            <br />
           </HeroPage>
           <Footer />
         </Wrapper>
