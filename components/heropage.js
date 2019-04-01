@@ -23,7 +23,7 @@ class HeroPage extends Component {
   };
 
   render() {
-    const { slant, title, dark, size, contain, gradient, store } = this.props;
+    const { title, size, contain, store } = this.props;
     const styles = {
       segment: {
         borderRadius: 0,

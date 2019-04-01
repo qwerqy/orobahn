@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import App, { Container } from "next/app";
 import NProgress from "nprogress";
 import Router from "next/router";
@@ -21,7 +21,7 @@ import "prismjs/components/prism-jsx.min.js";
 
 import "../assets/_app.css";
 
-Router.events.on("routeChangeStart", url => {
+Router.events.on("routeChangeStart", () => {
   // console.log(`Loading: ${url}`);
   NProgress.start();
 });

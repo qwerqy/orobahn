@@ -67,9 +67,9 @@ class DesktopWrapper extends Component {
   };
 
   render() {
-    const { dark, router, solid, store } = this.props;
+    const { store } = this.props;
     const { fixedNav } = this.state;
-    const pathname = router.pathname ? this.pathnameCleaner() : "";
+    // const pathname = router.pathname ? this.pathnameCleaner() : "";
     const styles = {
       segment: {
         background: this.getBackgroundColor(),
